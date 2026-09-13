@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; }
+  button { font-family:inherit; }
+</style>
+</helmet>
+<div style="min-height:100vh;font-family:'DM Sans',system-ui,sans-serif;transition:background 200ms ease;background:{{ pageBg }};color:{{ text }}">
+
+  <header style="background:{{ headerBg }};padding:14px 24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+    <div style="min-width:0;flex:1">
+      <div style="font-size:15px;font-weight:700;color:#FFFFFF">Test: Application of Derivatives (Tangent and Normal) — Mock Test 04</div>
+      <div style="font-size:12px;color:#B8C6E8;margin-top:2px">80 questions · 180 minutes · +4 correct, −1 wrong</div>
+    </div>
+
+    <button type="button" onClick="{{ toggleTheme }}" style="display:flex;align-items:center;gap:7px;background:rgba(255,255,255,0.14);border:1px solid rgba(255,255,255,0.24);color:#FFFFFF;font-size:13px;font-weight:700;padding:9px 14px;border-radius:10px;cursor:pointer">{{ themeIcon }} {{ themeLabel }}</button>
+
+    <button type="button" onClick="{{ toggleCalc }}" style="display:flex;align-items:center;gap:7px;background:rgba(255,255,255,0.14);border:1px solid rgba(255,255,255,0.24);color:#FFFFFF;font-size:13px;font-weight:700;padding:9px 14px;border-radius:10px;cursor:pointer">🖩 Calculator</button>
+
+    <div style="display:flex;align-items:center;gap:9px;background:{{ timerBg }};padding:9px 16px;border-radius:11px;border:1px solid rgba(255,255,255,0.14)">
+      <span style="font-size:15px">⏱️</span>
+      <span style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700;color:#FFD65A;font-variant-numeric:tabular-nums">00h : 29m : 41s</span>
+    </div>
+
+    <button type="button" style="background:#16A34A;color:#FFFFFF;font-size:14px;font-weight:700;padding:11px 20px;border-radius:10px;border:none;cursor:pointer" style-hover="background:#15803D">Submit Test</button>
+  </header>
+
+  <div style="display:flex;flex-wrap:wrap;gap:20px;padding:22px 24px 40px;align-items:start;position:relative">
+
+    <main style="min-width:300px;flex:3 1 560px">
+      <div style="background:{{ card }};border:1px solid {{ cardBorder }};border-radius:16px;overflow:hidden">
+        <div style="background:linear-gradient(90deg,#0B2E7A,#1B4BC4);padding:15px 22px;display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:#FFFFFF">Q10 · Multiple Choice Question</div>
+          <div style="flex:1"></div>
+          <div style="font-size:13.5px;font-weight:600;color:#DCE6FF">Marks: <span style="color:#8CF0A8;font-weight:700">+4.00</span></div>
+          <div style="font-size:13.5px;font-weight:600;color:#DCE6FF">Negative: <span style="color:#FFB4A8;font-weight:700">1.00</span></div>
+        </div>
+
+        <div style="padding:24px">
+          <p style="font-size:18px;line-height:1.6;margin:0;color:{{ text }}">The abscissa of the point where the tangent to y = x² − 3x + 2 is parallel to the x-axis is:</p>
+
+          <div style="display:grid;gap:12px;margin-top:22px">
+            <sc-for list="{{ options }}" as="opt" hint-placeholder-count="4">
+              <label style="{{ opt.rowStyle }}">
+                <span style="{{ opt.numStyle }}">{{ opt.num }}</span>
+                <span style="font-size:16.5px;color:{{ text }}">{{ opt.text }}</span>
+              </label>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:10px;margin-top:20px;flex-wrap:wrap">
+        <button type="button" style="background:#2563EB;color:#FFFFFF;font-size:14.5px;font-weight:700;padding:12px 20px;border-radius:11px;border:none;cursor:pointer" style-hover="background:#1D4ED8">← Prev</button>
+        <button type="button" style="background:{{ card }};color:{{ text }};font-size:14.5px;font-weight:700;padding:12px 20px;border-radius:11px;border:1px solid {{ cardBorder }};cursor:pointer">Clear</button>
+        <button type="button" onClick="{{ openReport }}" style="background:{{ card }};color:#E23B3B;font-size:14.5px;font-weight:700;padding:12px 20px;border-radius:11px;border:1px solid {{ cardBorder }};cursor:pointer">⚑ Report</button>
+        <div style="flex:1"></div>
+        <button type="button" style="background:#7C3AED;color:#FFFFFF;font-size:14.5px;font-weight:700;padding:12px 20px;border-radius:11px;border:none;cursor:pointer" style-hover="background:#6D28D9">Mark for Review</button>
+        <button type="button" style="background:#F5822B;color:#FFFFFF;font-size:14.5px;font-weight:700;padding:12px 22px;border-radius:11px;border:none;cursor:pointer" style-hover="background:#E06D16">Save &amp; Next →</button>
+      </div>
+      <div style="font-size:12.5px;color:{{ sub }};margin-top:12px">Shortcuts: <strong>1–4</strong> pick · <strong>N</strong> next · <strong>P</strong> previous · <strong>M</strong> mark · <strong>C</strong> calculator</div>
+    </main>
+
+    <aside style="min-width:260px;flex:1 1 300px;display:grid;gap:18px;align-content:start">
+      <div style="background:{{ card }};border:1px solid {{ cardBorder }};border-radius:16px;padding:20px">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:#2563EB">Tangent and Normal</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(44px,1fr));gap:11px;margin-top:16px">
+          <sc-for list="{{ palette }}" as="q" hint-placeholder-count="10">
+            <div style="{{ q.style }}"><span>{{ q.n }}</span><sc-if value="{{ q.dot }}"><span style="position:absolute;bottom:2px;right:2px;width:8px;height:8px;border-radius:2px;background:#16A34A"></span></sc-if></div>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="background:{{ card }};border:1px solid {{ cardBorder }};border-radius:16px;padding:20px">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:{{ text }}">Test Overview</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px">
+          <div style="display:flex;align-items:center;gap:10px"><span style="width:26px;height:26px;border-radius:999px;border:1.5px solid #C3CBDC;color:{{ sub }};font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">0</span><span style="font-size:12.5px;color:{{ sub }};font-weight:600;line-height:1.2">Not Visited</span></div>
+          <div style="display:flex;align-items:center;gap:10px"><span style="width:26px;height:26px;border-radius:999px;background:#E23B3B;color:#FFFFFF;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">1</span><span style="font-size:12.5px;color:{{ sub }};font-weight:600;line-height:1.2">Not Answered</span></div>
+          <div style="display:flex;align-items:center;gap:10px"><span style="width:26px;height:26px;border-radius:999px;background:#16A34A;color:#FFFFFF;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">5</span><span style="font-size:12.5px;color:{{ sub }};font-weight:600;line-height:1.2">Answered</span></div>
+          <div style="display:flex;align-items:center;gap:10px"><span style="width:26px;height:26px;border-radius:999px;background:#7C3AED;color:#FFFFFF;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</span><span style="font-size:12.5px;color:{{ sub }};font-weight:600;line-height:1.2">Marked for Review</span></div>
+          <div style="display:flex;align-items:center;gap:10px"><span style="position:relative;width:26px;height:26px;border-radius:999px;background:#7C3AED;color:#FFFFFF;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">2<span style="position:absolute;bottom:0;right:0;width:8px;height:8px;border-radius:2px;background:#16A34A"></span></span><span style="font-size:12.5px;color:{{ sub }};font-weight:600;line-height:1.2">Answered &amp; Marked</span></div>
+        </div>
+      </div>
+    </aside>
+
+    <sc-if value="{{ calcOpen }}">
+    <div style="position:fixed;right:24px;bottom:24px;width:288px;background:#141033;border-radius:16px;padding:16px;box-shadow:0 22px 48px rgba(11,10,31,0.45);z-index:50">
+      <div style="display:flex;justify-content:space-between;align-items:center"><div style="font-size:12px;font-weight:800;letter-spacing:0.07em;text-transform:uppercase;color:#9E97D9">Scientific Calculator</div><span onClick="{{ toggleCalc }}" style="font-size:16px;color:#9E97D9;cursor:pointer">×</span></div>
+      <div style="background:#0B0A1F;border-radius:10px;padding:12px 14px;margin-top:10px;text-align:right"><div style="font-size:11.5px;color:#7A72B8;font-family:'Space Grotesk',sans-serif">tan(45) + √2</div><div style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;color:#D6FB5A;margin-top:3px">2.4142</div></div>
+      <div style="display:flex;gap:6px;margin-top:10px">
+        <div style="flex:1;text-align:center;font-size:11px;font-weight:700;color:#D6FB5A;background:#241E52;border-radius:7px;padding:6px 0;cursor:pointer">DEG</div>
+        <div style="flex:1;text-align:center;font-size:11px;font-weight:700;color:#7A72B8;background:#181242;border-radius:7px;padding:6px 0;cursor:pointer">RAD</div>
+        <div style="flex:1;text-align:center;font-size:11px;font-weight:700;color:#FFB4A8;background:#181242;border-radius:7px;padding:6px 0;cursor:pointer">C</div>
+        <div style="flex:1;text-align:center;font-size:11px;font-weight:700;color:#9E97D9;background:#181242;border-radius:7px;padding:6px 0;cursor:pointer">⌫</div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px">
+        <sc-for list="{{ calcKeys }}" as="k" hint-placeholder-count="28">
+          <div style="{{ k.style }}">{{ k.label }}</div>
+        </sc-for>
+      </div>
+    </div>
+    </sc-if>
+  </div>
+
+  <sc-if value="{{ reportOpen }}">
+  <div onClick="{{ closeReport }}" style="position:fixed;inset:0;z-index:60;background:rgba(6,10,24,0.55);backdrop-filter:blur(3px);display:flex;align-items:flex-end;justify-content:center;padding:0">
+    <div onClick="{{ stop }}" style="background:{{ card }};color:{{ text }};width:min(500px,100%);max-height:92vh;overflow:auto;border-radius:20px 20px 0 0;box-shadow:0 -12px 40px rgba(0,0,0,0.3);margin-top:auto" style-hover="">
+      <div style="position:sticky;top:0;background:linear-gradient(90deg,#0B2E7A,#1B4BC4);padding:18px 22px;display:flex;align-items:center;gap:12px;border-radius:20px 20px 0 0">
+        <div style="width:38px;height:38px;border-radius:11px;background:rgba(255,255,255,0.16);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">⚑</div>
+        <div style="min-width:0;flex:1"><div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700;color:#FFFFFF">Report this question</div><div style="font-size:12.5px;color:#C6D3F2;margin-top:1px">Q10 · Tangent and Normal</div></div>
+        <button type="button" onClick="{{ closeReport }}" style="width:34px;height:34px;border-radius:9px;border:none;background:rgba(255,255,255,0.16);color:#FFFFFF;font-size:17px;cursor:pointer;flex-shrink:0">✕</button>
+      </div>
+      <div style="padding:20px 22px">
+        <div style="font-size:13.5px;color:{{ sub }};line-height:1.5">Tell us what's wrong. Your answer is saved — reporting won't affect your marks.</div>
+        <div style="display:grid;gap:9px;margin-top:16px">
+          <sc-for list="{{ reportReasons }}" as="r" hint-placeholder-count="5">
+            <label style="{{ r.rowStyle }}"><input type="radio" name="reportReason" checked="{{ r.checked }}" onChange="{{ r.pick }}" style="width:18px;height:18px;accent-color:#F5822B;flex-shrink:0"><span style="font-size:14.5px;font-weight:600">{{ r.label }}</span></label>
+          </sc-for>
+        </div>
+        <textarea placeholder="Add more detail (optional)" style="width:100%;box-sizing:border-box;margin-top:14px;min-height:84px;resize:vertical;border:1px solid {{ cardBorder }};background:{{ pageBg }};color:{{ text }};border-radius:12px;padding:12px 14px;font-family:inherit;font-size:14px;outline:none"></textarea>
+        <div style="display:flex;gap:10px;margin-top:18px;flex-wrap:wrap">
+          <button type="button" onClick="{{ closeReport }}" style="flex:1;min-width:120px;background:{{ pageBg }};color:{{ text }};border:1px solid {{ cardBorder }};font-size:14.5px;font-weight:700;padding:13px 18px;border-radius:12px;cursor:pointer">Cancel</button>
+          <button type="button" onClick="{{ closeReport }}" style="flex:2;min-width:150px;background:#F5822B;color:#FFFFFF;border:none;font-size:14.5px;font-weight:800;padding:13px 18px;border-radius:12px;cursor:pointer" style-hover="background:#E06D16">Submit report</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:760}}">
+class Component extends DCLogic {
+  state = { theme: 'light', calcOpen: false, selected: 3, reportOpen: false, reportReason: 0 };
+
+  PALETTE = [
+    { n:1, status:'markedAns' }, { n:2, status:'markedAns' }, { n:3, status:'markedAns' },
+    { n:4, status:'marked' }, { n:5, status:'notAns' },
+    { n:6, status:'answered' }, { n:7, status:'answered' }, { n:8, status:'answered' },
+    { n:9, status:'answered' }, { n:10, status:'current' }
+  ];
+
+  CALC = ['sin','cos','tan','^','log','ln','√','x²','(',')','π','e','7','8','9','÷','4','5','6','×','1','2','3','−','0','.','=','+'];
+
+  themePalette() {
+    if (this.state.theme === 'dark') {
+      return { pageBg:'#0B0F1A', headerBg:'#0B1B3A', text:'#F1F4FA', sub:'#9AA6BE', card:'#141B2E', cardBorder:'#26304A', timerBg:'#050A16', optBadge:'#26304A' };
+    }
+    return { pageBg:'#EEF2FA', headerBg:'#123FA6', text:'#141B2E', sub:'#5A6478', card:'#FFFFFF', cardBorder:'#E3E8F2', timerBg:'#0B2E7A', optBadge:'#141B2E' };
+  }
+
+  renderVals() {
+    const p = this.themePalette();
+    const sel = this.state.selected;
+
+    const OPTS = [{ num:1, text:'3/2' }, { num:2, text:'1' }, { num:3, text:'2' }, { num:4, text:'0' }];
+    const options = OPTS.map(o => {
+      const active = o.num === sel;
+      return {
+        num: o.num,
+        text: o.text,
+        rowStyle: `display:flex;align-items:center;gap:14px;border-radius:12px;padding:15px 18px;cursor:pointer;transition:border-color 160ms,background 160ms;border:1.5px solid ${active ? '#F5822B' : p.cardBorder};background:${active ? (this.state.theme === 'dark' ? '#2A1E12' : '#FEF3EA') : p.card}`,
+        numStyle: `width:30px;height:30px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;color:#FFFFFF;background:${active ? '#F5822B' : p.optBadge}`
+      };
+    });
+
+    const STATUS = {
+      answered:   { bg:'#16A34A', color:'#FFFFFF', border:'none', dot:false, ring:false },
+      notAns:     { bg:'#E23B3B', color:'#FFFFFF', border:'none', dot:false, ring:false },
+      marked:     { bg:'#7C3AED', color:'#FFFFFF', border:'none', dot:false, ring:false },
+      markedAns:  { bg:'#7C3AED', color:'#FFFFFF', border:'none', dot:true,  ring:false },
+      notVisited: { bg:'transparent', color:p.sub, border:'1.5px solid #C3CBDC', dot:false, ring:false },
+      current:    { bg:'#16A34A', color:'#FFFFFF', border:'none', dot:false, ring:true }
+    };
+    const palette = this.PALETTE.map(q => {
+      const s = STATUS[q.status];
+      return {
+        n: q.n,
+        dot: s.dot,
+        style: `position:relative;width:40px;height:40px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;background:${s.bg};color:${s.color};border:${s.border};${s.ring ? 'outline:2.5px solid #F5822B;outline-offset:2px;' : ''}`
+      };
+    });
+
+    const fnKeys = ['sin','cos','tan','^','log','ln','√','x²','(',')','π','e'];
+    const calcKeys = this.CALC.map(label => {
+      const op = ['÷','×','−','+'].includes(label);
+      const eq = label === '=';
+      const fn = fnKeys.includes(label);
+      return {
+        label,
+        style: `border-radius:8px;padding:9px 0;text-align:center;font-size:12.5px;font-weight:700;cursor:pointer;color:${eq ? '#242E06' : (fn ? '#C9C4FF' : '#FFFFFF')};background:${eq ? '#D6FB5A' : (op ? '#3A3270' : (fn ? '#181242' : '#241E52'))}`
+      };
+    });
+
+    return {
+      pageBg: p.pageBg, headerBg: p.headerBg, text: p.text, sub: p.sub,
+      card: p.card, cardBorder: p.cardBorder, timerBg: p.timerBg,
+      options, palette, calcKeys,
+      calcOpen: this.state.calcOpen,
+      themeIcon: this.state.theme === 'dark' ? '☀️' : '🌙',
+      themeLabel: this.state.theme === 'dark' ? 'Light' : 'Dark',
+      toggleTheme: () => this.setState(s => ({ theme: s.theme === 'dark' ? 'light' : 'dark' })),
+      toggleCalc: () => this.setState(s => ({ calcOpen: !s.calcOpen })),
+      openReport: () => this.setState({ reportOpen: true }),
+      closeReport: () => this.setState({ reportOpen: false }),
+      reportOpen: this.state.reportOpen,
+      stop: (e) => e.stopPropagation(),
+      reportReasons: [
+        'Wrong or unclear question',
+        'Options are incorrect',
+        'Answer key looks wrong',
+        'Typo or formatting issue',
+        'Image / diagram not loading'
+      ].map((label, i) => ({
+        label,
+        checked: this.state.reportReason === i,
+        pick: () => this.setState({ reportReason: i }),
+        rowStyle: `display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:12px;cursor:pointer;border:1.5px solid ${this.state.reportReason === i ? '#F5822B' : p.cardBorder};background:${this.state.reportReason === i ? (this.state.theme === 'dark' ? '#2A1E12' : '#FFF4EC') : p.pageBg}`
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>

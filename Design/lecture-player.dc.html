@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#F6F4FF; }
+  a { color:#4B2BE8; text-decoration:none; }
+  a:hover { color:#141033; }
+</style>
+</helmet>
+<div style="display:grid;grid-template-columns:{{ sideW }} minmax(0,1fr);background:#F6F4FF;color:#141033;font-family:'DM Sans',system-ui,sans-serif;min-height:100vh;transition:grid-template-columns 200ms ease">
+
+  <aside style="position:sticky;top:0;height:100vh;overflow:hidden;background:radial-gradient(700px 400px at 20% -10%, #0a5fb8, #024f9d 45%, #01356c)">
+    <div style="position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px, rgba(255,255,255,.10) 1px, transparent 0);background-size:26px 26px;pointer-events:none"></div>
+    <div style="position:absolute;top:-60px;right:-40px;width:200px;height:200px;border-radius:999px;background:radial-gradient(circle,rgba(251,116,62,0.22),transparent 70%);pointer-events:none"></div>
+    <div style="position:relative;z-index:1;height:100%;box-sizing:border-box;padding:20px 14px;display:flex;flex-direction:column;gap:20px;overflow:auto">
+      <div style="display:flex;align-items:center;gap:8px">
+        <sc-if value="{{ expanded }}"><div style="font-family:'Space Grotesk',sans-serif;font-size:21px;font-weight:700;letter-spacing:-0.025em;white-space:nowrap;padding:2px 6px;flex:1;min-width:0"><span style="color:#8FC4F5">Success</span><span style="color:#FF9E6B">Curve</span><sup style="font-size:0.46em;font-weight:600;color:#B7C1D6;margin-left:1px;top:-0.7em">.in</sup></div></sc-if>
+        <button type="button" onClick="{{ toggleSidebar }}" title="Collapse sidebar" style="width:34px;height:34px;flex-shrink:0;border-radius:9px;border:1px solid rgba(255,255,255,0.18);background:rgba(255,255,255,0.08);color:#FFFFFF;font-size:14px;cursor:pointer">{{ toggleIcon }}</button>
+      </div>
+      <sc-if value="{{ expanded }}">
+      <div style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.14);border-radius:12px;padding:9px 11px">
+        <div style="width:34px;height:34px;border-radius:9px;background:#024F9D;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;flex-shrink:0">A</div>
+        <div style="min-width:0"><div style="font-size:13.5px;font-weight:700;color:#FFFFFF;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Ananya</div><div style="font-size:11.5px;color:#B7C1D6">Class 10 · Science</div></div>
+      </div>
+      </sc-if>
+
+      <nav style="display:grid;gap:3px">
+        <sc-for list="{{ nav }}" as="n" hint-placeholder-count="8">
+          <sc-if value="{{ n.isLabel }}"><sc-if value="{{ expanded }}"><div style="font-size:10.5px;font-weight:800;letter-spacing:0.11em;text-transform:uppercase;color:#7FA6D6;padding:12px 8px 4px">{{ n.label }}</div></sc-if></sc-if>
+          <sc-if value="{{ n.isLink }}"><a href="{{ n.href }}" title="{{ n.label }}" style="{{ n.style }}"><span style="width:20px;text-align:center;flex-shrink:0">{{ n.icon }}</span><sc-if value="{{ expanded }}"><span style="flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ n.label }}</span><sc-if value="{{ n.badge }}"><span style="background:#FB743E;color:#FFFFFF;font-size:11px;font-weight:800;padding:2px 7px;border-radius:999px">{{ n.badge }}</span></sc-if></sc-if></a></sc-if>
+        </sc-for>
+      </nav>
+    </div>
+  </aside>
+
+  <div style="min-width:0">
+  <header style="display:flex;align-items:center;gap:18px;padding:14px 28px;background:#0B0A1F;flex-wrap:wrap">
+    <div style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;letter-spacing:-0.025em;white-space:nowrap"><span style="color:#5AA9FF">Success</span><span style="color:#FF9A3D">Curve</span><sup style="font-size:0.46em;font-weight:600;color:#9E97D9;margin-left:1px;top:-0.7em">.in</sup></div>
+    <div style="min-width:0;overflow:hidden">
+      <div style="font-size:14.5px;font-weight:700;color:#FFFFFF;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Class 10 Mathematics — Complete Board Prep</div>
+      <div style="font-size:12.5px;color:#9E97D9;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Week 6 · Trigonometry · Lecture 24 of 42</div>
+    </div>
+    <div style="flex:1"></div>
+    <div style="display:flex;align-items:center;gap:10px">
+      <div style="width:120px;height:7px;background:#241E52;border-radius:999px;overflow:hidden"><div style="width:57%;height:100%;background:#D6FB5A"></div></div>
+      <div style="font-size:12.5px;font-weight:700;color:#D6FB5A">57%</div>
+    </div>
+    <a href="#" style="color:#EDEBFF;font-size:14px;font-weight:600">Back to course</a>
+  </header>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;padding:20px 28px 48px;align-items:start">
+
+    <div style="min-width:0;grid-column:span 2;display:grid;gap:20px">
+      <div style="background:#0B0A1F;border-radius:18px;overflow:hidden">
+        <div style="aspect-ratio:16/9;background:linear-gradient(150deg,#1A1150,#4B2BE8);display:flex;align-items:center;justify-content:center;position:relative">
+          <div style="width:76px;height:76px;border-radius:999px;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center">
+            <div style="width:0;height:0;border-left:22px solid #4B2BE8;border-top:14px solid transparent;border-bottom:14px solid transparent;margin-left:6px"></div>
+          </div>
+          <div style="position:absolute;left:16px;top:16px;background:rgba(11,10,31,0.6);color:#FFFFFF;font-size:12px;font-weight:700;padding:6px 11px;border-radius:8px">Heights &amp; Distances · Part 2</div>
+        </div>
+        <div style="padding:14px 16px 16px">
+          <div style="height:6px;background:#241E52;border-radius:999px;position:relative">
+            <div style="width:42%;height:100%;background:#D6FB5A;border-radius:999px"></div>
+            <div style="position:absolute;left:18%;top:-3px;width:3px;height:12px;background:#FFFFFF;opacity:0.55"></div>
+            <div style="position:absolute;left:36%;top:-3px;width:3px;height:12px;background:#FFFFFF;opacity:0.55"></div>
+            <div style="position:absolute;left:64%;top:-3px;width:3px;height:12px;background:#FFFFFF;opacity:0.55"></div>
+            <div style="position:absolute;left:42%;top:-4px;width:14px;height:14px;border-radius:999px;background:#D6FB5A;transform:translateX(-7px)"></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;margin-top:13px;flex-wrap:wrap">
+            <div style="display:flex;gap:8px">
+              <button type="button" style="border:none;background:#241E52;color:#FFFFFF;width:36px;height:36px;border-radius:9px;font-size:15px;cursor:pointer" style-hover="background:#4B2BE8">▸</button>
+              <button type="button" style="border:none;background:#241E52;color:#FFFFFF;width:36px;height:36px;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer" style-hover="background:#4B2BE8">10s</button>
+            </div>
+            <div style="font-size:13px;font-weight:600;color:#C9C4FF;font-family:'Space Grotesk',sans-serif">18:24 / 43:10</div>
+            <div style="flex:1"></div>
+            <select style="border:none;background:#241E52;color:#FFFFFF;font-family:inherit;font-size:13px;font-weight:700;padding:9px 10px;border-radius:9px;outline:none"><option>1×</option><option>1.25×</option><option>1.5×</option><option>2×</option></select>
+            <select style="border:none;background:#241E52;color:#FFFFFF;font-family:inherit;font-size:13px;font-weight:700;padding:9px 10px;border-radius:9px;outline:none"><option>720p</option><option>1080p</option><option>480p</option><option>Auto</option></select>
+            <button type="button" style="border:none;background:#D6FB5A;color:#242E06;font-family:inherit;font-size:13px;font-weight:800;padding:9px 14px;border-radius:9px;cursor:pointer" style-hover="background:#FFFFFF">Bookmark 18:24</button>
+          </div>
+          <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+            <span style="font-size:12px;font-weight:700;color:#9E97D9;background:#181242;padding:6px 11px;border-radius:7px">00:00 Recap</span>
+            <span style="font-size:12px;font-weight:700;color:#9E97D9;background:#181242;padding:6px 11px;border-radius:7px">07:40 Angle of elevation</span>
+            <span style="font-size:12px;font-weight:700;color:#242E06;background:#D6FB5A;padding:6px 11px;border-radius:7px">15:30 Worked example</span>
+            <span style="font-size:12px;font-weight:700;color:#9E97D9;background:#181242;padding:6px 11px;border-radius:7px">27:10 Board questions</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:#FFFFFF;border-radius:18px;border:1px solid #EDE9FB;overflow:hidden">
+        <div style="display:flex;gap:2px;padding:6px;background:#F9F8FF;border-bottom:1px solid #EDE9FB;flex-wrap:wrap">
+          <button type="button" style="border:none;background:#4B2BE8;color:#FFFFFF;font-family:inherit;font-size:13.5px;font-weight:700;padding:10px 16px;border-radius:9px;cursor:pointer">My notes</button>
+          <button type="button" style="border:none;background:transparent;color:#6B64A8;font-family:inherit;font-size:13.5px;font-weight:700;padding:10px 16px;border-radius:9px;cursor:pointer" style-hover="background:#F1EEFF;color:#141033">Practice (8)</button>
+          <button type="button" style="border:none;background:transparent;color:#6B64A8;font-family:inherit;font-size:13.5px;font-weight:700;padding:10px 16px;border-radius:9px;cursor:pointer" style-hover="background:#F1EEFF;color:#141033">Doubts (2)</button>
+          <button type="button" style="border:none;background:transparent;color:#6B64A8;font-family:inherit;font-size:13.5px;font-weight:700;padding:10px 16px;border-radius:9px;cursor:pointer" style-hover="background:#F1EEFF;color:#141033">Transcript</button>
+          <div style="flex:1"></div>
+          <a href="#" style="font-size:13px;font-weight:700;padding:10px 14px">Download notes PDF ↓</a>
+        </div>
+        <div style="padding:20px">
+          <div style="display:flex;gap:10px;align-items:start">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:800;color:#4B2BE8;background:#F1EEFF;padding:7px 10px;border-radius:8px;flex-shrink:0">18:24</div>
+            <textarea placeholder="Type a note — it saves against this timestamp" style="flex:1;min-width:0;border:1px solid #E0DAF7;border-radius:11px;padding:12px 14px;font-family:inherit;font-size:14.5px;line-height:1.55;color:#141033;min-height:76px;outline:none;resize:vertical;background:#FDFCFF"></textarea>
+          </div>
+          <div style="display:grid;gap:10px;margin-top:18px">
+            <div style="display:flex;gap:12px;align-items:start;background:#F9F8FF;border-radius:12px;padding:13px 15px">
+              <a href="#" style="font-family:'Space Grotesk',sans-serif;font-size:12.5px;font-weight:800;flex-shrink:0">15:30</a>
+              <div style="min-width:0;font-size:14.5px;line-height:1.55;color:#3E3866">tan θ = height / base — always mark the angle at the observer's eye, not at the ground.</div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:start;background:#F9F8FF;border-radius:12px;padding:13px 15px">
+              <a href="#" style="font-family:'Space Grotesk',sans-serif;font-size:12.5px;font-weight:800;flex-shrink:0">07:40</a>
+              <div style="min-width:0;font-size:14.5px;line-height:1.55;color:#3E3866">Angle of elevation vs depression — draw the horizontal line first, then the sight line.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:#FFFFFF;border-radius:18px;border:1px solid #EDE9FB;padding:20px">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+          <div><div style="font-family:'Space Grotesk',sans-serif;font-size:16.5px;font-weight:700">Practice attached to this lecture</div><div style="font-size:13px;color:#6B64A8;margin-top:3px">8 questions · attempt after watching</div></div>
+          <a href="#" style="background:#4B2BE8;color:#FFFFFF;font-size:14px;font-weight:700;padding:11px 20px;border-radius:10px" style-hover="background:#141033">Start practice</a>
+        </div>
+        <div style="display:grid;gap:8px;margin-top:16px">
+          <div style="display:flex;gap:12px;align-items:center;background:#F9F8FF;border-radius:11px;padding:12px 14px"><div style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:800;color:#6B64A8;flex-shrink:0">Q1</div><div style="min-width:0;flex:1;font-size:14.5px;font-weight:500">A tower casts a shadow 30 m long when the sun's elevation is 45°. Find its height.</div><span style="font-size:11.5px;font-weight:800;color:#3A470B;background:#EFFBD2;padding:4px 9px;border-radius:7px;flex-shrink:0">Easy</span></div>
+          <div style="display:flex;gap:12px;align-items:center;background:#F9F8FF;border-radius:11px;padding:12px 14px"><div style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:800;color:#6B64A8;flex-shrink:0">Q2</div><div style="min-width:0;flex:1;font-size:14.5px;font-weight:500">From a 60 m cliff, the angle of depression of a boat is 30°. How far is the boat?</div><span style="font-size:11.5px;font-weight:800;color:#8A7458;background:#FDF6EE;padding:4px 9px;border-radius:7px;flex-shrink:0">Moderate</span></div>
+        </div>
+      </div>
+    </div>
+
+    <aside style="min-width:0;display:grid;gap:16px;align-content:start">
+      <div style="background:#FFFFFF;border-radius:18px;border:1px solid #EDE9FB;padding:18px">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:15.5px;font-weight:700">Course content</div>
+          <div style="font-size:12.5px;color:#6B64A8;font-weight:600">24 / 42</div>
+        </div>
+        <label style="display:flex;align-items:center;gap:9px;font-size:13px;font-weight:600;color:#6B64A8;margin-top:12px;cursor:pointer"><input type="checkbox" checked="checked" style="width:15px;height:15px;accent-color:#4B2BE8">Autoplay next lecture</label>
+
+        <div style="margin-top:16px">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-top:1px solid #F1EEFF"><div style="font-size:13.5px;font-weight:700;color:#6B64A8">Week 5 · Quadratic Equations</div><div style="font-size:12px;font-weight:700;color:#1F6B3B">Done</div></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-top:1px solid #F1EEFF"><div style="font-size:13.5px;font-weight:700">Week 6 · Trigonometry</div><div style="font-size:12px;font-weight:700;color:#4B2BE8">3 / 6</div></div>
+          <div style="display:grid;gap:3px;padding:4px 0 8px">
+            <a href="#" style="display:flex;gap:10px;align-items:center;padding:9px 11px;border-radius:9px;color:#141033" style-hover="background:#F9F8FF"><span style="width:17px;height:17px;border-radius:999px;background:#2F8F4E;color:#FFFFFF;font-size:10.5px;display:flex;align-items:center;justify-content:center;flex-shrink:0">✓</span><span style="min-width:0;font-size:13.5px;font-weight:500">22 · Ratios &amp; identities</span><span style="margin-left:auto;font-size:12px;color:#8079B8;flex-shrink:0">38m</span></a>
+            <a href="#" style="display:flex;gap:10px;align-items:center;padding:9px 11px;border-radius:9px;color:#141033" style-hover="background:#F9F8FF"><span style="width:17px;height:17px;border-radius:999px;background:#2F8F4E;color:#FFFFFF;font-size:10.5px;display:flex;align-items:center;justify-content:center;flex-shrink:0">✓</span><span style="min-width:0;font-size:13.5px;font-weight:500">23 · Heights &amp; distances · Part 1</span><span style="margin-left:auto;font-size:12px;color:#8079B8;flex-shrink:0">41m</span></a>
+            <div style="display:flex;gap:10px;align-items:center;padding:9px 11px;border-radius:9px;background:#4B2BE8;color:#FFFFFF"><span style="width:17px;height:17px;border-radius:999px;background:#D6FB5A;flex-shrink:0"></span><span style="min-width:0;font-size:13.5px;font-weight:700">24 · Heights &amp; distances · Part 2</span><span style="margin-left:auto;font-size:12px;color:#D6D1F5;flex-shrink:0">43m</span></div>
+            <a href="#" style="display:flex;gap:10px;align-items:center;padding:9px 11px;border-radius:9px;color:#141033" style-hover="background:#F9F8FF"><span style="width:17px;height:17px;border-radius:999px;border:2px solid #E0DAF7;flex-shrink:0"></span><span style="min-width:0;font-size:13.5px;font-weight:500">25 · Board-pattern problems</span><span style="margin-left:auto;font-size:12px;color:#8079B8;flex-shrink:0">36m</span></a>
+            <a href="#" style="display:flex;gap:10px;align-items:center;padding:9px 11px;border-radius:9px;color:#141033" style-hover="background:#F9F8FF"><span style="width:17px;height:17px;border-radius:999px;border:2px solid #E0DAF7;flex-shrink:0"></span><span style="min-width:0;font-size:13.5px;font-weight:500">26 · Chapter test</span><span style="margin-left:auto;font-size:12px;color:#8079B8;flex-shrink:0">25 Q</span></a>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-top:1px solid #F1EEFF"><div style="font-size:13.5px;font-weight:700;color:#6B64A8">Week 7 · Circles</div><div style="font-size:12px;font-weight:700;color:#8079B8">Locked</div></div>
+        </div>
+      </div>
+
+      <div style="background:#FFFFFF;border-radius:18px;border:1px solid #EDE9FB;padding:18px">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:15.5px;font-weight:700">Ask about 18:24</div>
+        <div style="font-size:13px;color:#6B64A8;margin-top:5px;line-height:1.5">Your question goes to the subject teacher with the timestamp attached.</div>
+        <textarea placeholder="What didn't make sense?" style="width:100%;box-sizing:border-box;border:1px solid #E0DAF7;border-radius:11px;padding:11px 13px;font-family:inherit;font-size:14px;line-height:1.5;color:#141033;min-height:70px;outline:none;resize:vertical;margin-top:12px;background:#FDFCFF"></textarea>
+        <button type="button" style="border:none;background:#141033;color:#FFFFFF;font-family:inherit;font-size:13.5px;font-weight:700;padding:11px 18px;border-radius:10px;cursor:pointer;margin-top:10px;width:100%" style-hover="background:#4B2BE8">Post doubt</button>
+      </div>
+
+      <div style="background:#D6FB5A;border-radius:18px;padding:18px">
+        <div style="font-size:12px;font-weight:800;letter-spacing:0.07em;text-transform:uppercase;color:#3F4E0C">Up next</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:#242E06;margin-top:7px;line-height:1.3">25 · Board-pattern problems</div>
+        <div style="font-size:13px;color:#3F4E0C;margin-top:4px">36 min · 6 solved examples</div>
+        <a href="#" style="display:block;text-align:center;background:#141033;color:#FFFFFF;font-size:13.5px;font-weight:700;padding:11px 16px;border-radius:10px;margin-top:13px" style-hover="background:#4B2BE8">Play next</a>
+      </div>
+    </aside>
+  </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:1100}}">
+class Component extends DCLogic {
+  state = { expanded: true };
+  renderVals() {
+    const ex = this.state.expanded;
+    const navItem = (icon, label, href, active, badge) => {
+      const style = active
+        ? "display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:11px;background:linear-gradient(120deg,#FB743E,#E0672C);color:#FFFFFF;font-size:14px;font-weight:700;box-shadow:0 8px 18px rgba(251,116,62,0.35)"
+        : "display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:11px;color:#C9D6EC;font-size:14px;font-weight:500";
+      return { isLink:true, isLabel:false, icon, label, href, badge:badge||'', style };
+    };
+    const nav = [
+      { isLabel:true, label:'Learn' },
+      navItem('📊','Dashboard','student-dashboard.dc.html'),
+      navItem('📚','My learning','#'),
+      navItem('▶','My Course','lecture-player.dc.html',true),
+      navItem('📝','Mock tests','mock-test-catalog.dc.html'),
+      navItem('🎯','Test series','#'),
+      { isLabel:true, label:'Support' },
+      navItem('💬','My doubts','#',false,'2'),
+      navItem('🏆','Leaderboard','#'),
+      navItem('💳','Payments','#'),
+      { isLabel:true, label:'Account' },
+      navItem('⚙️','Profile','#'),
+      navItem('↩️','Logout','#')
+    ];
+    return {
+      expanded: ex,
+      sideW: ex ? '244px' : '76px',
+      toggleIcon: ex ? '⟨' : '⟩',
+      toggleSidebar: () => this.setState(s => ({ expanded: !s.expanded })),
+      nav
+    };
+  }
+}
+</script>
+</body>
+</html>

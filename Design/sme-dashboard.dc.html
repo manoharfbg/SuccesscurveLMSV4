@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; }
+  button { font-family:inherit; cursor:pointer; }
+  a { text-decoration:none; }
+  ::-webkit-scrollbar { width:9px; height:9px; }
+</style>
+</helmet>
+<div style="display:grid;grid-template-columns:minmax(0,244px) minmax(0,1fr);min-height:100vh;font-family:'DM Sans',system-ui,sans-serif;transition:background 200ms ease;background:{{ pageBg }};color:{{ text }}">
+
+  <aside style="position:sticky;top:0;height:100vh;overflow:hidden;background:radial-gradient(700px 400px at 20% -10%, #0a5fb8, #024f9d 45%, #01356c)">
+    <div style="position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px, rgba(255,255,255,.10) 1px, transparent 0);background-size:26px 26px;pointer-events:none"></div>
+    <div style="position:absolute;top:-60px;right:-40px;width:200px;height:200px;border-radius:999px;background:radial-gradient(circle,rgba(251,116,62,0.22),transparent 70%);pointer-events:none"></div>
+    <div style="position:relative;z-index:1;height:100%;box-sizing:border-box;padding:20px 14px;display:flex;flex-direction:column;gap:20px;overflow:auto">
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:21px;font-weight:700;letter-spacing:-0.025em;white-space:nowrap;padding:2px 6px"><span style="color:#8FC4F5">Success</span><span style="color:#FF9E6B">Curve</span><sup style="font-size:0.46em;font-weight:600;color:#B7C1D6;margin-left:1px;top:-0.7em">.in</sup></div>
+      <div style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.14);border-radius:12px;padding:9px 11px">
+        <div style="width:34px;height:34px;border-radius:9px;background:#0F9D76;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;flex-shrink:0">D</div>
+        <div style="min-width:0"><div style="font-size:13.5px;font-weight:700;color:#FFFFFF;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Dr. Meera V.</div><div style="font-size:11.5px;color:#B7C1D6">Subject Matter Expert</div></div>
+      </div>
+      <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:11px;padding:10px 12px;font-size:12px;color:#C9D6EC;line-height:1.5">🔒 Review access · Mathematics &amp; Science</div>
+
+      <nav style="display:grid;gap:3px">
+        <sc-for list="{{ nav }}" as="n" hint-placeholder-count="9">
+          <sc-if value="{{ n.isLabel }}"><div style="font-size:10.5px;font-weight:800;letter-spacing:0.11em;text-transform:uppercase;color:#7FA6D6;padding:12px 8px 4px">{{ n.label }}</div></sc-if>
+          <sc-if value="{{ n.isLink }}"><a href="{{ n.href }}" style="{{ n.style }}"><span style="width:20px;text-align:center;flex-shrink:0">{{ n.icon }}</span><span style="flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ n.label }}</span><sc-if value="{{ n.badge }}"><span style="background:#FB743E;color:#FFFFFF;font-size:11px;font-weight:800;padding:2px 7px;border-radius:999px">{{ n.badge }}</span></sc-if></a></sc-if>
+        </sc-for>
+      </nav>
+    </div>
+  </aside>
+
+  <main style="min-width:0;padding:0 0 56px">
+    <header style="display:flex;align-items:center;gap:14px;padding:16px 32px;background:{{ card }};border-bottom:1px solid {{ border }};position:sticky;top:0;z-index:10;flex-wrap:wrap">
+      <div style="min-width:0">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:21px;font-weight:700">👋 Welcome, Dr. Meera</div>
+        <div style="font-size:13.5px;color:{{ sub }};margin-top:2px">You have <strong style="color:#E0672C">18 questions</strong> waiting for review today</div>
+      </div>
+      <div style="flex:1"></div>
+      <input type="text" placeholder="Search questions by ID, topic…" style="border:1px solid {{ border }};background:{{ inputBg }};border-radius:10px;padding:10px 14px;font-family:inherit;font-size:14px;flex:1;min-width:0;max-width:250px;outline:none;color:{{ text }}">
+      <button type="button" onClick="{{ toggleTheme }}" style="display:flex;align-items:center;gap:7px;border:1px solid {{ border }};background:{{ inputBg }};color:{{ text }};font-size:13.5px;font-weight:700;padding:10px 13px;border-radius:10px">{{ themeIcon }}</button>
+      <a href="#" style="background:#0F9D76;color:#FFFFFF;font-size:13.5px;font-weight:800;padding:11px 16px;border-radius:10px" style-hover="background:#0C8865">Review next →</a>
+    </header>
+
+    <div style="padding:24px 32px 0;display:flex;align-items:baseline;gap:12px"><h2 style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:{{ sub }};margin:0">Your work today</h2><div style="flex:1;height:1px;background:{{ border }}"></div></div>
+
+    <section style="padding:16px 32px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px">
+      <sc-for list="{{ kpis }}" as="k" hint-placeholder-count="4">
+        <div style="{{ k.cardStyle }}">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px"><div style="{{ k.iconStyle }}">{{ k.icon }}</div><div style="{{ k.deltaStyle }}">{{ k.delta }}</div></div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:700;line-height:1;margin-top:16px;color:{{ k.valueColor }}">{{ k.value }}</div>
+          <div style="font-size:13px;font-weight:600;color:{{ k.labelColor }};margin-top:5px">{{ k.label }}</div>
+        </div>
+      </sc-for>
+    </section>
+
+    <div style="padding:30px 32px 0;display:flex;align-items:baseline;gap:12px"><h2 style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:{{ sub }};margin:0">Review queue</h2><div style="flex:1;height:1px;background:{{ border }}"></div></div>
+
+    <section style="padding:16px 32px 0;display:grid;grid-template-columns:2fr 1fr;gap:16px">
+      <div style="background:{{ card }};border-radius:18px;padding:22px;border:1px solid {{ border }};min-width:0">
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px">
+          <sc-for list="{{ filters }}" as="f" hint-placeholder-count="4"><button type="button" style="{{ f.style }}">{{ f.label }}</button></sc-for>
+        </div>
+        <div style="display:grid;gap:12px">
+          <sc-for list="{{ queue }}" as="q" hint-placeholder-count="4">
+            <div style="border:1px solid {{ border }};border-left:3px solid {{ q.accent }};border-radius:13px;padding:16px">
+              <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+                <span style="font-family:'Space Grotesk',sans-serif;font-size:12.5px;font-weight:700;color:{{ sub }}">{{ q.id }}</span>
+                <span style="{{ q.typeStyle }}">{{ q.type }}</span>
+                <span style="font-size:12px;font-weight:700;background:{{ inputBg }};border:1px solid {{ border }};padding:4px 10px;border-radius:7px;color:{{ text }}">{{ q.topic }}</span>
+                <span style="{{ q.statusStyle }}">{{ q.status }}</span>
+                <div style="flex:1"></div>
+                <span style="font-size:12px;color:{{ faint }}">{{ q.by }}</span>
+              </div>
+              <p style="font-size:15px;line-height:1.55;margin:12px 0 0;color:{{ text }}">{{ q.text }}</p>
+              <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">
+                <a href="#" style="background:#0F9D76;color:#FFFFFF;font-size:13px;font-weight:700;padding:9px 15px;border-radius:9px" style-hover="background:#0C8865">✓ Approve</a>
+                <a href="#" style="background:{{ inputBg }};border:1px solid {{ border }};color:{{ text }};font-size:13px;font-weight:700;padding:9px 15px;border-radius:9px" style-hover="border-color:#024F9D">✎ Edit</a>
+                <a href="#" style="background:{{ inputBg }};border:1px solid {{ border }};color:#C0564A;font-size:13px;font-weight:700;padding:9px 15px;border-radius:9px" style-hover="border-color:#E5484D">⚑ Report</a>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;justify-content:center;margin-top:16px"><a href="#" style="padding:0 18px;height:40px;border-radius:10px;background:{{ inputBg }};border:1px solid {{ border }};color:{{ text }};display:flex;align-items:center;font-size:14px;font-weight:700" style-hover="border-color:#024F9D">Load next 10</a></div>
+      </div>
+
+      <div style="display:grid;gap:16px;align-content:start;min-width:0">
+        <div style="background:{{ card }};border-radius:18px;padding:22px;border:1px solid {{ border }}">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700">Review activity</div>
+          <div style="font-size:13px;color:{{ sub }};margin-top:3px">Last 7 days</div>
+          <svg viewBox="0 0 300 150" style="width:100%;height:auto;margin-top:12px">
+            <line x1="6" y1="16" x2="300" y2="16" stroke="{{ track }}"></line>
+            <line x1="6" y1="60" x2="300" y2="60" stroke="{{ track }}"></line>
+            <line x1="6" y1="104" x2="300" y2="104" stroke="{{ border }}"></line>
+            <sc-for list="{{ actBars }}" as="b" hint-placeholder-count="7"><rect x="{{ b.x }}" y="{{ b.y }}" width="26" height="{{ b.h }}" rx="4" fill="{{ b.fill }}"></rect></sc-for>
+            <g font-family="DM Sans, sans-serif" font-size="10.5" font-weight="600" fill="{{ sub }}" text-anchor="middle"><text x="21" y="124">M</text><text x="61" y="124">T</text><text x="101" y="124">W</text><text x="141" y="124">T</text><text x="181" y="124">F</text><text x="221" y="124">S</text><text x="261" y="124">S</text></g>
+          </svg>
+          <div style="font-size:13px;color:{{ sub }};margin-top:8px;line-height:1.5">You reviewed <strong style="color:{{ text }}">312</strong> questions this week — 22% above your average.</div>
+        </div>
+
+        <div style="background:{{ card }};border-radius:18px;padding:22px;border:1px solid {{ border }}">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700">Coverage by subject</div>
+          <div style="display:grid;gap:13px;margin-top:16px">
+            <sc-for list="{{ coverage }}" as="c" hint-placeholder-count="3">
+              <div><div style="display:flex;justify-content:space-between;font-size:13px;font-weight:600;margin-bottom:5px"><span>{{ c.name }}</span><span style="color:{{ sub }}">{{ c.stat }}</span></div><div style="height:9px;background:{{ track }};border-radius:999px;overflow:hidden"><div style="{{ c.barStyle }}"></div></div></div>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="background:{{ card }};border-radius:18px;padding:22px;border:1px solid {{ border }}">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px"><div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700">My recent actions</div></div>
+          <div style="display:grid;margin-top:12px">
+            <sc-for list="{{ recent }}" as="r" hint-placeholder-count="4">
+              <div style="{{ r.rowStyle }}"><div style="{{ r.iconStyle }}">{{ r.icon }}</div><div style="min-width:0;flex:1"><div style="font-size:13.5px;font-weight:600">{{ r.title }}</div><div style="font-size:12px;color:{{ faint }};margin-top:1px">{{ r.time }}</div></div></div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:16px 32px 0">
+      <div style="background:linear-gradient(135deg,#0F9D76,#0C8865);border-radius:18px;padding:22px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+        <div style="color:#FFFFFF;min-width:0;margin-right:auto"><div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700">Quick actions</div><div style="font-size:13px;color:#D6F3EA;margin-top:2px">Within your review permissions</div></div>
+        <a href="#" style="background:rgba(255,255,255,0.16);border:1px solid rgba(255,255,255,0.24);color:#FFFFFF;font-size:13.5px;font-weight:700;padding:11px 16px;border-radius:11px" style-hover="background:#FB743E;border-color:#FB743E">Review next question</a>
+        <a href="#" style="background:rgba(255,255,255,0.16);border:1px solid rgba(255,255,255,0.24);color:#FFFFFF;font-size:13.5px;font-weight:700;padding:11px 16px;border-radius:11px" style-hover="background:#FB743E;border-color:#FB743E">Browse question bank</a>
+        <a href="#" style="background:rgba(255,255,255,0.16);border:1px solid rgba(255,255,255,0.24);color:#FFFFFF;font-size:13.5px;font-weight:700;padding:11px 16px;border-radius:11px" style-hover="background:#FB743E;border-color:#FB743E">Report an issue</a>
+      </div>
+    </section>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:1200}}">
+class Component extends DCLogic {
+  state = { theme: 'light' };
+
+  P() {
+    if (this.state.theme === 'dark') {
+      return { pageBg:'#0B1220', text:'#EAF0FA', sub:'#9AA6BF', faint:'#6B7A99', card:'#141C2E', border:'#263049', track:'#26304A', inputBg:'#0F1626' };
+    }
+    return { pageBg:'#EEF2F8', text:'#0F1B33', sub:'#5C6A85', faint:'#98A4BD', card:'#FFFFFF', border:'#E3E9F2', track:'#E8EDF6', inputBg:'#F5F8FC' };
+  }
+
+  navItem(icon, label, href, active, badge) {
+    const style = active
+      ? "display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:11px;background:linear-gradient(120deg,#FB743E,#E0672C);color:#FFFFFF;font-size:14px;font-weight:700;box-shadow:0 8px 18px rgba(251,116,62,0.35)"
+      : "display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:11px;color:#C9D6EC;font-size:14px;font-weight:500";
+    return { isLink:true, isLabel:false, icon, label, href, badge, style };
+  }
+
+  renderVals() {
+    const p = this.P();
+    const dk = this.state.theme === 'dark';
+
+    const nav = [
+      { isLabel:true, label:'Review' },
+      this.navItem('📊','Dashboard','#',true),
+      this.navItem('📥','Review queue','#',false,'18'),
+      this.navItem('🗂️','Question bank','#'),
+      { isLabel:true, label:'My work' },
+      this.navItem('✎','My edits','#'),
+      this.navItem('⚑','Reported questions','#',false,'6'),
+      this.navItem('📖','My subjects','#'),
+      { isLabel:true, label:'Account' },
+      this.navItem('⚙️','Profile','#'),
+      this.navItem('↩️','Logout','#')
+    ].map(n => ({ isLabel:!!n.isLabel, isLink:!!n.isLink, label:n.label, icon:n.icon||'', href:n.href||'#', badge:n.badge||'', style:n.style||'' }));
+
+    const kpi = (icon, value, label, delta, tint, ink, up) => ({
+      icon, value, label, delta,
+      cardStyle:`background:${p.card};border-radius:18px;padding:20px;border:1px solid ${p.border}`,
+      iconStyle:`width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:19px;background:${tint};color:${ink}`,
+      deltaStyle:`font-size:12px;font-weight:800;padding:4px 9px;border-radius:999px;background:${p.track};color:${up?'#0F9D76':'#C0564A'}`,
+      valueColor:p.text, labelColor:p.sub
+    });
+    const kpis = [
+      kpi('✅','46','Reviewed today','↑ 12',dk?'#0F2A22':'#E8F7EE','#0F9D76',true),
+      kpi('📥','18','Pending review','due',dk?'#2A2212':'#FEF6EC','#E0672C',false),
+      kpi('✎','128','Edited this week','↑ 20',dk?'#16233F':'#EAF1FB','#024F9D',true),
+      kpi('⚑','6','Reports raised','open',dk?'#2A1512':'#FDECEC','#C0564A',false)
+    ];
+
+    const filters = ['All 18','MCQ 9','NAT 5','Edited 4'].map((f,i) => ({
+      label:f,
+      style: i===0
+        ? 'border:none;background:#0F9D76;color:#FFFFFF;font-size:13px;font-weight:700;padding:9px 14px;border-radius:9px'
+        : `border:1px solid ${p.border};background:${p.inputBg};color:${p.text};font-size:13px;font-weight:700;padding:9px 14px;border-radius:9px`
+    }));
+
+    const typePill = (t) => `font-size:11.5px;font-weight:800;padding:4px 9px;border-radius:7px;background:${dk?'#16233F':'#EAF1FB'};color:#024F9D`;
+    const statusPill = (kind) => {
+      if(kind==='new') return `font-size:11.5px;font-weight:800;padding:4px 9px;border-radius:7px;background:${dk?'#2A2212':'#FEF6EC'};color:#B0863F`;
+      if(kind==='flag') return `font-size:11.5px;font-weight:800;padding:4px 9px;border-radius:7px;background:${dk?'#2A1512':'#FDECEC'};color:#C0564A`;
+      return `font-size:11.5px;font-weight:800;padding:4px 9px;border-radius:7px;background:${dk?'#0F2A22':'#E8F7EE'};color:#0F7A57`;
+    };
+    const queue = [
+      { id:'#Q-24817', type:'MCQ', topic:'Trigonometry', status:'New entry', k:'new', accent:'#E0672C', by:'Added by Priya N. · 20m ago', text:'If sin θ + cos θ = √2, then the value of tan θ + cot θ is:' },
+      { id:'#Q-24810', type:'NAT', topic:'Quadratic Equations', status:'Student reported', k:'flag', accent:'#E5484D', by:'Flagged by 3 students', text:'The sum of the roots of the equation 2x² − 7x + 3 = 0 is ______ (correct to one decimal place).' },
+      { id:'#Q-24803', type:'MCQ', topic:'Chemical Reactions', status:'Edited — recheck', k:'edit', accent:'#024F9D', by:'Edited by Arjun D. · 1h ago', text:'Which of the following is a displacement reaction? Choose the single best option.' },
+      { id:'#Q-24799', type:'MSQ', topic:'Nationalism in India', status:'New entry', k:'new', accent:'#E0672C', by:'Added by Kavya R. · 2h ago', text:'Select all events that took place during the Non-Cooperation Movement (1920–22).' }
+    ].map(q => ({ ...q, typeStyle:typePill(q.type), statusStyle:statusPill(q.k) }));
+
+    const actVals = [38,52,46,61,58,40,17];
+    const maxA = 64;
+    const actBars = actVals.map((v,i) => { const h=Math.round((v/maxA)*84); return { x:8+i*40, y:104-h, h, fill:i===6?'#FB743E':'#0F9D76' }; });
+
+    const bar = (pct,color) => `width:${pct}%;height:100%;background:${color};border-radius:999px`;
+    const coverage = [
+      { name:'Mathematics', stat:'92% reviewed', pct:92, color:'#024F9D' },
+      { name:'Physics', stat:'74% reviewed', pct:74, color:'#0F9D76' },
+      { name:'Chemistry', stat:'61% reviewed', pct:61, color:'#FB743E' }
+    ].map(c => ({ name:c.name, stat:c.stat, barStyle:bar(c.pct,c.color) }));
+
+    const recent = [
+      { icon:'✓', ic:'#0F9D76', bg:dk?'#0F2A22':'#E8F7EE', title:'Approved #Q-24788 — Statistics', time:'12 min ago' },
+      { icon:'✎', ic:'#024F9D', bg:dk?'#16233F':'#EAF1FB', title:'Edited option D in #Q-24771', time:'40 min ago' },
+      { icon:'⚑', ic:'#C0564A', bg:dk?'#2A1512':'#FDECEC', title:'Reported #Q-24765 — wrong answer key', time:'1 hour ago' },
+      { icon:'✓', ic:'#0F9D76', bg:dk?'#0F2A22':'#E8F7EE', title:'Approved #Q-24760 — Trigonometry', time:'2 hours ago', last:true }
+    ].map((r,i,arr) => ({
+      icon:r.icon, title:r.title, time:r.time,
+      rowStyle:`display:flex;gap:12px;padding:10px 0;${r.last?'':'border-bottom:1px solid '+p.border}`,
+      iconStyle:`width:32px;height:32px;border-radius:9px;background:${r.bg};color:${r.ic};display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0`
+    }));
+
+    return {
+      pageBg:p.pageBg, text:p.text, sub:p.sub, faint:p.faint, card:p.card, border:p.border, track:p.track, inputBg:p.inputBg,
+      nav, kpis, filters, queue, actBars, coverage, recent,
+      themeIcon: dk ? '☀️' : '🌙',
+      toggleTheme: () => this.setState(s => ({ theme: s.theme === 'dark' ? 'light' : 'dark' }))
+    };
+  }
+}
+</script>
+</body>
+</html>

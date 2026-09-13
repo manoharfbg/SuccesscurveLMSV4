@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:#4B2BE8; text-decoration:none; }
+  a:hover { color:#141033; }
+</style>
+</helmet>
+<div style="background:#FFFFFF;color:#141033;font-family:'DM Sans',system-ui,sans-serif;min-height:100vh">
+
+  <header style="display:flex;align-items:center;gap:16px;padding:14px 20px;background:#0B0A1F;position:sticky;top:0;z-index:30;flex-wrap:wrap">
+    <div style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;letter-spacing:-0.025em;white-space:nowrap"><span style="color:#5AA9FF">Success</span><span style="color:#FF9A3D">Curve</span><sup style="font-size:0.46em;font-weight:600;color:#9E97D9;margin-left:1px;top:-0.7em">.in</sup></div>
+    <nav style="display:flex;gap:22px;align-items:center;font-size:14.5px;font-weight:500;flex-wrap:wrap;white-space:nowrap">
+      <a href="#" style="color:#EDEBFF">About Us</a>
+      <a href="#" style="color:#FFFFFF;font-weight:700;border-bottom:2px solid #D6FB5A;padding-bottom:2px">MockTest</a>
+      <a href="#" style="color:#EDEBFF">Courses</a>
+      <a href="#" style="color:#EDEBFF">Test Series</a>
+      <a href="#" style="color:#EDEBFF">Contact Us</a>
+    </nav>
+    <div style="flex:1"></div>
+    <a href="#" style="color:#EDEBFF;font-size:14.5px;font-weight:600;white-space:nowrap">Log in</a>
+    <a href="#" style="background:#D6FB5A;color:#141033;font-size:14.5px;font-weight:700;padding:10px 20px;border-radius:10px;white-space:nowrap" style-hover="background:#FFFFFF">Start free →</a>
+  </header>
+
+  <div style="background:#F7F5FF;border-bottom:1px solid #E8E3FA;padding:20px">
+    <div style="font-size:13px;color:#6B64A8;font-weight:500">Home · Mock Tests</div>
+    <h1 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(26px,3.4vw,38px);font-weight:700;letter-spacing:-0.02em;margin:8px 0 0">All mock tests</h1>
+    <p style="font-size:15px;color:#6B64A8;margin:8px 0 0;max-width:60ch">Every class, every subject. Filter down or browse chapterwise.</p>
+  </div>
+
+  <div style="display:flex;flex-wrap:wrap;align-items:start">
+    <aside style="min-width:260px;flex:1 1 260px;padding:20px 20px 28px 32px;border-right:1px solid #EDE9FB;border-bottom:1px solid #EDE9FB">
+      <div style="display:flex;justify-content:space-between;align-items:center"><div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700">Filters</div><a href="#" style="font-size:13px;font-weight:700">Clear all</a></div>
+
+      <div style="margin-top:22px">
+        <div style="font-size:12.5px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:#6B64A8">Class</div>
+        <div style="display:flex;flex-wrap:wrap;gap:7px;margin-top:11px">
+          <a href="#" style="font-size:13px;font-weight:700;padding:7px 12px;border-radius:8px;background:#4B2BE8;color:#FFFFFF">All</a>
+          <a href="#" style="font-size:13px;font-weight:700;padding:7px 12px;border-radius:8px;background:#F1EEFF;color:#141033" style-hover="background:#4B2BE8;color:#FFFFFF">9</a>
+          <a href="#" style="font-size:13px;font-weight:700;padding:7px 12px;border-radius:8px;background:#F1EEFF;color:#141033" style-hover="background:#4B2BE8;color:#FFFFFF">10</a>
+          <a href="#" style="font-size:13px;font-weight:700;padding:7px 12px;border-radius:8px;background:#F1EEFF;color:#141033" style-hover="background:#4B2BE8;color:#FFFFFF">11</a>
+          <a href="#" style="font-size:13px;font-weight:700;padding:7px 12px;border-radius:8px;background:#F1EEFF;color:#141033" style-hover="background:#4B2BE8;color:#FFFFFF">12</a>
+          <a href="#" style="font-size:13px;font-weight:700;padding:7px 12px;border-radius:8px;background:#F1EEFF;color:#141033" style-hover="background:#4B2BE8;color:#FFFFFF">UG</a>
+        </div>
+      </div>
+
+      <div style="margin-top:24px;padding-top:20px;border-top:1px solid #EDE9FB">
+        <div style="font-size:12.5px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:#6B64A8">Subject</div>
+        <div style="display:grid;gap:8px;margin-top:11px">
+          <label style="display:flex;align-items:center;gap:9px;font-size:14.5px;font-weight:500;cursor:pointer"><input type="checkbox" checked="checked" style="width:16px;height:16px;accent-color:#4B2BE8">All subjects</label>
+          <label style="display:flex;align-items:center;gap:9px;font-size:14.5px;font-weight:500;cursor:pointer"><input type="checkbox" style="width:16px;height:16px;accent-color:#4B2BE8">Mathematics</label>
+          <label style="display:flex;align-items:center;gap:9px;font-size:14.5px;font-weight:500;cursor:pointer"><input type="checkbox" style="width:16px;height:16px;accent-color:#4B2BE8">Physics</label>
+          <label style="display:flex;align-items:center;gap:9px;font-size:14.5px;font-weight:500;cursor:pointer"><input type="checkbox" style="width:16px;height:16px;accent-color:#4B2BE8">Competitive Exam</label>
+        </div>
+      </div>
+
+      <div style="margin-top:24px;padding-top:20px;border-top:1px solid #EDE9FB">
+        <div style="font-size:12.5px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:#6B64A8">Type</div>
+        <div style="display:grid;gap:8px;margin-top:11px">
+          <label style="display:flex;align-items:center;gap:9px;font-size:14.5px;font-weight:500;cursor:pointer"><input type="radio" name="type" checked="checked" style="width:16px;height:16px;accent-color:#4B2BE8">All</label>
+          <label style="display:flex;align-items:center;gap:9px;font-size:14.5px;font-weight:500;cursor:pointer"><input type="radio" name="type" style="width:16px;height:16px;accent-color:#4B2BE8">Free only</label>
+          <label style="display:flex;align-items:center;gap:9px;font-size:14.5px;font-weight:500;cursor:pointer"><input type="radio" name="type" style="width:16px;height:16px;accent-color:#4B2BE8">Chapterwise</label>
+          <label style="display:flex;align-items:center;gap:9px;font-size:14.5px;font-weight:500;cursor:pointer"><input type="radio" name="type" style="width:16px;height:16px;accent-color:#4B2BE8">Full syllabus</label>
+        </div>
+      </div>
+    </aside>
+
+    <main style="min-width:0;flex:3 1 480px;padding:26px 20px 20px">
+      <div style="display:inline-flex;align-items:center;gap:7px;color:#C2410C;font-size:12.5px;font-weight:800;letter-spacing:0.07em;text-transform:uppercase">📄 Practice makes perfect</div>
+      <div style="display:flex;align-items:end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:8px">
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(24px,3vw,32px);font-weight:700;letter-spacing:-0.02em;margin:0">Featured mock tests</h2>
+        <div style="display:flex;gap:8px;align-items:center">
+          <button type="button" onClick="{{ prevPage }}" style="width:38px;height:38px;border-radius:9px;border:1px solid #E0DAF7;background:#FFFFFF;color:#4B2BE8;font-size:15px;cursor:pointer" style-hover="border-color:#4B2BE8">←</button>
+          <button type="button" onClick="{{ nextPage }}" style="width:38px;height:38px;border-radius:9px;border:1px solid #E0DAF7;background:#FFFFFF;color:#4B2BE8;font-size:15px;cursor:pointer" style-hover="border-color:#4B2BE8">→</button>
+          <a href="#" style="font-size:14px;font-weight:700;margin-left:6px">See all tests →</a>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:22px">
+        <sc-for list="{{ tests }}" as="t" hint-placeholder-count="8">
+          <div style="border-radius:16px;background:#FFFFFF;border:1px solid #EDE9FB;padding:20px;display:flex;flex-direction:column;transition:transform 220ms cubic-bezier(.34,1.56,.64,1),box-shadow 220ms ease" style-hover="transform:translateY(-5px);box-shadow:0 16px 32px rgba(75,43,232,0.14)">
+            <div style="display:flex;justify-content:space-between;align-items:start">
+              <div style="{{ t.iconWrapStyle }}">{{ t.icon }}</div>
+              <sc-if value="{{ t.isFree }}"><span style="background:#EAF7EE;color:#1F6B3B;font-size:11.5px;font-weight:800;padding:5px 11px;border-radius:999px">FREE</span></sc-if>
+              <sc-if value="{{ t.isPaid }}"><span style="background:#F1EEFF;color:#4B2BE8;font-size:11.5px;font-weight:800;padding:5px 11px;border-radius:999px">{{ t.price }}</span></sc-if>
+            </div>
+            <div style="font-size:16px;font-weight:700;line-height:1.35;margin-top:14px;flex:1">{{ t.title }}</div>
+            <div style="display:flex;align-items:center;gap:10px;margin-top:14px;font-size:12.5px;color:#6B64A8;font-weight:600">
+              <span>{{ t.qCount }} Q</span><span style="color:#D3CEF2">·</span><span>{{ t.duration }}</span><span style="color:#D3CEF2">·</span><span>{{ t.marks }} marks</span>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:12px">
+              <span style="font-size:11.5px;font-weight:700;color:#4B2BE8;background:#F1EEFF;padding:4px 9px;border-radius:6px">{{ t.classLabel }}</span>
+              <span style="font-size:11.5px;font-weight:700;color:#C2410C;background:#FEF1E6;padding:4px 9px;border-radius:6px">{{ t.subject }}</span>
+            </div>
+            <a href="#" style="display:flex;align-items:center;justify-content:center;gap:6px;background:#4B2BE8;color:#FFFFFF;font-size:14px;font-weight:700;padding:12px 16px;border-radius:10px;margin-top:16px" style-hover="background:#141033">Start test →</a>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:34px">
+        <sc-for list="{{ pageNumbers }}" as="p" hint-placeholder-count="5">
+          <button type="button" onClick="{{ p.go }}" style="{{ p.style }}">{{ p.n }}</button>
+        </sc-for>
+        <button type="button" onClick="{{ nextPage }}" style="padding:0 16px;height:38px;border-radius:9px;background:#F1EEFF;color:#141033;font-family:inherit;font-size:14px;font-weight:700;border:none;cursor:pointer" style-hover="background:#4B2BE8;color:#FFFFFF">Next →</button>
+      </div>
+    </main>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:1100}}">
+class Component extends DCLogic {
+  state = { page: 1 };
+
+  ALL_TESTS = [
+    { icon:'📄', color:'#2451C4', bg:'#EEF2FF', title:'Continuity and Differentiability — Mock Test 01', qCount:25, duration:'30 min', marks:100, classLabel:'Class 12', subject:'Mathematics', free:true },
+    { icon:'⏱️', color:'#C2410C', bg:'#FEF1E6', title:"General Test Paper (501) for CUET UG — Mock 01", qCount:50, duration:'60 min', marks:250, classLabel:'Class 12', subject:'Competitive Exam', free:true },
+    { icon:'📊', color:'#1F6B3B', bg:'#EAF7EE', title:'Integration (Area Under Curve) — Mock Test 03', qCount:20, duration:'40 min', marks:80, classLabel:'Class 12', subject:'Mathematics', free:true },
+    { icon:'✅', color:'#7E22CE', bg:'#F5ECFC', title:'Integration (Definite Integration) — Mock Test 02', qCount:20, duration:'40 min', marks:80, classLabel:'Class 12', subject:'Mathematics', price:'₹49' },
+    { icon:'🧪', color:'#0E7C6B', bg:'#E9F7F3', title:'Chemical Bonding — Full Chapter Mock Test', qCount:30, duration:'35 min', marks:120, classLabel:'Class 11', subject:'Chemistry', free:true },
+    { icon:'🌐', color:'#2451C4', bg:'#EAF1FE', title:'Nationalism in India — Chapter Test', qCount:20, duration:'25 min', marks:80, classLabel:'Class 10', subject:'Social Science', price:'₹49' },
+    { icon:'🔬', color:'#C2410C', bg:'#FEF1E6', title:'NEET Biology — Genetics Chapterwise Test', qCount:45, duration:'45 min', marks:180, classLabel:'Class 12', subject:'Competitive Exam', free:true },
+    { icon:'📐', color:'#1F6B3B', bg:'#EAF7EE', title:'Trigonometry — Heights & Distances Mock', qCount:25, duration:'30 min', marks:100, classLabel:'Class 10', subject:'Mathematics', price:'₹49' },
+    { icon:'📄', color:'#2451C4', bg:'#EEF2FF', title:'Probability — Full Chapter Mock Test', qCount:20, duration:'25 min', marks:80, classLabel:'Class 12', subject:'Mathematics', free:true },
+    { icon:'⏱️', color:'#C2410C', bg:'#FEF1E6', title:'General Test Paper (502) for CUET UG — Mock 02', qCount:50, duration:'60 min', marks:250, classLabel:'Class 12', subject:'Competitive Exam', price:'₹49' },
+    { icon:'🧪', color:'#0E7C6B', bg:'#E9F7F3', title:"Newton's Laws — Motion Mock Test", qCount:25, duration:'30 min', marks:100, classLabel:'Class 11', subject:'Physics', free:true },
+    { icon:'🌐', color:'#2451C4', bg:'#EAF1FE', title:'French Revolution — Chapter Test', qCount:20, duration:'25 min', marks:80, classLabel:'Class 9', subject:'Social Science', price:'₹49' }
+  ];
+
+  PAGE_SIZE = 4;
+
+  renderVals() {
+    const totalPages = Math.ceil(this.ALL_TESTS.length / this.PAGE_SIZE);
+    const page = this.state.page;
+    const start = (page - 1) * this.PAGE_SIZE;
+    const slice = this.ALL_TESTS.slice(start, start + this.PAGE_SIZE);
+
+    const tests = slice.map(t => ({
+      icon: t.icon,
+      title: t.title,
+      qCount: t.qCount,
+      duration: t.duration,
+      marks: t.marks,
+      classLabel: t.classLabel,
+      subject: t.subject,
+      isFree: !!t.free,
+      isPaid: !t.free,
+      price: t.price,
+      iconWrapStyle: `width:40px;height:40px;border-radius:11px;background:${t.bg};color:${t.color};display:flex;align-items:center;justify-content:center;font-size:19px`
+    }));
+
+    const pageNumbers = Array.from({ length: totalPages }, (_, i) => {
+      const n = i + 1;
+      const active = n === page;
+      return {
+        n,
+        go: () => this.setState({ page: n }),
+        style: `width:38px;height:38px;border-radius:9px;font-family:inherit;font-size:14px;font-weight:700;border:none;cursor:pointer;background:${active ? '#4B2BE8' : '#F1EEFF'};color:${active ? '#FFFFFF' : '#141033'}`
+      };
+    });
+
+    return {
+      tests,
+      pageNumbers,
+      prevPage: () => this.setState(s => ({ page: Math.max(1, s.page - 1) })),
+      nextPage: () => this.setState(s => ({ page: Math.min(totalPages, s.page + 1) }))
+    };
+  }
+}
+</script>
+</body>
+</html>

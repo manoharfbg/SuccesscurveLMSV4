@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; }
+  button { font-family:inherit; cursor:pointer; }
+  a { text-decoration:none; }
+  ::-webkit-scrollbar { width:9px; height:9px; }
+</style>
+</helmet>
+<div style="display:grid;grid-template-columns:minmax(0,244px) minmax(0,1fr);min-height:100vh;font-family:'DM Sans',system-ui,sans-serif;transition:background 200ms ease;background:{{ pageBg }};color:{{ text }}">
+
+  <aside style="position:sticky;top:0;height:100vh;overflow:hidden;background:radial-gradient(700px 400px at 20% -10%, #0a5fb8, #024f9d 45%, #01356c)">
+    <div style="position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px, rgba(255,255,255,.10) 1px, transparent 0);background-size:26px 26px;pointer-events:none"></div>
+    <div style="position:absolute;top:-60px;right:-40px;width:200px;height:200px;border-radius:999px;background:radial-gradient(circle,rgba(251,116,62,0.22),transparent 70%);pointer-events:none"></div>
+    <div style="position:relative;z-index:1;height:100%;box-sizing:border-box;padding:20px 14px;display:flex;flex-direction:column;gap:20px;overflow:auto">
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:21px;font-weight:700;letter-spacing:-0.025em;white-space:nowrap;padding:2px 6px"><span style="color:#8FC4F5">Success</span><span style="color:#FF9E6B">Curve</span><sup style="font-size:0.46em;font-weight:600;color:#B7C1D6;margin-left:1px;top:-0.7em">.in</sup></div>
+      <div style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.14);border-radius:12px;padding:9px 11px">
+        <div style="width:34px;height:34px;border-radius:9px;background:#FB743E;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;flex-shrink:0">M</div>
+        <div style="min-width:0"><div style="font-size:13.5px;font-weight:700;color:#FFFFFF;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Manohar K.</div><div style="font-size:11.5px;color:#B7C1D6">Super Admin</div></div>
+      </div>
+
+      <nav style="display:grid;gap:3px">
+        <sc-for list="{{ nav }}" as="n" hint-placeholder-count="16">
+          <sc-if value="{{ n.isLabel }}"><div style="font-size:10.5px;font-weight:800;letter-spacing:0.11em;text-transform:uppercase;color:#7FA6D6;padding:12px 8px 4px">{{ n.label }}</div></sc-if>
+          <sc-if value="{{ n.isLink }}"><a href="{{ n.href }}" style="{{ n.style }}"><span style="width:20px;text-align:center;flex-shrink:0">{{ n.icon }}</span><span style="flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ n.label }}</span><sc-if value="{{ n.badge }}"><span style="background:#FB743E;color:#FFFFFF;font-size:11px;font-weight:800;padding:2px 7px;border-radius:999px">{{ n.badge }}</span></sc-if></a></sc-if>
+        </sc-for>
+      </nav>
+    </div>
+  </aside>
+
+  <main style="min-width:0;padding:0 0 56px">
+    <header style="display:flex;align-items:center;gap:14px;padding:16px 32px;background:{{ card }};border-bottom:1px solid {{ border }};position:sticky;top:0;z-index:10;flex-wrap:wrap">
+      <div style="min-width:0">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:21px;font-weight:700">Command center</div>
+        <div style="font-size:13.5px;color:{{ sub }};margin-top:2px">Saturday, 12 Sep 2026 · everything at a glance</div>
+      </div>
+      <div style="flex:1"></div>
+      <div style="display:flex;background:{{ inputBg }};border:1px solid {{ border }};border-radius:10px;padding:3px">
+        <sc-for list="{{ ranges }}" as="r" hint-placeholder-count="4"><button type="button" onClick="{{ r.onClick }}" style="{{ r.style }}">{{ r.label }}</button></sc-for>
+      </div>
+      <input type="text" placeholder="Search students, courses, tests…" style="border:1px solid {{ border }};background:{{ inputBg }};border-radius:10px;padding:10px 14px;font-family:inherit;font-size:14px;flex:1;min-width:0;max-width:230px;outline:none;color:{{ text }}">
+      <button type="button" onClick="{{ toggleTheme }}" style="display:flex;align-items:center;gap:7px;border:1px solid {{ border }};background:{{ inputBg }};color:{{ text }};font-size:13.5px;font-weight:700;padding:10px 13px;border-radius:10px">{{ themeIcon }}</button>
+      <button type="button" style="position:relative;border:1px solid {{ border }};background:{{ inputBg }};color:{{ text }};font-size:15px;padding:9px 12px;border-radius:10px">🔔<span style="position:absolute;top:-4px;right:-4px;background:#FB743E;color:#FFFFFF;font-size:10px;font-weight:800;width:17px;height:17px;border-radius:999px;display:flex;align-items:center;justify-content:center">6</span></button>
+      <a href="#" style="background:#FB743E;color:#FFFFFF;font-size:13.5px;font-weight:800;padding:11px 16px;border-radius:10px" style-hover="background:#E0672C">+ New</a>
+    </header>
+
+    <div style="padding:24px 32px 0;display:flex;align-items:baseline;gap:12px"><h2 style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:{{ sub }};margin:0">Key metrics</h2><div style="flex:1;height:1px;background:{{ border }}"></div></div>
+
+    <section style="padding:16px 32px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px">
+      <sc-for list="{{ kpis }}" as="k" hint-placeholder-count="6">
+        <div style="{{ k.cardStyle }}">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+            <div style="{{ k.iconStyle }}">{{ k.icon }}</div>
+            <div style="{{ k.deltaStyle }}">{{ k.delta }}</div>
+          </div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:700;line-height:1;margin-top:16px;color:{{ k.valueColor }}">{{ k.value }}</div>
+          <div style="font-size:13px;font-weight:600;color:{{ k.labelColor }};margin-top:5px">{{ k.label }}</div>
+        </div>
+      </sc-for>
+    </section>
+
+    <div style="padding:30px 32px 0;display:flex;align-items:baseline;gap:12px"><h2 style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:{{ sub }};margin:0">Revenue &amp; growth</h2><div style="flex:1;height:1px;background:{{ border }}"></div></div>
+
+    <section style="padding:16px 32px 0;display:grid;grid-template-columns:2fr 1fr;gap:16px">
+      <div style="background:{{ card }};border-radius:18px;padding:22px;border:1px solid {{ border }};min-width:0">
+        <div style="display:flex;justify-content:space-between;align-items:start;gap:12px;flex-wrap:wrap">
+          <div><div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700">Revenue &amp; enrollments</div><div style="font-size:13px;color:{{ sub }};margin-top:3px">Last 8 months</div></div>
+          <div style="text-align:right"><div style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;line-height:1">₹18.4L</div><div style="font-size:12px;color:#0F9D76;font-weight:700">↑ 23% vs last period</div></div>
+        </div>
+        <svg viewBox="0 0 640 260" style="width:100%;height:auto;margin-top:16px;overflow:visible">
+          <line x1="44" y1="30" x2="628" y2="30" stroke="{{ track }}"></line>
+          <line x1="44" y1="78" x2="628" y2="78" stroke="{{ track }}"></line>
+          <line x1="44" y1="126" x2="628" y2="126" stroke="{{ track }}"></line>
+          <line x1="44" y1="174" x2="628" y2="174" stroke="{{ track }}"></line>
+          <line x1="44" y1="212" x2="628" y2="212" stroke="{{ border }}"></line>
+          <text x="38" y="34" text-anchor="end" font-family="DM Sans, sans-serif" font-size="11" fill="{{ faint }}">3L</text>
+          <text x="38" y="82" text-anchor="end" font-family="DM Sans, sans-serif" font-size="11" fill="{{ faint }}">2L</text>
+          <text x="38" y="130" text-anchor="end" font-family="DM Sans, sans-serif" font-size="11" fill="{{ faint }}">1L</text>
+          <g>
+            <rect x="66" y="150" width="20" height="62" rx="4" fill="{{ barSoft }}"></rect><rect x="138" y="138" width="20" height="74" rx="4" fill="{{ barSoft }}"></rect><rect x="210" y="120" width="20" height="92" rx="4" fill="{{ barSoft }}"></rect><rect x="282" y="128" width="20" height="84" rx="4" fill="{{ barSoft }}"></rect><rect x="354" y="102" width="20" height="110" rx="4" fill="{{ barSoft }}"></rect><rect x="426" y="88" width="20" height="124" rx="4" fill="{{ barSoft }}"></rect><rect x="498" y="70" width="20" height="142" rx="4" fill="{{ barSoft }}"></rect><rect x="570" y="52" width="20" height="160" rx="4" fill="#FB743E"></rect>
+          </g>
+          <path d="M76,140 L148,128 L220,110 L292,116 L364,90 L436,74 L508,58 L580,44 L580,212 L76,212 Z" fill="rgba(2,79,157,0.10)"></path>
+          <polyline points="76,140 148,128 220,110 292,116 364,90 436,74 508,58 580,44" fill="none" stroke="#024F9D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></polyline>
+          <g fill="{{ card }}" stroke="#024F9D" stroke-width="2.5"><circle cx="76" cy="140" r="4"></circle><circle cx="148" cy="128" r="4"></circle><circle cx="220" cy="110" r="4"></circle><circle cx="292" cy="116" r="4"></circle><circle cx="364" cy="90" r="4"></circle><circle cx="436" cy="74" r="4"></circle><circle cx="508" cy="58" r="4"></circle><circle cx="580" cy="44" r="4"></circle></g>
+          <g font-family="DM Sans, sans-serif" font-size="11.5" font-weight="600" fill="{{ sub }}" text-anchor="middle"><text x="76" y="232">Feb</text><text x="148" y="232">Mar</text><text x="220" y="232">Apr</text><text x="292" y="232">May</text><text x="364" y="232">Jun</text><text x="436" y="232">Jul</text><text x="508" y="232">Aug</text><text x="580" y="232">Sep</text></g>
+        </svg>
+        <div style="display:flex;gap:18px;font-size:12.5px;color:{{ sub }};font-weight:600;margin-top:4px"><span><span style="display:inline-block;width:11px;height:3px;border-radius:2px;background:#024F9D;vertical-align:middle;margin-right:6px"></span>Revenue (₹)</span><span><span style="display:inline-block;width:11px;height:11px;border-radius:3px;background:#FB743E;vertical-align:middle;margin-right:6px"></span>New enrollments</span></div>
+      </div>
+
+      <div style="background:{{ card }};border-radius:18px;padding:22px;border:1px solid {{ border }}">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700">Revenue by product</div>
+        <div style="font-size:13px;color:{{ sub }};margin-top:3px">This month</div>
+        <div style="display:flex;justify-content:center;margin-top:18px">
+          <div style="position:relative;width:172px;height:172px;border-radius:999px;background:conic-gradient(#024F9D 0turn 0.52turn,#FB743E 0.52turn 0.83turn,#0F9D76 0.83turn 1turn)">
+            <div style="position:absolute;inset:26px;background:{{ card }};border-radius:999px;display:flex;flex-direction:column;align-items:center;justify-content:center"><div style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;line-height:1">₹4.2L</div><div style="font-size:11.5px;color:{{ sub }}">total</div></div>
+          </div>
+        </div>
+        <div style="display:grid;gap:11px;margin-top:20px">
+          <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600"><span style="width:12px;height:12px;border-radius:4px;background:#024F9D"></span>Courses<span style="margin-left:auto;font-family:'Space Grotesk',sans-serif;font-weight:700">52%</span></div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600"><span style="width:12px;height:12px;border-radius:4px;background:#FB743E"></span>Mock tests<span style="margin-left:auto;font-family:'Space Grotesk',sans-serif;font-weight:700">31%</span></div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600"><span style="width:12px;height:12px;border-radius:4px;background:#0F9D76"></span>Test series<span style="margin-left:auto;font-family:'Space Grotesk',sans-serif;font-weight:700">17%</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:16px 32px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px">
+      <div style="background:{{ card }};border-radius:18px;padding:22px;border:1px solid {{ border }}">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px"><div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700">Trending courses</div><a href="#" style="font-size:13px;font-weight:700;color:#024F9D">All courses →</a></div>
+        <div style="display:grid;gap:13px;margin-top:18px">
+          <sc-for list="{{ trendCourses }}" as="c" hint-placeholder-count="5">
+            <div><div style="display:flex;justify-content:space-between;font-size:13.5px;font-weight:600;margin-bottom:6px"><span style="min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ c.name }}</span><span style="color:{{ sub }};flex-shrink:0;margin-left:10px">{{ c.count }}</span></div><div style="height:10px;background:{{ track }};border-radius:999px;overflow:hidden"><div style="{{ c.barStyle }}"></div></div></div>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="background:{{ card }};border-radius:18px;padding:22px;border:1px solid {{ border }}">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px"><div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700">Trending mock tests</div><a href="#" style="font-size:13px;font-weight:700;color:#024F9D">All tests →</a></div>
+        <div style="display:grid;gap:13px;margin-top:18px">
+          <sc-for list="{{ trendTests }}" as="c" hint-placeholder-count="5">
+            <div><div style="display:flex;justify-content:space-between;font-size:13.5px;font-weight:600;margin-bottom:6px"><span style="min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ c.name }}</span><span style="color:{{ sub }};flex-shrink:0;margin-left:10px">{{ c.count }}</span></div><div style="height:10px;background:{{ track }};border-radius:999px;overflow:hidden"><div style="{{ c.barStyle }}"></div></div></div>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="background:{{ card }};border-radius:18px;padding:22px;border:1px solid {{ border }}">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px"><div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700">Trending test series</div><a href="#" style="font-size:13px;font-weight:700;color:#024F9D">All series →</a></div>
+        <div style="display:grid;gap:13px;margin-top:18px">
+          <sc-for list="{{ trendSeries }}" as="c" hint-placeholder-count="5">
+            <div><div style="display:flex;justify-content:space-between;font-size:13.5px;font-weight:600;margin-bottom:6px"><span style="min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ c.name }}</span><span style="color:{{ sub }};flex-shrink:0;margin-left:10px">{{ c.count }}</span></div><div style="height:10px;background:{{ track }};border-radius:999px;overflow:hidden"><div style="{{ c.barStyle }}"></div></div></div>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="background:{{ card }};border-radius:18px;padding:22px;border:1px solid {{ border }}">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700">New signups by class</div>
+        <div style="font-size:13px;color:{{ sub }};margin-top:3px">Last 30 days</div>
+        <svg viewBox="0 0 340 180" style="width:100%;height:auto;margin-top:14px">
+          <line x1="8" y1="20" x2="340" y2="20" stroke="{{ track }}"></line>
+          <line x1="8" y1="70" x2="340" y2="70" stroke="{{ track }}"></line>
+          <line x1="8" y1="120" x2="340" y2="120" stroke="{{ border }}"></line>
+          <sc-for list="{{ signupBars }}" as="b" hint-placeholder-count="8"><rect x="{{ b.x }}" y="{{ b.y }}" width="26" height="{{ b.h }}" rx="4" fill="{{ b.fill }}"></rect></sc-for>
+          <g font-family="DM Sans, sans-serif" font-size="10.5" font-weight="600" fill="{{ sub }}" text-anchor="middle"><text x="27" y="140">C5</text><text x="67" y="140">C6</text><text x="107" y="140">C7</text><text x="147" y="140">C8</text><text x="187" y="140">C9</text><text x="227" y="140">C10</text><text x="267" y="140">UG</text><text x="307" y="140">PG</text></g>
+        </svg>
+      </div>
+    </section>
+
+    <div style="padding:30px 32px 0;display:flex;align-items:baseline;gap:12px"><h2 style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:{{ sub }};margin:0">Needs attention</h2><div style="flex:1;height:1px;background:{{ border }}"></div></div>
+
+    <section style="padding:16px 32px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px">
+      <sc-for list="{{ queues }}" as="q" hint-placeholder-count="4">
+        <div style="background:{{ card }};border-radius:18px;padding:20px;border:1px solid {{ border }};border-top:3px solid {{ q.accent }}">
+          <div style="display:flex;align-items:center;gap:12px"><div style="{{ q.iconStyle }}">{{ q.icon }}</div><div style="min-width:0"><div style="font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;line-height:1">{{ q.count }}</div><div style="font-size:13px;color:{{ sub }};font-weight:600;margin-top:2px">{{ q.label }}</div></div></div>
+          <div style="font-size:13px;color:{{ sub }};margin-top:14px;line-height:1.5">{{ q.note }}</div>
+          <a href="{{ q.href }}" style="display:block;text-align:center;margin-top:14px;background:{{ inputBg }};border:1px solid {{ border }};color:{{ text }};font-size:13px;font-weight:700;padding:10px;border-radius:10px" style-hover="border-color:#024F9D">{{ q.cta }}</a>
+        </div>
+      </sc-for>
+    </section>
+
+    <div style="padding:30px 32px 0;display:flex;align-items:baseline;gap:12px"><h2 style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:{{ sub }};margin:0">Content &amp; operations</h2><div style="flex:1;height:1px;background:{{ border }}"></div></div>
+
+    <section style="padding:16px 32px 0;display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <div style="background:{{ card }};border-radius:18px;padding:22px;border:1px solid {{ border }};min-width:0">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px"><div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700">Recent payments</div><a href="#" style="font-size:13px;font-weight:700;color:#024F9D">Ledger →</a></div>
+        <div style="overflow:auto;margin-top:14px">
+          <table style="width:100%;border-collapse:collapse;font-size:13.5px;min-width:440px">
+            <tr style="text-align:left"><th style="padding:0 10px 10px 0;font-size:11px;font-weight:800;letter-spacing:0.05em;text-transform:uppercase;color:{{ sub }}">Student</th><th style="padding:0 10px 10px 0;font-size:11px;font-weight:800;letter-spacing:0.05em;text-transform:uppercase;color:{{ sub }}">Product</th><th style="padding:0 10px 10px 0;font-size:11px;font-weight:800;letter-spacing:0.05em;text-transform:uppercase;color:{{ sub }}">Amount</th><th style="padding:0 0 10px 0;font-size:11px;font-weight:800;letter-spacing:0.05em;text-transform:uppercase;color:{{ sub }}">Status</th></tr>
+            <sc-for list="{{ payments }}" as="p" hint-placeholder-count="5">
+              <tr style="border-top:1px solid {{ border }}"><td style="padding:11px 10px 11px 0;font-weight:600">{{ p.name }}</td><td style="padding:11px 10px 11px 0;color:{{ sub }}">{{ p.product }}</td><td style="padding:11px 10px 11px 0;font-family:'Space Grotesk',sans-serif;font-weight:700">{{ p.amount }}</td><td style="padding:11px 0"><span style="{{ p.statusStyle }}">{{ p.status }}</span></td></tr>
+            </sc-for>
+          </table>
+        </div>
+      </div>
+
+      <div style="display:grid;gap:16px;align-content:start;min-width:0">
+        <div style="background:{{ card }};border-radius:18px;padding:22px;border:1px solid {{ border }}">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700">Question bank health</div>
+          <div style="font-size:13px;color:{{ sub }};margin-top:3px">14,280 questions · by type</div>
+          <div style="display:grid;gap:12px;margin-top:16px">
+            <sc-for list="{{ qbank }}" as="q" hint-placeholder-count="4">
+              <div><div style="display:flex;justify-content:space-between;font-size:13px;font-weight:600;margin-bottom:5px"><span>{{ q.name }}</span><span style="color:{{ sub }}">{{ q.count }}</span></div><div style="height:9px;background:{{ track }};border-radius:999px;overflow:hidden"><div style="{{ q.barStyle }}"></div></div></div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="background:{{ card }};border-radius:18px;padding:22px;border:1px solid {{ border }}">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px"><div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700">Uploader throughput</div><span style="font-size:11.5px;font-weight:700;color:{{ sub }};background:{{ track }};padding:4px 9px;border-radius:999px">This week</span></div>
+          <div style="display:grid;margin-top:12px">
+            <sc-for list="{{ team }}" as="t" hint-placeholder-count="3">
+              <div style="{{ t.rowStyle }}"><div style="width:34px;height:34px;border-radius:9px;background:{{ t.avBg }};color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;flex-shrink:0">{{ t.initial }}</div><div style="min-width:0;flex:1"><div style="font-size:14px;font-weight:600">{{ t.name }}</div><div style="font-size:12px;color:{{ faint }}">{{ t.role }}</div></div><div style="text-align:right"><div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700">{{ t.count }}</div><div style="font-size:11px;color:{{ sub }}">added</div></div></div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:16px 32px 0">
+      <div style="background:linear-gradient(135deg,#024F9D,#0A5FB8);border-radius:18px;padding:22px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+        <div style="color:#FFFFFF;min-width:0;margin-right:auto"><div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700">Quick actions</div><div style="font-size:13px;color:#C9DBFF;margin-top:2px">Jump straight to the things you do most</div></div>
+        <sc-for list="{{ actions }}" as="a" hint-placeholder-count="5"><a href="{{ a.href }}" style="background:rgba(255,255,255,0.14);border:1px solid rgba(255,255,255,0.22);color:#FFFFFF;font-size:13.5px;font-weight:700;padding:11px 16px;border-radius:11px;white-space:nowrap" style-hover="background:#FB743E;border-color:#FB743E">{{ a.label }}</a></sc-for>
+      </div>
+    </section>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:1500}}">
+class Component extends DCLogic {
+  state = { theme: 'light', range: '30d' };
+
+  P() {
+    if (this.state.theme === 'dark') {
+      return { pageBg:'#0B1220', text:'#EAF0FA', sub:'#9AA6BF', faint:'#6B7A99', card:'#141C2E', border:'#263049', track:'#26304A', inputBg:'#0F1626', barSoft:'#2A3550' };
+    }
+    return { pageBg:'#EEF2F8', text:'#0F1B33', sub:'#5C6A85', faint:'#98A4BD', card:'#FFFFFF', border:'#E3E9F2', track:'#E8EDF6', inputBg:'#F5F8FC', barSoft:'#DCE6F4' };
+  }
+
+  navItem(icon, label, href, active, badge) {
+    const p = this.P();
+    const style = active
+      ? "display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:11px;background:linear-gradient(120deg,#FB743E,#E0672C);color:#FFFFFF;font-size:14px;font-weight:700;box-shadow:0 8px 18px rgba(251,116,62,0.35)"
+      : "display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:11px;color:#C9D6EC;font-size:14px;font-weight:500";
+    return { isLink:true, isLabel:false, icon, label, href, badge, style };
+  }
+
+  renderVals() {
+    const p = this.P();
+    const dk = this.state.theme === 'dark';
+
+    const nav = [
+      { isLabel:true, label:'Overview' },
+      this.navItem('📊','Dashboard','#',true),
+      this.navItem('📈','Analytics','#'),
+      { isLabel:true, label:'Catalog' },
+      this.navItem('📚','Courses','#'),
+      this.navItem('📝','Mock tests','#'),
+      this.navItem('🎯','Test series','#'),
+      this.navItem('🏫','Classes & subjects','#'),
+      { isLabel:true, label:'Question bank' },
+      this.navItem('🗂️','Questions','#'),
+      this.navItem('⚑','Question reports','#',false,'23'),
+      this.navItem('🏷️','Tags & topics','#'),
+      { isLabel:true, label:'People' },
+      this.navItem('👥','Users','#'),
+      this.navItem('🧑‍🏫','Faculty','#'),
+      this.navItem('⌨️','Question operators','#'),
+      { isLabel:true, label:'Growth' },
+      this.navItem('💳','Payments','#'),
+      this.navItem('🏷️','Coupons','#'),
+      this.navItem('🖼️','Sliders','#'),
+      { isLabel:true, label:'System' },
+      this.navItem('💬','Doubts','#',false,'2'),
+      this.navItem('✉️','Contacts','#',false,'5'),
+      this.navItem('⚙️','Settings','#'),
+      this.navItem('↩️','Logout','#')
+    ].map(n => ({ isLabel:!!n.isLabel, isLink:!!n.isLink, label:n.label, icon:n.icon||'', href:n.href||'#', badge:n.badge||'', style:n.style||'' }));
+
+    const ranges = ['7d','30d','QTD','YTD'].map(r => ({
+      label:r,
+      onClick: () => this.setState({ range:r }),
+      style: `border:none;background:${this.state.range===r?p.card:'transparent'};color:${this.state.range===r?p.text:p.sub};font-size:12.5px;font-weight:700;padding:7px 12px;border-radius:8px;${this.state.range===r?'box-shadow:0 1px 3px rgba(0,0,0,0.08)':''}`
+    }));
+
+    const kpi = (icon, value, label, delta, up, tint, ink, feature) => ({
+      icon, value, label, delta,
+      cardStyle: feature
+        ? 'background:linear-gradient(140deg,#024F9D,#0A5FB8);border-radius:18px;padding:20px;border:1px solid #024F9D'
+        : `background:${p.card};border-radius:18px;padding:20px;border:1px solid ${p.border}`,
+      iconStyle: `width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:19px;background:${feature?'rgba(255,255,255,0.16)':tint};color:${feature?'#FFFFFF':ink}`,
+      deltaStyle: `font-size:12px;font-weight:800;padding:4px 9px;border-radius:999px;background:${feature?'rgba(255,255,255,0.16)':(up?p.track:p.track)};color:${feature?'#FFFFFF':(up?'#0F9D76':'#E5484D')}`,
+      valueColor: feature?'#FFFFFF':p.text,
+      labelColor: feature?'#C9DBFF':p.sub
+    });
+
+    const kpis = [
+      kpi('💰','₹18.4L','Revenue (YTD)','↑ 23%',true,null,null,true),
+      kpi('🎓','12,480','Students','↑ 8.4%',true,'#EAF1FB','#024F9D'),
+      kpi('🔥','3,942','Active enrollments','↑ 12%',true,'#FFF2EA','#E0672C'),
+      kpi('📚','48','Courses','↑ 3',true,'#E8F7EE','#0F9D76'),
+      kpi('📝','126','Mock tests','↑ 9',true,'#EAF1FB','#024F9D'),
+      kpi('🎯','34','Test series','↑ 4',true,'#E8F7EE','#0F9D76'),
+      kpi('🏫','9','Classes','↑ 1',true,'#EAF1FB','#024F9D'),
+      kpi('📖','18','Subjects','↑ 2',true,'#FFF2EA','#E0672C'),
+      kpi('🗂️','14,280','Questions','↑ 640',true,'#FFF2EA','#E0672C')
+    ];
+
+    const bar = (pct, color) => `width:${pct}%;height:100%;background:${color};border-radius:999px`;
+    const trendCourses = [
+      { name:'Class 10 Mathematics — Boards', count:'1,204', pct:100 },
+      { name:'Class 10 Science — Full', count:'1,042', pct:87 },
+      { name:'Class 12 Physics', count:'864', pct:72 },
+      { name:'Class 9 Mathematics', count:'712', pct:59 },
+      { name:'CUET — General Test', count:'588', pct:49 }
+    ].map(c => ({ name:c.name, count:c.count, barStyle:bar(c.pct,'#024F9D') }));
+    const trendTests = [
+      { name:'All-Subject Board Series — T6', count:'2,140', pct:100 },
+      { name:'Maths Full Syllabus Mock', count:'1,760', pct:82 },
+      { name:'Science Chapter Test — Light', count:'1,318', pct:62 },
+      { name:'CUET Mini Mock 3', count:'980', pct:46 },
+      { name:'SST Board Pattern Mock', count:'742', pct:35 }
+    ].map(c => ({ name:c.name, count:c.count, barStyle:bar(c.pct,'#FB743E') }));
+    const trendSeries = [
+      { name:'Class 10 All-Subject Board Series', count:'3,120', pct:100 },
+      { name:'Class 12 PCM Board Series', count:'2,240', pct:72 },
+      { name:'CUET UG Full Series', count:'1,680', pct:54 },
+      { name:'Class 9 Foundation Series', count:'1,140', pct:37 },
+      { name:'NEET Biology Series', count:'860', pct:28 }
+    ].map(c => ({ name:c.name, count:c.count, barStyle:bar(c.pct,'#0F9D76') }));
+
+    const signupVals = [42,58,66,74,90,150,70,38];
+    const maxS = 160;
+    const signupBars = signupVals.map((v,i) => {
+      const h = Math.round((v/maxS)*100);
+      return { x: 14 + i*40, y: 120 - h, h, fill: i===5 ? '#FB743E' : '#024F9D' };
+    });
+
+    const queues = [
+      { icon:'⚑', accent:'#E5484D', count:'23', label:'Question reports', note:'Flagged by students — wrong answer or typo. 5 are over 48h old.', cta:'Review reports', href:'#', tint:dk?'#2A1512':'#FDECEC', ink:'#E5484D' },
+      { icon:'💬', accent:'#FB743E', count:'2', label:'Unanswered doubts', note:'Waiting on faculty. Oldest posted 6 hours ago.', cta:'Open doubts', href:'#', tint:dk?'#2A2212':'#FEF6EC', ink:'#E0672C' },
+      { icon:'✉️', accent:'#024F9D', count:'5', label:'New contact messages', note:'From the contact form. 2 are enrollment enquiries.', cta:'View inbox', href:'#', tint:dk?'#16233F':'#EAF1FB', ink:'#024F9D' },
+      { icon:'⏳', accent:'#0F9D76', count:'8', label:'Courses pending review', note:'Submitted by faculty, awaiting publish approval.', cta:'Review drafts', href:'#', tint:dk?'#0F2A22':'#E8F7EE', ink:'#0F9D76' }
+    ].map(q => ({ ...q, iconStyle:`width:46px;height:46px;border-radius:12px;background:${q.tint};color:${q.ink};display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0` }));
+
+    const statusPill = (kind) => {
+      if(kind==='paid') return `font-size:11.5px;font-weight:800;padding:4px 10px;border-radius:999px;background:${dk?'#0F2A22':'#E8F7EE'};color:#0F7A57`;
+      if(kind==='pending') return `font-size:11.5px;font-weight:800;padding:4px 10px;border-radius:999px;background:${dk?'#2A2212':'#FEF6EC'};color:#B0863F`;
+      return `font-size:11.5px;font-weight:800;padding:4px 10px;border-radius:999px;background:${dk?'#2A1512':'#FDECEC'};color:#C0564A`;
+    };
+    const payments = [
+      { name:'Ananya S.', product:'Class 10 Maths', amount:'₹1,499', status:'Paid', k:'paid' },
+      { name:'Rahul M.', product:'Board Series', amount:'₹799', status:'Paid', k:'paid' },
+      { name:'Imran K.', product:'CUET Mock Pack', amount:'₹599', status:'Pending', k:'pending' },
+      { name:'Sneha P.', product:'Class 12 Physics', amount:'₹1,999', status:'Paid', k:'paid' },
+      { name:'Vikas R.', product:'Science Full', amount:'₹1,299', status:'Failed', k:'failed' }
+    ].map(x => ({ ...x, statusStyle:statusPill(x.k) }));
+
+    const qbank = [
+      { name:'MCQ — single correct', count:'9,140', pct:100, color:'#024F9D' },
+      { name:'MSQ — multiple correct', count:'2,860', pct:31, color:'#0A5FB8' },
+      { name:'NAT — numerical', count:'1,540', pct:17, color:'#FB743E' },
+      { name:'PRQ — paragraph', count:'740', pct:8, color:'#0F9D76' }
+    ].map(q => ({ name:q.name, count:q.count, barStyle:bar(q.pct,q.color) }));
+
+    const team = [
+      { initial:'P', name:'Priya N.', role:'Question operator', count:'312', avBg:'#024F9D' },
+      { initial:'A', name:'Arjun D.', role:'Question operator', count:'268', avBg:'#FB743E' },
+      { initial:'K', name:'Kavya R.', role:'Question operator', count:'201', avBg:'#0F9D76' }
+    ].map((t,i,arr) => ({ ...t, rowStyle:`display:flex;gap:12px;align-items:center;padding:11px 0;${i===arr.length-1?'':'border-bottom:1px solid '+p.border}` }));
+
+    const actions = [
+      { label:'+ Add question', href:'#' },
+      { label:'+ Create test', href:'#' },
+      { label:'+ New course', href:'#' },
+      { label:'+ Coupon', href:'#' },
+      { label:'Export users', href:'#' }
+    ];
+
+    return {
+      pageBg:p.pageBg, text:p.text, sub:p.sub, faint:p.faint, card:p.card, border:p.border, track:p.track, inputBg:p.inputBg, barSoft:p.barSoft,
+      nav, ranges, kpis, trendCourses, trendTests, trendSeries, signupBars, queues, payments, qbank, team, actions,
+      themeIcon: dk ? '☀️' : '🌙',
+      toggleTheme: () => this.setState(s => ({ theme: s.theme === 'dark' ? 'light' : 'dark' }))
+    };
+  }
+}
+</script>
+</body>
+</html>

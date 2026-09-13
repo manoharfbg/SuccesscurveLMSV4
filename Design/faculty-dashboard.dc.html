@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; }
+  button { font-family:inherit; cursor:pointer; }
+  a { text-decoration:none; }
+  ::-webkit-scrollbar { width:9px; height:9px; }
+</style>
+</helmet>
+<div style="display:grid;grid-template-columns:minmax(0,244px) minmax(0,1fr);min-height:100vh;font-family:'DM Sans',system-ui,sans-serif;transition:background 200ms ease;background:{{ pageBg }};color:{{ text }}">
+
+  <aside style="position:sticky;top:0;height:100vh;overflow:hidden;background:radial-gradient(700px 400px at 20% -10%, #0a5fb8, #024f9d 45%, #01356c)">
+    <div style="position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px, rgba(255,255,255,.10) 1px, transparent 0);background-size:26px 26px;pointer-events:none"></div>
+    <div style="position:absolute;top:-60px;right:-40px;width:200px;height:200px;border-radius:999px;background:radial-gradient(circle,rgba(251,116,62,0.22),transparent 70%);pointer-events:none"></div>
+    <div style="position:relative;z-index:1;height:100%;box-sizing:border-box;padding:20px 14px;display:flex;flex-direction:column;gap:20px;overflow:auto">
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:21px;font-weight:700;letter-spacing:-0.025em;white-space:nowrap;padding:2px 6px"><span style="color:#8FC4F5">Success</span><span style="color:#FF9E6B">Curve</span><sup style="font-size:0.46em;font-weight:600;color:#B7C1D6;margin-left:1px;top:-0.7em">.in</sup></div>
+      <div style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.14);border-radius:12px;padding:9px 11px">
+        <div style="width:34px;height:34px;border-radius:9px;background:#024F9D;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;flex-shrink:0">R</div>
+        <div style="min-width:0"><div style="font-size:13.5px;font-weight:700;color:#FFFFFF;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Rohit Sharma</div><div style="font-size:11.5px;color:#B7C1D6">Faculty · Mathematics</div></div>
+      </div>
+
+      <nav style="display:grid;gap:3px">
+        <sc-for list="{{ nav }}" as="n" hint-placeholder-count="11">
+          <sc-if value="{{ n.isLabel }}"><div style="font-size:10.5px;font-weight:800;letter-spacing:0.11em;text-transform:uppercase;color:#7FA6D6;padding:12px 8px 4px">{{ n.label }}</div></sc-if>
+          <sc-if value="{{ n.isLink }}"><a href="{{ n.href }}" style="{{ n.style }}"><span style="width:20px;text-align:center;flex-shrink:0">{{ n.icon }}</span><span style="flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ n.label }}</span><sc-if value="{{ n.badge }}"><span style="background:#FB743E;color:#FFFFFF;font-size:11px;font-weight:800;padding:2px 7px;border-radius:999px">{{ n.badge }}</span></sc-if></a></sc-if>
+        </sc-for>
+      </nav>
+    </div>
+  </aside>
+
+  <main style="min-width:0;padding:0 0 56px">
+    <header style="display:flex;align-items:center;gap:14px;padding:16px 32px;background:{{ card }};border-bottom:1px solid {{ border }};position:sticky;top:0;z-index:10;flex-wrap:wrap">
+      <div style="min-width:0">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:21px;font-weight:700">👋 Welcome back, Rohit</div>
+        <div style="font-size:13.5px;color:{{ sub }};margin-top:2px">6 courses · 2 test series · 3,240 students learning with you</div>
+      </div>
+      <div style="flex:1"></div>
+      <input type="text" placeholder="Search your content…" style="border:1px solid {{ border }};background:{{ inputBg }};border-radius:10px;padding:10px 14px;font-family:inherit;font-size:14px;flex:1;min-width:0;max-width:220px;outline:none;color:{{ text }}">
+      <button type="button" onClick="{{ toggleTheme }}" style="display:flex;align-items:center;gap:7px;border:1px solid {{ border }};background:{{ inputBg }};color:{{ text }};font-size:13.5px;font-weight:700;padding:10px 13px;border-radius:10px">{{ themeIcon }}</button>
+      <a href="#" style="background:#FB743E;color:#FFFFFF;font-size:13.5px;font-weight:800;padding:11px 16px;border-radius:10px" style-hover="background:#E0672C">+ Create</a>
+    </header>
+
+    <div style="padding:24px 32px 0;display:flex;align-items:baseline;gap:12px"><h2 style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:{{ sub }};margin:0">Overview</h2><div style="flex:1;height:1px;background:{{ border }}"></div></div>
+
+    <section style="padding:16px 32px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px">
+      <sc-for list="{{ kpis }}" as="k" hint-placeholder-count="4">
+        <div style="{{ k.cardStyle }}">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px"><div style="{{ k.iconStyle }}">{{ k.icon }}</div><div style="{{ k.deltaStyle }}">{{ k.delta }}</div></div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:700;line-height:1;margin-top:16px;color:{{ k.valueColor }}">{{ k.value }}</div>
+          <div style="font-size:13px;font-weight:600;color:{{ k.labelColor }};margin-top:5px">{{ k.label }}</div>
+        </div>
+      </sc-for>
+    </section>
+
+    <div style="padding:30px 32px 0;display:flex;align-items:baseline;gap:12px"><h2 style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:{{ sub }};margin:0">Course analytics</h2><div style="flex:1;height:1px;background:{{ border }}"></div></div>
+
+    <section style="padding:16px 32px 0;display:grid;grid-template-columns:2fr 1fr;gap:16px">
+      <div style="background:{{ card }};border-radius:18px;padding:22px;border:1px solid {{ border }};min-width:0">
+        <div style="display:flex;justify-content:space-between;align-items:start;gap:12px;flex-wrap:wrap">
+          <div><div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700">Enrollments over time</div><div style="font-size:13px;color:{{ sub }};margin-top:3px">Across all your courses · last 8 months</div></div>
+          <div style="text-align:right"><div style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;line-height:1">3,240</div><div style="font-size:12px;color:#0F9D76;font-weight:700">↑ 18% this period</div></div>
+        </div>
+        <svg viewBox="0 0 640 240" style="width:100%;height:auto;margin-top:16px;overflow:visible">
+          <line x1="40" y1="28" x2="628" y2="28" stroke="{{ track }}"></line>
+          <line x1="40" y1="74" x2="628" y2="74" stroke="{{ track }}"></line>
+          <line x1="40" y1="120" x2="628" y2="120" stroke="{{ track }}"></line>
+          <line x1="40" y1="166" x2="628" y2="166" stroke="{{ track }}"></line>
+          <line x1="40" y1="200" x2="628" y2="200" stroke="{{ border }}"></line>
+          <path d="M72,150 L144,138 L216,120 L288,124 L360,98 L432,86 L504,64 L576,44 L576,200 L72,200 Z" fill="rgba(2,79,157,0.10)"></path>
+          <polyline points="72,150 144,138 216,120 288,124 360,98 432,86 504,64 576,44" fill="none" stroke="#024F9D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></polyline>
+          <g fill="{{ card }}" stroke="#024F9D" stroke-width="2.5"><circle cx="72" cy="150" r="4"></circle><circle cx="144" cy="138" r="4"></circle><circle cx="216" cy="120" r="4"></circle><circle cx="288" cy="124" r="4"></circle><circle cx="360" cy="98" r="4"></circle><circle cx="432" cy="86" r="4"></circle><circle cx="504" cy="64" r="4"></circle><circle cx="576" cy="44" r="4"></circle></g>
+          <g transform="translate(576,44)"><rect x="-26" y="-34" width="52" height="24" rx="7" fill="#0F1B33"></rect><text x="0" y="-17" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="12.5" font-weight="700" fill="#FFFFFF">+612</text><circle cx="0" cy="0" r="6" fill="#FB743E" stroke="{{ card }}" stroke-width="2.5"></circle></g>
+          <g font-family="DM Sans, sans-serif" font-size="11.5" font-weight="600" fill="{{ sub }}" text-anchor="middle"><text x="72" y="220">Feb</text><text x="144" y="220">Mar</text><text x="216" y="220">Apr</text><text x="288" y="220">May</text><text x="360" y="220">Jun</text><text x="432" y="220">Jul</text><text x="504" y="220">Aug</text><text x="576" y="220">Sep</text></g>
+        </svg>
+      </div>
+
+      <div style="background:{{ card }};border-radius:18px;padding:22px;border:1px solid {{ border }}">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700">Lecture watch-through</div>
+        <div style="font-size:13px;color:{{ sub }};margin-top:3px">Average across courses</div>
+        <div style="display:flex;justify-content:center;margin-top:16px">
+          <div style="position:relative;width:150px;height:150px;border-radius:999px;background:conic-gradient(#0F9D76 0turn 0.68turn,{{ track }} 0.68turn 1turn)">
+            <div style="position:absolute;inset:22px;background:{{ card }};border-radius:999px;display:flex;flex-direction:column;align-items:center;justify-content:center"><div style="font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;line-height:1">68%</div><div style="font-size:11px;color:{{ sub }}">completed</div></div>
+          </div>
+        </div>
+        <div style="display:grid;gap:9px;margin-top:18px">
+          <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:600"><span style="color:{{ sub }}">Avg. rating</span><span style="font-family:'Space Grotesk',sans-serif;font-weight:700">4.6 ★</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:600"><span style="color:{{ sub }}">Completion rate</span><span style="font-family:'Space Grotesk',sans-serif;font-weight:700">61%</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:600"><span style="color:{{ sub }}">Watch hours</span><span style="font-family:'Space Grotesk',sans-serif;font-weight:700">28.4k</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:16px 32px 0">
+      <div style="background:{{ card }};border-radius:18px;padding:22px;border:1px solid {{ border }};min-width:0">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px"><div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700">Your courses</div><a href="#" style="font-size:13px;font-weight:700;color:#024F9D">Manage all →</a></div>
+        <div style="overflow:auto;margin-top:14px">
+          <table style="width:100%;border-collapse:collapse;font-size:13.5px;min-width:620px">
+            <tr style="text-align:left"><th style="padding:0 12px 10px 0;font-size:11px;font-weight:800;letter-spacing:0.05em;text-transform:uppercase;color:{{ sub }}">Course</th><th style="padding:0 12px 10px 0;font-size:11px;font-weight:800;letter-spacing:0.05em;text-transform:uppercase;color:{{ sub }}">Students</th><th style="padding:0 12px 10px 0;font-size:11px;font-weight:800;letter-spacing:0.05em;text-transform:uppercase;color:{{ sub }}">Completion</th><th style="padding:0 12px 10px 0;font-size:11px;font-weight:800;letter-spacing:0.05em;text-transform:uppercase;color:{{ sub }}">Rating</th><th style="padding:0 12px 10px 0;font-size:11px;font-weight:800;letter-spacing:0.05em;text-transform:uppercase;color:{{ sub }}">Status</th><th style="padding:0 0 10px 0"></th></tr>
+            <sc-for list="{{ myCourses }}" as="c" hint-placeholder-count="4">
+              <tr style="border-top:1px solid {{ border }}">
+                <td style="padding:13px 12px 13px 0;font-weight:700;min-width:180px">{{ c.name }}</td>
+                <td style="padding:13px 12px 13px 0;font-family:'Space Grotesk',sans-serif;font-weight:700">{{ c.students }}</td>
+                <td style="padding:13px 12px 13px 0;min-width:120px"><div style="display:flex;align-items:center;gap:8px"><div style="flex:1;height:8px;background:{{ track }};border-radius:999px;overflow:hidden"><div style="{{ c.barStyle }}"></div></div><span style="color:{{ sub }};font-size:12.5px">{{ c.completion }}</span></div></td>
+                <td style="padding:13px 12px 13px 0;font-weight:700">{{ c.rating }} ★</td>
+                <td style="padding:13px 12px 13px 0"><span style="{{ c.statusStyle }}">{{ c.status }}</span></td>
+                <td style="padding:13px 0"><a href="#" style="font-size:12.5px;font-weight:700;color:#024F9D">Edit</a></td>
+              </tr>
+            </sc-for>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <div style="padding:30px 32px 0;display:flex;align-items:baseline;gap:12px"><h2 style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:{{ sub }};margin:0">Earnings</h2><div style="flex:1;height:1px;background:{{ border }}"></div></div>
+
+    <section style="padding:16px 32px 0;display:grid;grid-template-columns:2fr 1fr;gap:16px">
+      <div style="background:{{ card }};border-radius:18px;padding:22px;border:1px solid {{ border }};min-width:0">
+        <div style="display:flex;justify-content:space-between;align-items:start;gap:12px;flex-wrap:wrap">
+          <div><div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700">Earnings by product</div><div style="font-size:13px;color:{{ sub }};margin-top:3px">Courses, mock tests &amp; test series · last 8 months</div></div>
+          <div style="display:flex;background:{{ inputBg }};border:1px solid {{ border }};border-radius:10px;padding:3px">
+            <sc-for list="{{ ranges }}" as="r" hint-placeholder-count="3"><button type="button" onClick="{{ r.onClick }}" style="{{ r.style }}">{{ r.label }}</button></sc-for>
+          </div>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:10px;margin-top:14px"><div style="font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:700;line-height:1">{{ earnTotal }}</div><div style="font-size:13px;color:#0F9D76;font-weight:700">↑ 21% vs previous</div></div>
+        <svg viewBox="0 0 640 230" style="width:100%;height:auto;margin-top:14px;overflow:visible">
+          <line x1="40" y1="24" x2="628" y2="24" stroke="{{ track }}"></line>
+          <line x1="40" y1="70" x2="628" y2="70" stroke="{{ track }}"></line>
+          <line x1="40" y1="116" x2="628" y2="116" stroke="{{ track }}"></line>
+          <line x1="40" y1="162" x2="628" y2="162" stroke="{{ track }}"></line>
+          <line x1="40" y1="190" x2="628" y2="190" stroke="{{ border }}"></line>
+          <sc-for list="{{ earnBars }}" as="b" hint-placeholder-count="8">
+            <g><rect x="{{ b.x }}" y="{{ b.yC }}" width="30" height="{{ b.hC }}" rx="3" fill="#024F9D"></rect><rect x="{{ b.x }}" y="{{ b.yT }}" width="30" height="{{ b.hT }}" fill="#FB743E"></rect><rect x="{{ b.x }}" y="{{ b.yS }}" width="30" height="{{ b.hS }}" fill="#0F9D76"></rect></g>
+          </sc-for>
+          <g font-family="DM Sans, sans-serif" font-size="11.5" font-weight="600" fill="{{ sub }}" text-anchor="middle"><text x="70" y="210">Feb</text><text x="142" y="210">Mar</text><text x="214" y="210">Apr</text><text x="286" y="210">May</text><text x="358" y="210">Jun</text><text x="430" y="210">Jul</text><text x="502" y="210">Aug</text><text x="574" y="210">Sep</text></g>
+        </svg>
+        <div style="display:flex;gap:18px;font-size:12.5px;color:{{ sub }};font-weight:600;margin-top:4px"><span><span style="display:inline-block;width:11px;height:11px;border-radius:3px;background:#024F9D;vertical-align:middle;margin-right:6px"></span>Courses</span><span><span style="display:inline-block;width:11px;height:11px;border-radius:3px;background:#FB743E;vertical-align:middle;margin-right:6px"></span>Mock tests</span><span><span style="display:inline-block;width:11px;height:11px;border-radius:3px;background:#0F9D76;vertical-align:middle;margin-right:6px"></span>Test series</span></div>
+      </div>
+
+      <div style="background:{{ card }};border-radius:18px;padding:22px;border:1px solid {{ border }}">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700">Revenue split</div>
+        <div style="font-size:13px;color:{{ sub }};margin-top:3px">This period</div>
+        <div style="display:grid;gap:12px;margin-top:18px">
+          <sc-for list="{{ earnSplit }}" as="e" hint-placeholder-count="3">
+            <div style="background:{{ inputBg }};border:1px solid {{ border }};border-radius:13px;padding:15px">
+              <div style="display:flex;align-items:center;gap:10px"><span style="width:12px;height:12px;border-radius:4px;background:{{ e.color }}"></span><span style="font-size:13.5px;font-weight:700">{{ e.name }}</span><span style="margin-left:auto;font-size:12px;color:{{ sub }};font-weight:700">{{ e.pct }}</span></div>
+              <div style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;margin-top:8px">{{ e.amount }}</div>
+              <div style="font-size:12px;color:{{ sub }};margin-top:2px">{{ e.meta }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <div style="padding:30px 32px 0;display:flex;align-items:baseline;gap:12px"><h2 style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:{{ sub }};margin:0">Content &amp; students</h2><div style="flex:1;height:1px;background:{{ border }}"></div></div>
+
+    <section style="padding:16px 32px 0;display:grid;grid-template-columns:3fr 2fr;gap:16px">
+      <div style="background:{{ card }};border-radius:18px;padding:22px;border:1px solid {{ border }};min-width:0">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap"><div><div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700">Question review</div><div style="font-size:13px;color:{{ sub }};margin-top:3px">In your subjects — approve, edit or report</div></div><a href="#" style="font-size:13px;font-weight:700;color:#024F9D">Question bank →</a></div>
+        <div style="display:grid;gap:12px;margin-top:16px">
+          <sc-for list="{{ queue }}" as="q" hint-placeholder-count="3">
+            <div style="border:1px solid {{ border }};border-left:3px solid {{ q.accent }};border-radius:13px;padding:15px">
+              <div style="display:flex;gap:9px;align-items:center;flex-wrap:wrap">
+                <span style="font-family:'Space Grotesk',sans-serif;font-size:12.5px;font-weight:700;color:{{ sub }}">{{ q.id }}</span>
+                <span style="font-size:11.5px;font-weight:800;padding:4px 9px;border-radius:7px;background:{{ inputBg }};border:1px solid {{ border }};color:{{ text }}">{{ q.topic }}</span>
+                <span style="{{ q.statusStyle }}">{{ q.status }}</span>
+              </div>
+              <p style="font-size:14.5px;line-height:1.5;margin:11px 0 0;color:{{ text }}">{{ q.text }}</p>
+              <div style="display:flex;gap:8px;margin-top:13px;flex-wrap:wrap">
+                <a href="#" style="background:#0F9D76;color:#FFFFFF;font-size:12.5px;font-weight:700;padding:8px 14px;border-radius:9px" style-hover="background:#0C8865">✓ Approve</a>
+                <a href="#" style="background:{{ inputBg }};border:1px solid {{ border }};color:{{ text }};font-size:12.5px;font-weight:700;padding:8px 14px;border-radius:9px" style-hover="border-color:#024F9D">✎ Edit</a>
+                <a href="#" style="background:{{ inputBg }};border:1px solid {{ border }};color:#C0564A;font-size:12.5px;font-weight:700;padding:8px 14px;border-radius:9px" style-hover="border-color:#E5484D">⚑ Report</a>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="display:grid;gap:16px;align-content:start;min-width:0">
+        <div style="background:{{ card }};border-radius:18px;padding:22px;border:1px solid {{ border }}">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px"><div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700">Student doubts</div><span style="font-size:11.5px;font-weight:700;color:#FFFFFF;background:#FB743E;padding:4px 9px;border-radius:999px">4 open</span></div>
+          <div style="display:grid;margin-top:12px">
+            <sc-for list="{{ doubts }}" as="d" hint-placeholder-count="3">
+              <div style="{{ d.rowStyle }}"><div style="width:34px;height:34px;border-radius:9px;background:{{ d.avBg }};color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0">{{ d.initial }}</div><div style="min-width:0;flex:1"><div style="font-size:13.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ d.text }}</div><div style="font-size:12px;color:{{ faint }};margin-top:1px">{{ d.meta }}</div></div><a href="#" style="font-size:12px;font-weight:800;color:#024F9D;flex-shrink:0">Reply</a></div>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="background:{{ card }};border-radius:18px;padding:22px;border:1px solid {{ border }}">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700">Top lectures this week</div>
+          <div style="display:grid;gap:13px;margin-top:16px">
+            <sc-for list="{{ topLectures }}" as="l" hint-placeholder-count="3">
+              <div><div style="display:flex;justify-content:space-between;font-size:13px;font-weight:600;margin-bottom:5px"><span style="min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ l.name }}</span><span style="color:{{ sub }};flex-shrink:0;margin-left:10px">{{ l.views }}</span></div><div style="height:9px;background:{{ track }};border-radius:999px;overflow:hidden"><div style="{{ l.barStyle }}"></div></div></div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:16px 32px 0">
+      <div style="background:linear-gradient(135deg,#024F9D,#0A5FB8);border-radius:18px;padding:22px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+        <div style="color:#FFFFFF;min-width:0;margin-right:auto"><div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700">Quick actions</div><div style="font-size:13px;color:#C9DBFF;margin-top:2px">Build and manage your content</div></div>
+        <sc-for list="{{ actions }}" as="a" hint-placeholder-count="4"><a href="{{ a.href }}" style="background:rgba(255,255,255,0.14);border:1px solid rgba(255,255,255,0.22);color:#FFFFFF;font-size:13.5px;font-weight:700;padding:11px 16px;border-radius:11px;white-space:nowrap" style-hover="background:#FB743E;border-color:#FB743E">{{ a.label }}</a></sc-for>
+      </div>
+    </section>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:1300}}">
+class Component extends DCLogic {
+  state = { theme: 'light', range: '6M' };
+
+  P() {
+    if (this.state.theme === 'dark') {
+      return { pageBg:'#0B1220', text:'#EAF0FA', sub:'#9AA6BF', faint:'#6B7A99', card:'#141C2E', border:'#263049', track:'#26304A', inputBg:'#0F1626' };
+    }
+    return { pageBg:'#EEF2F8', text:'#0F1B33', sub:'#5C6A85', faint:'#98A4BD', card:'#FFFFFF', border:'#E3E9F2', track:'#E8EDF6', inputBg:'#F5F8FC' };
+  }
+
+  navItem(icon, label, href, active, badge) {
+    const style = active
+      ? "display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:11px;background:linear-gradient(120deg,#FB743E,#E0672C);color:#FFFFFF;font-size:14px;font-weight:700;box-shadow:0 8px 18px rgba(251,116,62,0.35)"
+      : "display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:11px;color:#C9D6EC;font-size:14px;font-weight:500";
+    return { isLink:true, isLabel:false, icon, label, href, badge, style };
+  }
+
+  renderVals() {
+    const p = this.P();
+    const dk = this.state.theme === 'dark';
+
+    const nav = [
+      { isLabel:true, label:'Teach' },
+      this.navItem('📊','Dashboard','#',true),
+      this.navItem('📚','My courses','#'),
+      this.navItem('🎯','Test series','#'),
+      this.navItem('📝','Mock tests','#'),
+      { isLabel:true, label:'Content' },
+      this.navItem('🗂️','Question review','#',false,'12'),
+      this.navItem('📈','Analytics','#'),
+      { isLabel:true, label:'Students' },
+      this.navItem('💬','Doubts','#',false,'4'),
+      { isLabel:true, label:'Account' },
+      this.navItem('⚙️','Profile','#'),
+      this.navItem('↩️','Logout','#')
+    ].map(n => ({ isLabel:!!n.isLabel, isLink:!!n.isLink, label:n.label, icon:n.icon||'', href:n.href||'#', badge:n.badge||'', style:n.style||'' }));
+
+    const kpi = (icon, value, label, delta, tint, ink, up) => ({
+      icon, value, label, delta,
+      cardStyle:`background:${p.card};border-radius:18px;padding:20px;border:1px solid ${p.border}`,
+      iconStyle:`width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:19px;background:${tint};color:${ink}`,
+      deltaStyle:`font-size:12px;font-weight:800;padding:4px 9px;border-radius:999px;background:${p.track};color:${up?'#0F9D76':'#E0672C'}`,
+      valueColor:p.text, labelColor:p.sub
+    });
+    const kpis = [
+      kpi('🎓','3,240','My students','↑ 18%',dk?'#16233F':'#EAF1FB','#024F9D',true),
+      kpi('📚','6','Active courses','↑ 1',dk?'#0F2A22':'#E8F7EE','#0F9D76',true),
+      kpi('🎯','2','Test series','+2 new',dk?'#2A2212':'#FEF6EC','#E0672C',true),
+      kpi('📝','14','Mock tests','↑ 3',dk?'#16233F':'#EAF1FB','#024F9D',true),
+      kpi('⭐','4.6','Avg. rating','↑ 0.2',dk?'#2A2212':'#FEF6EC','#E0672C',true)
+    ];
+
+    const bar = (pct,color) => `width:${pct}%;height:100%;background:${color};border-radius:999px`;
+    const statusPill = (kind) => {
+      if(kind==='live') return `font-size:11.5px;font-weight:800;padding:4px 10px;border-radius:999px;background:${dk?'#0F2A22':'#E8F7EE'};color:#0F7A57`;
+      if(kind==='draft') return `font-size:11.5px;font-weight:800;padding:4px 10px;border-radius:999px;background:${p.track};color:${p.sub}`;
+      return `font-size:11.5px;font-weight:800;padding:4px 10px;border-radius:999px;background:${dk?'#2A2212':'#FEF6EC'};color:#B0863F`;
+    };
+    const myCourses = [
+      { name:'Class 10 Mathematics — Boards', students:'1,204', completion:'72%', pct:72, rating:'4.7', status:'Live', k:'live' },
+      { name:'Class 9 Mathematics', students:'712', completion:'64%', pct:64, rating:'4.5', status:'Live', k:'live' },
+      { name:'Class 12 Applied Maths', students:'486', completion:'41%', pct:41, rating:'4.6', status:'Review', k:'review' },
+      { name:'Trigonometry Crash Course', students:'0', completion:'0%', pct:3, rating:'—', status:'Draft', k:'draft' }
+    ].map(c => ({ ...c, barStyle:bar(c.pct,c.k==='live'?'#0F9D76':'#FB743E'), statusStyle:statusPill(c.k) }));
+
+    const qStatus = (kind) => {
+      if(kind==='new') return `font-size:11.5px;font-weight:800;padding:4px 9px;border-radius:7px;background:${dk?'#2A2212':'#FEF6EC'};color:#B0863F`;
+      if(kind==='flag') return `font-size:11.5px;font-weight:800;padding:4px 9px;border-radius:7px;background:${dk?'#2A1512':'#FDECEC'};color:#C0564A`;
+      return `font-size:11.5px;font-weight:800;padding:4px 9px;border-radius:7px;background:${dk?'#16233F':'#EAF1FB'};color:#024F9D`;
+    };
+    const queue = [
+      { id:'#Q-24817', topic:'Trigonometry', status:'New entry', k:'new', accent:'#E0672C', text:'If sin θ + cos θ = √2, then the value of tan θ + cot θ is:' },
+      { id:'#Q-24810', topic:'Quadratic Equations', status:'Student reported', k:'flag', accent:'#E5484D', text:'The sum of the roots of 2x² − 7x + 3 = 0 is ______ (one decimal place).' },
+      { id:'#Q-24803', topic:'Circles', status:'Edited — recheck', k:'edit', accent:'#024F9D', text:'The length of a tangent from a point 13 cm away from the centre of a circle of radius 5 cm is:' }
+    ].map(q => ({ ...q, statusStyle:qStatus(q.k) }));
+
+    const doubts = [
+      { initial:'A', avBg:'#024F9D', text:'How is the discriminant negative here?', meta:'Ananya · Quadratic Equations · 20m' },
+      { initial:'V', avBg:'#FB743E', text:'Why do we take √3 and not −√3?', meta:'Vikas · Trigonometry · 1h' },
+      { initial:'S', avBg:'#0F9D76', text:'Doubt in step 3 of the proof', meta:'Sneha · Circles · 3h', last:true }
+    ].map((d,i,arr) => ({ ...d, rowStyle:`display:flex;gap:11px;align-items:center;padding:11px 0;${i===arr.length-1?'':'border-bottom:1px solid '+p.border}` }));
+
+    const topLectures = [
+      { name:'Heights & Distances — solved', views:'4,820', pct:100, color:'#024F9D' },
+      { name:'Quadratic word problems', views:'3,610', pct:75, color:'#0F9D76' },
+      { name:'Intro to Circles', views:'2,140', pct:44, color:'#FB743E' }
+    ].map(l => ({ name:l.name, views:l.views, barStyle:bar(l.pct,l.color) }));
+
+    const actions = [
+      { label:'+ Create course', href:'#' },
+      { label:'+ Create test series', href:'#' },
+      { label:'+ Add lecture', href:'#' },
+      { label:'Review questions', href:'#' }
+    ];
+
+    const ranges = ['6M','YTD','All'].map(r => ({
+      label:r,
+      onClick: () => this.setState({ range:r }),
+      style: `border:none;background:${this.state.range===r?p.card:'transparent'};color:${this.state.range===r?p.text:p.sub};font-size:12px;font-weight:700;padding:6px 11px;border-radius:8px;${this.state.range===r?'box-shadow:0 1px 3px rgba(0,0,0,0.08)':''}`
+    }));
+
+    // monthly earnings in ₹'000: [courses, tests, series]
+    const earnData = [[42,14,8],[48,16,10],[55,18,11],[52,20,12],[64,22,15],[70,26,16],[82,30,19],[95,34,22]];
+    const scale = 1.05; // px per ₹'000, base y=190
+    const earnBars = earnData.map((d,i) => {
+      const hC = Math.round(d[0]*scale), hT = Math.round(d[1]*scale), hS = Math.round(d[2]*scale);
+      const x = 55 + i*72;
+      const yC = 190 - hC, yT = yC - hT, yS = yT - hS;
+      return { x, hC, hT, hS, yC, yT, yS };
+    });
+    const earnSplit = [
+      { name:'Courses', color:'#024F9D', pct:'62%', amount:'₹4.68L', meta:'From 6 paid courses' },
+      { name:'Mock tests', color:'#FB743E', pct:'23%', amount:'₹1.74L', meta:'From 14 paid tests' },
+      { name:'Test series', color:'#0F9D76', pct:'15%', amount:'₹1.13L', meta:'From 2 test series' }
+    ];
+
+    return {
+      pageBg:p.pageBg, text:p.text, sub:p.sub, faint:p.faint, card:p.card, border:p.border, track:p.track, inputBg:p.inputBg,
+      nav, kpis, myCourses, queue, doubts, topLectures, actions,
+      ranges, earnTotal:'₹7.55L', earnBars, earnSplit,
+      themeIcon: dk ? '☀️' : '🌙',
+      toggleTheme: () => this.setState(s => ({ theme: s.theme === 'dark' ? 'light' : 'dark' }))
+    };
+  }
+}
+</script>
+</body>
+</html>

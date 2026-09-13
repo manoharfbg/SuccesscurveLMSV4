@@ -43,3 +43,5 @@ firebase-adminsdk*.json
 .ssh/
 secrets.php
 secrets.json
+cookies.txt
+*.sql

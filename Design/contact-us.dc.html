@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#EEF2F8; }
+  a { color:#024F9D; text-decoration:none; }
+  a:hover { color:#013A78; }
+  input, textarea { font-family:inherit; }
+  input:focus, textarea:focus { outline:none; border-color:#024F9D !important; box-shadow:0 0 0 3px rgba(2,79,157,0.12); }
+</style>
+</helmet>
+<div style="font-family:'DM Sans',system-ui,sans-serif;color:#0F1B33;background:#EEF2F8;min-height:100vh">
+
+  <header style="background:#FFFFFF;border-bottom:1px solid #E3E9F2;padding:16px 28px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;position:sticky;top:0;z-index:10">
+    <div style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;letter-spacing:-0.025em"><span style="color:#024F9D">Success</span><span style="color:#FB743E">Curve</span><sup style="font-size:0.46em;font-weight:600;color:#8A97B1;top:-0.7em">.in</sup></div>
+    <nav style="display:flex;gap:22px;margin-left:14px;flex-wrap:wrap">
+      <a href="homepage-b-bold.dc.html" style="color:#5C6A85;font-size:14.5px;font-weight:600">Home</a>
+      <a href="#" style="color:#5C6A85;font-size:14.5px;font-weight:600">Courses</a>
+      <a href="mock-test-catalog.dc.html" style="color:#5C6A85;font-size:14.5px;font-weight:600">Mock Test</a>
+      <a href="#" style="color:#5C6A85;font-size:14.5px;font-weight:600">Test Series</a>
+      <a href="#" style="color:#024F9D;font-size:14.5px;font-weight:700">Contact</a>
+    </nav>
+    <div style="flex:1"></div>
+    <a href="#" style="background:#FB743E;color:#FFFFFF;font-size:14px;font-weight:800;padding:10px 18px;border-radius:10px" style-hover="background:#E0672C">Login</a>
+  </header>
+
+  <section style="background:radial-gradient(700px 400px at 20% -10%, #0a5fb8, #024f9d 45%, #01356c);position:relative;overflow:hidden;padding:56px 28px 64px">
+    <div style="position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px, rgba(255,255,255,.10) 1px, transparent 0);background-size:26px 26px;pointer-events:none"></div>
+    <div style="position:absolute;top:-60px;right:-30px;width:260px;height:260px;border-radius:999px;background:radial-gradient(circle,rgba(251,116,62,0.24),transparent 70%);pointer-events:none"></div>
+    <div style="position:relative;max-width:760px;margin:0 auto;text-align:center">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);color:#FFD65A;font-size:12.5px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;padding:7px 14px;border-radius:999px">💬 We're here to help</div>
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(30px,5vw,46px);font-weight:700;color:#FFFFFF;margin:16px 0 0;line-height:1.1">Get in touch with us</h1>
+      <p style="font-size:clamp(15px,2vw,17px);color:#C9DBFF;margin:14px auto 0;max-width:52ch;line-height:1.6">Questions about courses, tests or your account? Send us a message and our team will get back within one working day.</p>
+    </div>
+  </section>
+
+  <section style="max-width:1100px;margin:-40px auto 0;padding:0 20px 64px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;align-items:start">
+    <div style="display:grid;gap:16px">
+      <div style="background:#FFFFFF;border:1px solid #E3E9F2;border-radius:20px;padding:26px;box-shadow:0 18px 40px -24px rgba(2,79,157,0.35)">
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;margin:0">Find us</h2>
+        <div style="display:grid;gap:16px;margin-top:20px">
+          <div style="display:flex;gap:14px;align-items:start">
+            <div style="width:44px;height:44px;border-radius:12px;background:#EAF1FB;color:#024F9D;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0">🏢</div>
+            <div><div style="font-size:12.5px;font-weight:800;letter-spacing:0.05em;text-transform:uppercase;color:#98A4BD">Office</div><div style="font-size:15px;font-weight:600;margin-top:3px;line-height:1.5">Sudhi Appartment, Forbesganj,<br>Bihar — 854318</div></div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:start">
+            <div style="width:44px;height:44px;border-radius:12px;background:#FFF2EA;color:#E0672C;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0">✉️</div>
+            <div><div style="font-size:12.5px;font-weight:800;letter-spacing:0.05em;text-transform:uppercase;color:#98A4BD">Email</div><a href="mailto:hello@successcurve.in" style="font-size:15px;font-weight:600;margin-top:3px;display:block">hello@successcurve.in</a></div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:start">
+            <div style="width:44px;height:44px;border-radius:12px;background:#E8F7EE;color:#0F9D76;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0">📱</div>
+            <div><div style="font-size:12.5px;font-weight:800;letter-spacing:0.05em;text-transform:uppercase;color:#98A4BD">Phone</div><a href="tel:+919473039252" style="font-size:15px;font-weight:600;margin-top:3px;display:block">+91 94730 39252</a></div>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:22px;padding-top:20px;border-top:1px solid #EDF1F7">
+          <a href="#" style="flex:1;text-align:center;background:#F5F8FC;border:1px solid #E3E9F2;border-radius:10px;padding:10px;font-size:13px;font-weight:700;color:#0F1B33" style-hover="border-color:#024F9D">▶️ YouTube</a>
+          <a href="#" style="flex:1;text-align:center;background:#F5F8FC;border:1px solid #E3E9F2;border-radius:10px;padding:10px;font-size:13px;font-weight:700;color:#0F1B33" style-hover="border-color:#024F9D">📷 Instagram</a>
+          <a href="#" style="flex:1;text-align:center;background:#F5F8FC;border:1px solid #E3E9F2;border-radius:10px;padding:10px;font-size:13px;font-weight:700;color:#0F1B33" style-hover="border-color:#024F9D">✈️ Telegram</a>
+        </div>
+      </div>
+      <div style="background:#FFFFFF;border:1px solid #E3E9F2;border-radius:20px;padding:8px;overflow:hidden">
+        <div style="border-radius:14px;height:180px;background:linear-gradient(135deg,#DCE6F4,#EAF1FB);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#5C6A85">
+          <div style="font-size:30px">📍</div>
+          <div style="font-size:14px;font-weight:700;margin-top:6px">Forbesganj, Bihar</div>
+          <div style="font-size:12.5px;color:#98A4BD;margin-top:2px">Map preview</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:#FFFFFF;border:1px solid #E3E9F2;border-radius:20px;padding:28px;box-shadow:0 18px 40px -24px rgba(2,79,157,0.35)">
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div style="text-align:center;padding:30px 10px">
+          <div style="width:64px;height:64px;border-radius:999px;background:#E8F7EE;color:#0F9D76;display:flex;align-items:center;justify-content:center;font-size:30px;margin:0 auto">✓</div>
+          <h2 style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;margin:18px 0 0">Message sent!</h2>
+          <p style="font-size:15px;color:#5C6A85;margin:10px auto 0;max-width:36ch;line-height:1.6">Thanks for reaching out. Our team will reply to your email within one working day.</p>
+          <button type="button" onClick="{{ reset }}" style="margin-top:20px;background:#F5F8FC;border:1px solid #E3E9F2;color:#0F1B33;font-size:14px;font-weight:700;padding:11px 20px;border-radius:11px;cursor:pointer">Send another</button>
+        </div>
+      </sc-if>
+      <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+      <div>
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;margin:0">Have a query?</h2>
+        <p style="font-size:14px;color:#5C6A85;margin:8px 0 0">Fill in the form and we'll be in touch.</p>
+        <div style="display:grid;gap:16px;margin-top:22px">
+          <div>
+            <label style="font-size:13px;font-weight:700;color:#0F1B33;display:block;margin-bottom:7px">Full name</label>
+            <input type="text" placeholder="e.g. Ananya Sharma" style="width:100%;box-sizing:border-box;border:1px solid #DCE3EE;background:#F8FAFD;border-radius:11px;padding:13px 15px;font-size:15px;color:#0F1B33">
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px">
+            <div>
+              <label style="font-size:13px;font-weight:700;color:#0F1B33;display:block;margin-bottom:7px">Email</label>
+              <input type="email" placeholder="you@email.com" style="width:100%;box-sizing:border-box;border:1px solid #DCE3EE;background:#F8FAFD;border-radius:11px;padding:13px 15px;font-size:15px;color:#0F1B33">
+            </div>
+            <div>
+              <label style="font-size:13px;font-weight:700;color:#0F1B33;display:block;margin-bottom:7px">Contact no.</label>
+              <input type="tel" placeholder="+91 …" style="width:100%;box-sizing:border-box;border:1px solid #DCE3EE;background:#F8FAFD;border-radius:11px;padding:13px 15px;font-size:15px;color:#0F1B33">
+            </div>
+          </div>
+          <div>
+            <label style="font-size:13px;font-weight:700;color:#0F1B33;display:block;margin-bottom:7px">Your message</label>
+            <textarea placeholder="How can we help?" rows="5" style="width:100%;box-sizing:border-box;border:1px solid #DCE3EE;background:#F8FAFD;border-radius:11px;padding:13px 15px;font-size:15px;color:#0F1B33;resize:vertical;min-height:120px"></textarea>
+          </div>
+          <button type="button" onClick="{{ send }}" style="background:#FB743E;color:#FFFFFF;font-size:15.5px;font-weight:800;padding:15px;border-radius:12px;border:none;cursor:pointer" style-hover="background:#E0672C">Send message →</button>
+          <p style="font-size:12.5px;color:#98A4BD;text-align:center;margin:0;line-height:1.5">Your message is delivered privately to the SuccessCurve team.</p>
+        </div>
+      </div>
+      </sc-if>
+    </div>
+  </section>
+
+  <footer style="background:#0F1B33;color:#FFFFFF;padding:30px 28px;text-align:center;font-size:13.5px">
+    <div style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700"><span style="color:#8FC4F5">Success</span><span style="color:#FF9E6B">Curve</span><sup style="font-size:0.46em;color:#B7C1D6;top:-0.7em">.in</sup></div>
+    <div style="color:#9AA6BF;margin-top:8px">© 2026 SuccessCurve · Forbesganj, Bihar · hello@successcurve.in</div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1120,&quot;height&quot;:980}}">
+class Component extends DCLogic {
+  state = { sent: false };
+  renderVals() {
+    return {
+      sent: this.state.sent,
+      notSent: !this.state.sent,
+      send: () => this.setState({ sent: true }),
+      reset: () => this.setState({ sent: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

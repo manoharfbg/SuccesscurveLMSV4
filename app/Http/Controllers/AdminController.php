@@ -25,18 +25,25 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class AdminController extends Controller
 {
-    public function dashboard(){
-        $courses = Course::where('courseStatus','Published')->count();
-        $students = User::where('type', 'user')->count();
-        $tests = Test::count();
-        $classes = Classe::count();
-        $subjects = Subject::count();
-        $topics = Subjecttopic::count();
-        $questions = Questionbank::count();
-        $series = Testcatogerie::count();
-        
-        return View('Admin/dashboard', ['cs'=>$courses, 'sts'=>$students, 'tsts'=>$tests, 'cls'=>$classes, 'sbs'=>$subjects, 'tps'=>$topics, 'qs'=>$questions, 'tss'=>$series]);
-//        dd($classes);
+    public function dashboard(Request $request){
+        $apiController = new \App\Http\Controllers\Api\AdminDashboardController();
+        $response = $apiController->getDashboardData($request);
+        $dashboardData = $response->getData(true);
+        $d = $dashboardData['data'] ?? [];
+
+        return view('Admin/dashboard', [
+            'd' => $d,
+            'meta' => $d['meta'] ?? [],
+            'kpis' => $d['kpis'] ?? [],
+            'revenue_trend' => $d['revenue_trend'] ?? [],
+            'product_share' => $d['product_share'] ?? [],
+            'trending' => $d['trending'] ?? [],
+            'signups_by_class' => $d['signups_by_class'] ?? [],
+            'action_queues' => $d['action_queues'] ?? [],
+            'payments' => $d['payments'] ?? [],
+            'qbank_health' => $d['qbank_health'] ?? [],
+            'team_throughput' => $d['team_throughput'] ?? []
+        ]);
     }
 
     // User Profile  

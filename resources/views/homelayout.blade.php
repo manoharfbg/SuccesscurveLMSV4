@@ -48,6 +48,7 @@
 
 
 <!--        Header Section      -->
+        @if(!Request::is('/'))
         <header>
             <nav class="navbar navbar-expand-xl navbar-dark bg-transparent shadow-sm fixed-top pd-20">
                 <a class="navbar-brand" href="#">
@@ -124,37 +125,11 @@
             </nav>
 
             <div class="preloader" id="preloader">
-                {{-- <div class="book">
-                  <div class="inner">
-                    <div class="left"></div>
-                    <div class="middle"></div>
-                    <div class="right"></div>
-                  </div>
-                  <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                  </ul>
-                </div> --}}
                 <div class="loader"></div>
             </div>
 
         </header>
+        @endif
 <!--        End Of Header       -->
 
 <!--        Main Body Section       -->
@@ -164,6 +139,7 @@
 <!--        End Of Main Body Section       -->
 
    <!--        Start Footer Section       -->
+        @if(!Request::is('/'))
         <footer class="footer">
 		   <div class="row">
 				<div class="col-md-3 footer-items">
@@ -241,6 +217,7 @@
 			</div>
 
 		</footer>
+        @endif
 <!--        End of Footer Section       -->
 
 <!--        BootStrap Scripts       -->
@@ -263,24 +240,10 @@
         <script>
         function funLoad(){
             var preloader = document.getElementById('preloader');
-            preloader.style.display = 'none';
+            if (preloader) {
+                preloader.style.display = 'none';
+            }
         }
-        </script>
-        <script>
-
-            $(window).on("scroll", function(){
-                if($(window).scrollTop()){
-                    $('nav').removeClass('bg-transparent');
-                    $('nav').removeClass('pd-20');
-                    $('nav').addClass('bg-dark');
-                }
-                else{
-                    $('nav').removeClass('bg-dark');
-                    $('nav').addClass('bg-transparent');
-                    $('nav').addClass('pd-20');
-                }
-            });
-
         </script>
 
         @yield('javascript')

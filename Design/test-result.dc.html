@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#F6F4FF; }
+  a { color:#4B2BE8; text-decoration:none; }
+  a:hover { color:#141033; }
+</style>
+</helmet>
+<div style="background:#F6F4FF;color:#141033;font-family:'DM Sans',system-ui,sans-serif;min-height:100vh">
+
+  <div style="background:#0B0A1F;padding:12px 28px;display:flex;align-items:center;gap:18px;flex-wrap:wrap">
+    <div style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;letter-spacing:-0.025em;white-space:nowrap"><span style="color:#5AA9FF">Success</span><span style="color:#FF9A3D">Curve</span><sup style="font-size:0.46em;font-weight:600;color:#9E97D9;margin-left:1px;top:-0.7em">.in</sup></div>
+    <div style="flex:1"></div>
+    <a href="#" style="border:1px solid #3A3270;color:#EDEBFF;font-size:13px;font-weight:700;padding:8px 14px;border-radius:9px" style-hover="background:#241E52">Download PDF ↓</a>
+    <a href="#" style="color:#EDEBFF;font-size:13.5px;font-weight:600">Back to series</a>
+  </div>
+
+  <header style="position:relative;overflow:hidden;background:linear-gradient(135deg,#0A3D82,#0A4FA8);padding:32px 28px;border-radius:0 0 22px 22px">
+    <div style="position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px, rgba(255,255,255,.12) 1px, transparent 0);background-size:22px 22px;pointer-events:none"></div>
+    <div style="position:relative;max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:28px;flex-wrap:wrap">
+      <div style="min-width:0;flex:1">
+        <span style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.14);color:#FFFFFF;font-size:12.5px;font-weight:700;padding:6px 13px;border-radius:999px">📄 Test Report</span>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;color:#FFFFFF;margin-top:12px;line-height:1.2">Class 10 All-Subject Board Series — Test 6</div>
+        <div style="font-size:13.5px;color:#BFD6F5;margin-top:8px">📅 Submitted 13 Sep 2026, 11:47 AM · ⏱ 2:41 of 3:00</div>
+        <div style="display:inline-flex;align-items:center;gap:9px;background:rgba(46,157,110,0.22);border:1px solid rgba(111,224,168,0.35);color:#DFF7E9;font-size:13.5px;font-weight:600;padding:9px 15px;border-radius:12px;margin-top:16px">🎯 Great job! You're in the top 14% — cleared with distinction.</div>
+        <div style="margin-top:16px"><a href="#" style="display:inline-flex;align-items:center;gap:8px;background:#FFFFFF;color:#0A4FA8;font-size:13.5px;font-weight:700;padding:10px 18px;border-radius:10px" style-hover="background:#EAF1FB">⬇ Download Score Card as PDF</a></div>
+      </div>
+      <div style="position:relative;width:210px;height:210px;flex-shrink:0;border-radius:999px;background:conic-gradient(#FF7A38 0turn 0.775turn,rgba(255,255,255,0.22) 0.775turn 1turn)">
+        <div style="position:absolute;inset:14px;border-radius:999px;background:#0A4FA8;display:flex;flex-direction:column;align-items:center;justify-content:center">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:64px;font-weight:700;color:#FFFFFF;line-height:1">248</div>
+          <div style="font-size:14px;color:#BFD6F5;margin-top:4px">out of 320</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div style="background:#FFFFFF;border-bottom:1px solid #E8E3FA;padding:0 28px;display:flex;gap:4px;overflow:auto">
+    <button type="button" onClick="{{ showScore }}" style="border:none;background:transparent;font-family:inherit;font-size:15px;font-weight:700;padding:16px 20px;cursor:pointer;white-space:nowrap;color:{{ scoreColor }};border-bottom:3px solid {{ scoreBorder }}">Score</button>
+    <button type="button" onClick="{{ showAnalysis }}" style="border:none;background:transparent;font-family:inherit;font-size:15px;font-weight:700;padding:16px 20px;cursor:pointer;white-space:nowrap;color:{{ analysisColor }};border-bottom:3px solid {{ analysisBorder }}">Analysis</button>
+    <button type="button" onClick="{{ showKey }}" style="border:none;background:transparent;font-family:inherit;font-size:15px;font-weight:700;padding:16px 20px;cursor:pointer;white-space:nowrap;color:{{ keyColor }};border-bottom:3px solid {{ keyBorder }}">Answer key <span style="font-weight:600;color:#8079B8">80</span></button>
+  </div>
+
+  <sc-if value="{{ isScore }}" hint-placeholder-val="{{ true }}">
+  <div style="padding:26px 28px 56px;display:grid;gap:18px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px">
+      <sc-for list="{{ ringCards }}" as="r" hint-placeholder-count="3">
+        <div style="background:#FFFFFF;border-radius:18px;border:1px solid #EDE9FB;padding:20px;display:flex;align-items:center;gap:16px">
+          <div style="position:relative;width:64px;height:64px;flex-shrink:0;border-radius:999px;background:conic-gradient({{ r.color }} 0turn {{ r.frac }}turn,#F1EEFF {{ r.frac }}turn 1turn)">
+            <div style="position:absolute;inset:7px;border-radius:999px;background:#FFFFFF;display:flex;align-items:center;justify-content:center"><span style="font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:700;color:{{ r.color }}">{{ r.value }}</span></div>
+          </div>
+          <div><div style="font-size:15.5px;font-weight:700">{{ r.label }}</div><div style="font-size:13px;color:#6B64A8;margin-top:2px">{{ r.sub }}</div></div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:9px;margin-top:2px"><span style="font-size:18px">📊</span><span style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700">Overview</span></div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px">
+      <sc-for list="{{ statCards }}" as="s" hint-placeholder-count="6">
+        <div style="background:#FFFFFF;border-radius:16px;border:1px solid #EDE9FB;padding:16px">
+          <div style="width:38px;height:38px;border-radius:11px;background:{{ s.bg }};display:flex;align-items:center;justify-content:center;font-size:16px">{{ s.icon }}</div>
+          <div style="font-size:13px;font-weight:600;color:#6B64A8;margin-top:10px">{{ s.label }}</div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;margin-top:3px">{{ s.value }}</div>
+          <div style="font-size:12px;color:#8079B8;margin-top:2px">{{ s.sub }}</div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px">
+      <div style="background:#FFFFFF;border-radius:18px;border:1px solid #EDE9FB;padding:22px">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:16.5px;font-weight:700">Answer distribution</div>
+        <div style="display:flex;align-items:center;gap:22px;margin-top:18px;flex-wrap:wrap">
+          <div style="position:relative;width:130px;height:130px;flex-shrink:0;border-radius:999px;background:conic-gradient(#2F8F4E 0turn 0.72turn,#E4573D 0.72turn 0.92turn,#F4B93E 0.92turn 1turn)">
+            <div style="position:absolute;inset:18px;background:#FFFFFF;border-radius:999px;display:flex;flex-direction:column;align-items:center;justify-content:center"><div style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;line-height:1">25</div><div style="font-size:11px;color:#8079B8">questions</div></div>
+          </div>
+          <div style="display:grid;gap:11px">
+            <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600"><span style="width:12px;height:12px;border-radius:4px;background:#2F8F4E"></span>Correct<span style="margin-left:auto;font-family:'Space Grotesk',sans-serif;font-weight:700">18</span></div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600"><span style="width:12px;height:12px;border-radius:4px;background:#E4573D"></span>Wrong<span style="margin-left:auto;font-family:'Space Grotesk',sans-serif;font-weight:700">5</span></div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600"><span style="width:12px;height:12px;border-radius:4px;background:#F4B93E"></span>Skipped<span style="margin-left:auto;font-family:'Space Grotesk',sans-serif;font-weight:700">2</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:#FFFFFF;border-radius:18px;border:1px solid #EDE9FB;padding:22px">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:16.5px;font-weight:700">Your percentile</div>
+        <div style="font-size:13px;color:#6B64A8;margin-top:3px">Better than 88% of test takers</div>
+        <div style="display:flex;justify-content:center;margin:8px 0 2px">
+          <svg viewBox="0 0 200 112" style="width:220px">
+            <path d="M14,100 A86,86 0 0 1 186,100" fill="none" stroke="#F1EEFF" stroke-width="14" stroke-linecap="round"></path>
+            <path d="M14,100 A86,86 0 0 1 158,34" fill="none" stroke="#FF8A3D" stroke-width="14" stroke-linecap="round"></path>
+            <text x="100" y="82" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="27" font-weight="700" fill="#141033">88.5</text>
+            <text x="100" y="100" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11.5" fill="#8079B8">percentile</text>
+          </svg>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:12px;color:#8079B8;font-weight:600;padding:0 6px"><span>0</span><span>Top 12%</span><span>100</span></div>
+      </div>
+    </div>
+
+    <div style="background:#FFFFFF;border-radius:18px;border:1px solid #EDE9FB;padding:24px">
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:16.5px;font-weight:700">Score curve — you vs the topper</div>
+      <div style="font-size:13px;color:#6B64A8;margin-top:3px">Where your score sits on the class's score distribution.</div>
+      <div style="position:relative;margin-top:18px">
+        <svg viewBox="0 0 640 220" style="width:100%;height:auto;overflow:visible">
+          <line x1="30" y1="14" x2="30" y2="176" stroke="#EDE9FB"></line>
+          <line x1="30" y1="176" x2="620" y2="176" stroke="#EDE9FB"></line>
+          <line x1="30" y1="130" x2="620" y2="130" stroke="#F6F4FF"></line>
+          <line x1="30" y1="84" x2="620" y2="84" stroke="#F6F4FF"></line>
+          <line x1="30" y1="38" x2="620" y2="38" stroke="#F6F4FF"></line>
+          <line x1="325" y1="14" x2="325" y2="176" stroke="#E0DAF7" stroke-dasharray="4 4"></line>
+          <text x="18" y="18" text-anchor="end" font-family="DM Sans, sans-serif" font-size="11" fill="#8079B8">80</text>
+          <text x="18" y="180" text-anchor="end" font-family="DM Sans, sans-serif" font-size="11" fill="#8079B8">0</text>
+          <path d="M50,167 L325,163 Q420,158 480,120 Q540,80 600,40 L600,176 L50,176 Z" fill="#4B2BE8" opacity="0.08"></path>
+          <path d="M50,167 L325,163 Q420,158 480,120 Q540,80 600,40" fill="none" stroke="#4B2BE8" stroke-width="4" stroke-linecap="round"></path>
+          <circle cx="50" cy="167" r="6" fill="#4B2BE8"></circle>
+          <circle cx="325" cy="163" r="7" fill="#4B2BE8" stroke="#FFFFFF" stroke-width="2.5"></circle>
+          <circle cx="600" cy="40" r="6" fill="#4B2BE8"></circle>
+          <g transform="translate(50,167)"><rect x="-14" y="-30" width="28" height="22" rx="6" fill="#4B2BE8"></rect><text x="0" y="-15" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="12.5" font-weight="700" fill="#FFFFFF">8</text></g>
+          <g transform="translate(600,40)"><rect x="-16" y="-30" width="32" height="22" rx="6" fill="#4B2BE8"></rect><text x="0" y="-15" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="12.5" font-weight="700" fill="#FFFFFF">76</text></g>
+          <text x="50" y="198" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="12.5" font-weight="600" fill="#141033">Min</text>
+          <text x="325" y="198" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="12.5" font-weight="600" fill="#141033">You</text>
+          <text x="600" y="198" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="12.5" font-weight="600" fill="#141033">Topper</text>
+        </svg>
+        <div style="position:absolute;left:50%;top:52%;transform:translate(-50%,0);background:#FFFFFF;border:1px solid #E0DAF7;border-radius:12px;padding:10px 16px;box-shadow:0 8px 20px -8px rgba(20,16,51,0.25);text-align:center">
+          <div style="font-size:12px;font-weight:700;color:#8079B8">Your score</div>
+          <div style="display:flex;align-items:center;justify-content:center;gap:7px;margin-top:3px"><span style="width:9px;height:9px;border-radius:999px;background:#4B2BE8"></span><span style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700">67</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:#FFFFFF;border-radius:18px;border:1px solid #EDE9FB;padding:24px">
+      <div style="display:flex;align-items:center;gap:9px"><span style="font-size:17px">⚖️</span><span style="font-family:'Space Grotesk',sans-serif;font-size:16.5px;font-weight:700">You vs Topper vs Average</span></div>
+      <div style="display:flex;gap:16px;margin-top:12px;font-size:12.5px;font-weight:700;color:#6B64A8"><span><span style="display:inline-block;width:10px;height:10px;border-radius:3px;background:#FF7A38;vertical-align:middle;margin-right:6px"></span>You</span><span><span style="display:inline-block;width:10px;height:10px;border-radius:3px;background:#2F8F4E;vertical-align:middle;margin-right:6px"></span>Topper</span><span><span style="display:inline-block;width:10px;height:10px;border-radius:3px;background:#C7CEEB;vertical-align:middle;margin-right:6px"></span>Average</span></div>
+
+      <div style="display:grid;gap:22px;margin-top:20px">
+        <sc-for list="{{ compareGroups }}" as="g" hint-placeholder-count="4">
+          <div>
+            <div style="font-size:14px;font-weight:700;margin-bottom:10px">{{ g.title }}</div>
+            <div style="display:grid;gap:8px">
+              <sc-for list="{{ g.rows }}" as="row" hint-placeholder-count="3">
+                <div style="display:flex;align-items:center;gap:10px">
+                  <span style="width:52px;font-size:12.5px;color:#6B64A8;font-weight:600;flex-shrink:0">{{ row.label }}</span>
+                  <div style="flex:1;height:14px;background:#F1EEFF;border-radius:999px;overflow:hidden"><div style="{{ row.barStyle }}"></div></div>
+                  <span style="width:34px;text-align:right;font-size:13px;font-weight:700;flex-shrink:0">{{ row.value }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px">
+      <div style="background:#FFFFFF;border-radius:18px;border:1px solid #EDE9FB;padding:22px">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:16.5px;font-weight:700">Marks by section</div>
+        <div style="display:grid;gap:14px;margin-top:16px">
+          <div><div style="display:flex;justify-content:space-between;font-size:13.5px;font-weight:600;margin-bottom:6px"><span>Mathematics</span><span style="color:#6B64A8">68 / 80</span></div><div style="height:11px;background:#F1EEFF;border-radius:999px;overflow:hidden"><div style="width:85%;height:100%;background:#4B2BE8"></div></div></div>
+          <div><div style="display:flex;justify-content:space-between;font-size:13.5px;font-weight:600;margin-bottom:6px"><span>Science</span><span style="color:#6B64A8">84 / 120</span></div><div style="height:11px;background:#F1EEFF;border-radius:999px;overflow:hidden"><div style="width:70%;height:100%;background:#7A3BF0"></div></div></div>
+          <div><div style="display:flex;justify-content:space-between;font-size:13.5px;font-weight:600;margin-bottom:6px"><span>Social Science</span><span style="color:#6B64A8">62 / 80</span></div><div style="height:11px;background:#F1EEFF;border-radius:999px;overflow:hidden"><div style="width:77.5%;height:100%;background:#C026D3"></div></div></div>
+          <div><div style="display:flex;justify-content:space-between;font-size:13.5px;font-weight:600;margin-bottom:6px"><span>English</span><span style="color:#6B64A8">34 / 40</span></div><div style="height:11px;background:#F1EEFF;border-radius:999px;overflow:hidden"><div style="width:85%;height:100%;background:#0E9C8A"></div></div></div>
+        </div>
+      </div>
+
+      <div style="background:#D6FB5A;border-radius:18px;padding:22px;display:flex;flex-direction:column;justify-content:space-between">
+        <div>
+          <div style="font-size:12px;font-weight:800;letter-spacing:0.07em;text-transform:uppercase;color:#3F4E0C">Do this next</div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:700;color:#242E06;margin-top:9px;line-height:1.3">Chemical Reactions — balancing</div>
+          <div style="font-size:14px;color:#3F4E0C;margin-top:7px;line-height:1.5">You lost 16 marks here across 5 questions. A 15-question drill takes 20 minutes.</div>
+        </div>
+        <div style="display:grid;gap:9px;margin-top:18px">
+          <a href="#" style="display:block;text-align:center;background:#141033;color:#FFFFFF;font-size:14px;font-weight:700;padding:12px 16px;border-radius:10px" style-hover="background:#4B2BE8">Start the drill</a>
+          <a href="#" style="display:block;text-align:center;background:rgba(36,46,6,0.1);color:#242E06;font-size:14px;font-weight:700;padding:12px 16px;border-radius:10px" style-hover="background:rgba(36,46,6,0.18)">Revise the lecture</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isAnalysis }}">
+  <div style="padding:26px 28px 56px;display:grid;gap:18px">
+    <div style="background:#FFFFFF;border-radius:18px;border:1px solid #EDE9FB;padding:22px">
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:16.5px;font-weight:700">Section by section</div>
+      <div style="overflow:auto;margin-top:16px">
+        <table style="width:100%;border-collapse:collapse;font-size:14px;min-width:520px">
+          <tr style="text-align:left"><th style="padding:0 12px 10px 0;font-size:12px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;color:#6B64A8">Section</th><th style="padding:0 12px 10px 0;font-size:12px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;color:#6B64A8">Marks</th><th style="padding:0 12px 10px 0;font-size:12px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;color:#6B64A8">Accuracy</th><th style="padding:0 12px 10px 0;font-size:12px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;color:#6B64A8">Negative</th><th style="padding:0 0 10px 0;font-size:12px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;color:#6B64A8">Time</th></tr>
+          <tr style="border-top:1px solid #F1EEFF"><td style="padding:13px 12px 13px 0;font-weight:600">Mathematics</td><td style="padding:13px 12px 13px 0">68 / 80</td><td style="padding:13px 12px 13px 0;font-weight:700;color:#1F6B3B">85%</td><td style="padding:13px 12px 13px 0;color:#B03A26">−3</td><td style="padding:13px 0">38 min</td></tr>
+          <tr style="border-top:1px solid #F1EEFF"><td style="padding:13px 12px 13px 0;font-weight:600">Science</td><td style="padding:13px 12px 13px 0">84 / 120</td><td style="padding:13px 12px 13px 0;font-weight:700;color:#E8A33D">70%</td><td style="padding:13px 12px 13px 0;color:#B03A26">−8</td><td style="padding:13px 0">71 min</td></tr>
+          <tr style="border-top:1px solid #F1EEFF"><td style="padding:13px 12px 13px 0;font-weight:600">Social Science</td><td style="padding:13px 12px 13px 0">62 / 80</td><td style="padding:13px 12px 13px 0;font-weight:700;color:#1F6B3B">78%</td><td style="padding:13px 12px 13px 0;color:#B03A26">−3</td><td style="padding:13px 0">32 min</td></tr>
+          <tr style="border-top:1px solid #F1EEFF"><td style="padding:13px 12px 13px 0;font-weight:600">English</td><td style="padding:13px 12px 13px 0">34 / 40</td><td style="padding:13px 12px 13px 0;font-weight:700;color:#1F6B3B">85%</td><td style="padding:13px 12px 13px 0;color:#B03A26">−1</td><td style="padding:13px 0">20 min</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div style="background:#FFFFFF;border-radius:18px;border:1px solid #EDE9FB;padding:22px">
+      <div style="display:flex;justify-content:space-between;align-items:end;gap:12px;flex-wrap:wrap"><div><div style="font-family:'Space Grotesk',sans-serif;font-size:16.5px;font-weight:700">Topic by topic</div><div style="font-size:13px;color:#6B64A8;margin-top:4px">Sorted by marks lost.</div></div></div>
+      <div style="display:grid;gap:10px;margin-top:16px">
+        <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;background:#FDF2F0;border-radius:12px;padding:13px 15px"><div style="min-width:0;flex:1"><div style="font-size:14.5px;font-weight:700">Chemical Reactions — balancing</div><div style="font-size:12.5px;color:#8A6B66;margin-top:3px">Science · 5 questions · 1 correct · 16 marks lost</div></div><div style="width:110px;height:9px;background:#F3DDD8;border-radius:999px;overflow:hidden;flex-shrink:0"><div style="width:20%;height:100%;background:#E4573D"></div></div><a href="#" style="background:#141033;color:#FFFFFF;font-size:13px;font-weight:700;padding:9px 15px;border-radius:9px;flex-shrink:0" style-hover="background:#4B2BE8">Revise</a></div>
+        <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;background:#FDF6EE;border-radius:12px;padding:13px 15px"><div style="min-width:0;flex:1"><div style="font-size:14.5px;font-weight:700">Quadratic Equations — word problems</div><div style="font-size:12.5px;color:#8A7458;margin-top:3px">Mathematics · 4 questions · 2 correct · 9 marks lost</div></div><div style="width:110px;height:9px;background:#F3E7D5;border-radius:999px;overflow:hidden;flex-shrink:0"><div style="width:50%;height:100%;background:#E8A33D"></div></div><a href="#" style="background:#141033;color:#FFFFFF;font-size:13px;font-weight:700;padding:9px 15px;border-radius:9px;flex-shrink:0" style-hover="background:#4B2BE8">Revise</a></div>
+        <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;background:#F9F8FF;border-radius:12px;padding:13px 15px"><div style="min-width:0;flex:1"><div style="font-size:14.5px;font-weight:700">Nationalism in India — timeline</div><div style="font-size:12.5px;color:#6B64A8;margin-top:3px">Social Science · 6 questions · 4 correct · 8 marks lost</div></div><div style="width:110px;height:9px;background:#EDE9FB;border-radius:999px;overflow:hidden;flex-shrink:0"><div style="width:67%;height:100%;background:#4B2BE8"></div></div><a href="#" style="background:#141033;color:#FFFFFF;font-size:13px;font-weight:700;padding:9px 15px;border-radius:9px;flex-shrink:0" style-hover="background:#4B2BE8">Revise</a></div>
+        <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;background:#F9F8FF;border-radius:12px;padding:13px 15px"><div style="min-width:0;flex:1"><div style="font-size:14.5px;font-weight:700">Trigonometry — heights &amp; distances</div><div style="font-size:12.5px;color:#6B64A8;margin-top:3px">Mathematics · 5 questions · 5 correct · 0 marks lost</div></div><div style="width:110px;height:9px;background:#EDE9FB;border-radius:999px;overflow:hidden;flex-shrink:0"><div style="width:100%;height:100%;background:#2F8F4E"></div></div><span style="font-size:12.5px;font-weight:800;color:#2F8F4E;flex-shrink:0">Strong</span></div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px">
+      <div style="background:#FFFFFF;border-radius:18px;border:1px solid #EDE9FB;padding:22px">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:16.5px;font-weight:700">Time per question</div>
+        <div style="font-size:13px;color:#6B64A8;margin-top:4px">Yours against the cohort average, by section.</div>
+        <div style="display:grid;gap:16px;margin-top:18px">
+          <div><div style="display:flex;justify-content:space-between;font-size:13.5px;font-weight:600;margin-bottom:7px"><span>Mathematics</span><span style="color:#6B64A8">1m 54s · avg 1m 40s</span></div><div style="position:relative;height:11px;background:#F1EEFF;border-radius:999px"><div style="width:64%;height:100%;background:#4B2BE8;border-radius:999px"></div><div style="position:absolute;left:56%;top:-3px;width:3px;height:17px;background:#141033;border-radius:2px"></div></div></div>
+          <div><div style="display:flex;justify-content:space-between;font-size:13.5px;font-weight:600;margin-bottom:7px"><span>Science</span><span style="color:#6B64A8">2m 22s · avg 1m 48s</span></div><div style="position:relative;height:11px;background:#F1EEFF;border-radius:999px"><div style="width:82%;height:100%;background:#E4573D;border-radius:999px"></div><div style="position:absolute;left:62%;top:-3px;width:3px;height:17px;background:#141033;border-radius:2px"></div></div></div>
+          <div><div style="display:flex;justify-content:space-between;font-size:13.5px;font-weight:600;margin-bottom:7px"><span>Social Science</span><span style="color:#6B64A8">1m 36s · avg 1m 44s</span></div><div style="position:relative;height:11px;background:#F1EEFF;border-radius:999px"><div style="width:54%;height:100%;background:#2F8F4E;border-radius:999px"></div><div style="position:absolute;left:59%;top:-3px;width:3px;height:17px;background:#141033;border-radius:2px"></div></div></div>
+        </div>
+        <div style="font-size:13px;color:#6B64A8;margin-top:16px;padding-top:14px;border-top:1px solid #F1EEFF;line-height:1.5">The black line is the cohort average. Science is where your time goes.</div>
+      </div>
+
+      <div style="background:#FFFFFF;border-radius:18px;border:1px solid #EDE9FB;padding:22px">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:16.5px;font-weight:700">Did you rush the end?</div>
+        <div style="font-size:13px;color:#6B64A8;margin-top:4px">Accuracy across the paper, in blocks of ten questions.</div>
+        <svg viewBox="0 0 400 170" style="width:100%;height:auto;margin-top:12px">
+          <line x1="34" y1="20" x2="392" y2="20" stroke="#F1EEFF"></line>
+          <line x1="34" y1="60" x2="392" y2="60" stroke="#F1EEFF"></line>
+          <line x1="34" y1="100" x2="392" y2="100" stroke="#F1EEFF"></line>
+          <line x1="34" y1="140" x2="392" y2="140" stroke="#EDE9FB"></line>
+          <text x="28" y="24" text-anchor="end" font-family="DM Sans, sans-serif" font-size="10.5" fill="#A29CD4">100%</text>
+          <text x="28" y="64" text-anchor="end" font-family="DM Sans, sans-serif" font-size="10.5" fill="#A29CD4">75%</text>
+          <text x="28" y="104" text-anchor="end" font-family="DM Sans, sans-serif" font-size="10.5" fill="#A29CD4">50%</text>
+          <rect x="42" y="44" width="34" height="96" rx="4" fill="#2F8F4E"></rect>
+          <rect x="86" y="36" width="34" height="104" rx="4" fill="#2F8F4E"></rect>
+          <rect x="130" y="52" width="34" height="88" rx="4" fill="#2F8F4E"></rect>
+          <rect x="174" y="68" width="34" height="72" rx="4" fill="#4B2BE8"></rect>
+          <rect x="218" y="76" width="34" height="64" rx="4" fill="#4B2BE8"></rect>
+          <rect x="262" y="92" width="34" height="48" rx="4" fill="#E8A33D"></rect>
+          <rect x="306" y="104" width="34" height="36" rx="4" fill="#E4573D"></rect>
+          <rect x="350" y="112" width="34" height="28" rx="4" fill="#E4573D"></rect>
+          <text x="59" y="158" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="10.5" fill="#6B64A8">1-10</text>
+          <text x="103" y="158" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="10.5" fill="#6B64A8">11-20</text>
+          <text x="147" y="158" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="10.5" fill="#6B64A8">21-30</text>
+          <text x="191" y="158" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="10.5" fill="#6B64A8">31-40</text>
+          <text x="235" y="158" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="10.5" fill="#6B64A8">41-50</text>
+          <text x="279" y="158" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="10.5" fill="#6B64A8">51-60</text>
+          <text x="323" y="158" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="10.5" fill="#6B64A8">61-70</text>
+          <text x="367" y="158" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="10.5" fill="#6B64A8">71-80</text>
+        </svg>
+        <div style="font-size:13px;color:#6B64A8;line-height:1.5">Accuracy falls after question 50. You had 19 minutes left — pace, not time, was the problem.</div>
+      </div>
+
+      <div style="background:#FFFFFF;border-radius:18px;border:1px solid #EDE9FB;padding:22px">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:16.5px;font-weight:700">Against your last attempt</div>
+        <div style="display:grid;gap:12px;margin-top:16px">
+          <div style="display:flex;align-items:center;gap:12px;font-size:14px"><span style="flex:1;font-weight:600">Marks</span><span style="color:#8079B8">226</span><span style="color:#A29CD4">→</span><span style="font-family:'Space Grotesk',sans-serif;font-weight:700">248</span><span style="font-size:12px;font-weight:800;color:#1F6B3B;background:#EAF7EE;padding:3px 8px;border-radius:6px">+22</span></div>
+          <div style="display:flex;align-items:center;gap:12px;font-size:14px"><span style="flex:1;font-weight:600">Accuracy</span><span style="color:#8079B8">69%</span><span style="color:#A29CD4">→</span><span style="font-family:'Space Grotesk',sans-serif;font-weight:700">74%</span><span style="font-size:12px;font-weight:800;color:#1F6B3B;background:#EAF7EE;padding:3px 8px;border-radius:6px">+5</span></div>
+          <div style="display:flex;align-items:center;gap:12px;font-size:14px"><span style="flex:1;font-weight:600">Percentile</span><span style="color:#8079B8">82.2</span><span style="color:#A29CD4">→</span><span style="font-family:'Space Grotesk',sans-serif;font-weight:700">86.4</span><span style="font-size:12px;font-weight:800;color:#1F6B3B;background:#EAF7EE;padding:3px 8px;border-radius:6px">+4.2</span></div>
+          <div style="display:flex;align-items:center;gap:12px;font-size:14px"><span style="flex:1;font-weight:600">Skipped</span><span style="color:#8079B8">11</span><span style="color:#A29CD4">→</span><span style="font-family:'Space Grotesk',sans-serif;font-weight:700">6</span><span style="font-size:12px;font-weight:800;color:#1F6B3B;background:#EAF7EE;padding:3px 8px;border-radius:6px">−5</span></div>
+        </div>
+      </div>
+
+      <div style="background:#FFFFFF;border-radius:18px;border:1px solid #EDE9FB;padding:22px">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:16.5px;font-weight:700">Against the top scorer</div>
+        <div style="font-size:13px;color:#6B64A8;margin-top:4px">Anonymous. Accuracy by section.</div>
+        <div style="display:grid;gap:14px;margin-top:18px">
+          <div><div style="display:flex;justify-content:space-between;font-size:13.5px;font-weight:600;margin-bottom:6px"><span>Mathematics</span><span style="color:#6B64A8">85% vs 95%</span></div><div style="display:grid;gap:4px"><div style="height:9px;background:#F1EEFF;border-radius:999px;overflow:hidden"><div style="width:85%;height:100%;background:#4B2BE8"></div></div><div style="height:9px;background:#F1EEFF;border-radius:999px;overflow:hidden"><div style="width:95%;height:100%;background:#D6FB5A"></div></div></div></div>
+          <div><div style="display:flex;justify-content:space-between;font-size:13.5px;font-weight:600;margin-bottom:6px"><span>Science</span><span style="color:#6B64A8">70% vs 92%</span></div><div style="display:grid;gap:4px"><div style="height:9px;background:#F1EEFF;border-radius:999px;overflow:hidden"><div style="width:70%;height:100%;background:#4B2BE8"></div></div><div style="height:9px;background:#F1EEFF;border-radius:999px;overflow:hidden"><div style="width:92%;height:100%;background:#D6FB5A"></div></div></div></div>
+          <div><div style="display:flex;justify-content:space-between;font-size:13.5px;font-weight:600;margin-bottom:6px"><span>Social Science</span><span style="color:#6B64A8">78% vs 88%</span></div><div style="display:grid;gap:4px"><div style="height:9px;background:#F1EEFF;border-radius:999px;overflow:hidden"><div style="width:78%;height:100%;background:#4B2BE8"></div></div><div style="height:9px;background:#F1EEFF;border-radius:999px;overflow:hidden"><div style="width:88%;height:100%;background:#D6FB5A"></div></div></div></div>
+        </div>
+        <div style="display:flex;gap:16px;font-size:12.5px;color:#6B64A8;font-weight:600;margin-top:16px"><span><span style="display:inline-block;width:10px;height:10px;border-radius:3px;background:#4B2BE8;vertical-align:middle;margin-right:6px"></span>You</span><span><span style="display:inline-block;width:10px;height:10px;border-radius:3px;background:#D6FB5A;vertical-align:middle;margin-right:6px"></span>Top scorer</span></div>
+      </div>
+
+      <div style="background:#FFFFFF;border-radius:18px;border:1px solid #EDE9FB;padding:22px">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:16.5px;font-weight:700">By difficulty</div>
+        <div style="display:grid;gap:14px;margin-top:18px">
+          <div><div style="display:flex;justify-content:space-between;font-size:13.5px;font-weight:600;margin-bottom:6px"><span>Easy · 28 questions</span><span style="color:#1F6B3B;font-weight:700">93%</span></div><div style="height:11px;background:#F1EEFF;border-radius:999px;overflow:hidden"><div style="width:93%;height:100%;background:#2F8F4E"></div></div></div>
+          <div><div style="display:flex;justify-content:space-between;font-size:13.5px;font-weight:600;margin-bottom:6px"><span>Moderate · 36 questions</span><span style="color:#4B2BE8;font-weight:700">72%</span></div><div style="height:11px;background:#F1EEFF;border-radius:999px;overflow:hidden"><div style="width:72%;height:100%;background:#4B2BE8"></div></div></div>
+          <div><div style="display:flex;justify-content:space-between;font-size:13.5px;font-weight:600;margin-bottom:6px"><span>Hard · 16 questions</span><span style="color:#E4573D;font-weight:700">44%</span></div><div style="height:11px;background:#F1EEFF;border-radius:999px;overflow:hidden"><div style="width:44%;height:100%;background:#E4573D"></div></div></div>
+        </div>
+        <div style="font-size:13px;color:#6B64A8;margin-top:16px;padding-top:14px;border-top:1px solid #F1EEFF;line-height:1.5">Easy and moderate questions are worth 224 of the 320 marks. Securing those is worth more than chasing the hard ones.</div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isKey }}">
+  <div style="padding:26px 28px 56px 28px;max-width:1180px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:20px;align-items:start">
+
+    <div style="background:#FFFFFF;border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(15,27,51,0.08)">
+      <div style="background:#0A3D82;padding:14px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+        <span style="font-size:14.5px;font-weight:700;color:#FFFFFF">Q{{ current }} · {{ q.type }}</span>
+        <span style="{{ q.statusPill }}">{{ q.statusIcon }} {{ q.status }}</span>
+        <div style="flex:1"></div>
+        <span style="font-size:13.5px;color:#BFD6F5">Marks: <strong style="color:#6FE0A8">+{{ q.marks }}</strong></span>
+        <span style="font-size:13.5px;color:#BFD6F5">Negative: <strong style="color:#FF9E8A">{{ q.negative }}</strong></span>
+      </div>
+
+      <div style="padding:26px 24px">
+        <p style="font-size:16.5px;line-height:1.6;margin:0 0 22px;color:#0F1B33">{{ q.text }}</p>
+        <div style="display:grid;gap:14px">
+          <sc-for list="{{ q.options }}" as="o" hint-placeholder-count="4">
+            <div style="{{ o.rowStyle }}">
+              <span style="{{ o.numStyle }}">{{ o.num }}</span>
+              <span style="flex:1;font-size:15.5px;color:#0F1B33">{{ o.text }}</span>
+              <sc-if value="{{ o.tag }}"><span style="{{ o.tagStyle }}">{{ o.tag }}</span></sc-if>
+            </div>
+          </sc-for>
+        </div>
+        <sc-if value="{{ q.explanation }}">
+        <div style="background:#F9F8FF;border-radius:13px;padding:17px 19px;margin-top:22px">
+          <div style="font-size:12px;font-weight:800;letter-spacing:0.07em;text-transform:uppercase;color:#6B64A8">Explanation</div>
+          <p style="font-size:15px;line-height:1.65;margin:9px 0 0;color:#3E3866">{{ q.explanation }}</p>
+        </div>
+        </sc-if>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:14px;padding:14px 24px;border-top:1px solid #EEF1F6">
+        <button type="button" onClick="{{ goPrev }}" style="border:none;background:#0A4FA8;color:#FFFFFF;font-size:14px;font-weight:700;padding:11px 20px;border-radius:9px">← Prev</button>
+        <div style="flex:1;text-align:center;font-size:13.5px;font-weight:600;color:#5C6A85">Q{{ current }} / {{ totalQ }}</div>
+        <button type="button" onClick="{{ goNext }}" style="border:none;background:#E4573D;color:#FFFFFF;font-size:14px;font-weight:700;padding:11px 20px;border-radius:9px">Next →</button>
+      </div>
+    </div>
+
+    <div style="display:grid;gap:16px">
+      <div style="background:#FFFFFF;border-radius:12px;padding:18px;box-shadow:0 1px 3px rgba(15,27,51,0.08)">
+        <div style="font-size:14.5px;font-weight:700;color:#0A4FA8;margin-bottom:14px">Question navigator</div>
+        <div style="display:flex;flex-wrap:wrap;gap:10px">
+          <sc-for list="{{ qNav }}" as="n" hint-placeholder-count="20">
+            <button type="button" onClick="{{ n.onClick }}" style="{{ n.style }}">{{ n.num }}</button>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="background:#FFFFFF;border-radius:12px;padding:18px;box-shadow:0 1px 3px rgba(15,27,51,0.08)">
+        <div style="font-size:14.5px;font-weight:700;color:#0F1B33;margin-bottom:12px">Result Overview</div>
+        <div style="display:grid;gap:10px">
+          <div style="display:flex;align-items:center;gap:9px;font-size:14px"><span style="width:11px;height:11px;border-radius:999px;background:#2FA96A"></span><span style="flex:1;color:#0F1B33;font-weight:500">Right</span><span style="font-weight:700">{{ rightCount }}</span></div>
+          <div style="display:flex;align-items:center;gap:9px;font-size:14px"><span style="width:11px;height:11px;border-radius:999px;background:#E4573D"></span><span style="flex:1;color:#0F1B33;font-weight:500">Wrong</span><span style="font-weight:700">{{ wrongCount }}</span></div>
+          <div style="display:flex;align-items:center;gap:9px;font-size:14px"><span style="width:11px;height:11px;border-radius:999px;background:#7B4FE0"></span><span style="flex:1;color:#0F1B33;font-weight:500">Not Answered</span><span style="font-weight:700">{{ skipCount }}</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:1100}}">
+class Component extends DCLogic {
+  state = { tab: 'score', current: 1 };
+  buildQPlate() {
+    const wrong = [7,14,18,23,31,42,48,55,61,64,67,71,73,76,79];
+    const skip = [9,27,36,52,63,75];
+    const items = [];
+    for (let i = 1; i <= 80; i++) {
+      let bg, color, border;
+      if (wrong.includes(i)) { bg = '#FDF0EC'; color = '#B03A26'; border = '2px solid #E4573D'; }
+      else if (skip.includes(i)) { bg = '#F1EEFF'; color = '#6B64A8'; border = '2px solid #E8E3FA'; }
+      else { bg = '#EAF7EE'; color = '#1F6B3B'; border = '2px solid #2F8F4E'; }
+      items.push({
+        num: i,
+        href: '#q' + i,
+        style: 'display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:9px;font-family:Space Grotesk,sans-serif;font-size:13px;font-weight:700;text-decoration:none;background:' + bg + ';color:' + color + ';border:' + border
+      });
+    }
+    return items;
+  }
+  buildAnswerData() {
+    const wrong = [7,14,18,23,31,42,48,55,61,64,67,71,73,76,79];
+    const skip = [9,27,36,52,63,75];
+    const questions = {
+      7: { type:'Multiple Choice', k:'wrong', marks:4, negative:'1.00', topic:'Trigonometry',
+        text:'From the top of a 75 m lighthouse, the angles of depression of two ships on the same side are 30° and 45°. What is the distance between the two ships, correct to the nearest metre?',
+        options:[ { text:'45 m' }, { text:'55 m', chosen:true }, { text:'75 m' }, { text:'130 m', correct:true } ],
+        explanation:'For 45°, tan 45° = 75 / d₁, so d₁ = 75 m. For 30°, tan 30° = 75 / d₂, so d₂ = 75√3 ≈ 129.9 m ≈ 130 m.' },
+      8: { type:'Multiple Choice', k:'correct', marks:4, negative:'1.00', topic:'Trigonometry',
+        text:'If sin θ + cos θ = √2, then the value of tan θ + cot θ is:',
+        options:[ { text:'1' }, { text:'2', correct:true, chosen:true }, { text:'3' }, { text:'4' } ] },
+      9: { type:'Multiple Choice', k:'skip', marks:4, negative:'1.00', topic:'Statistics',
+        text:'The median of the first ten prime numbers is:',
+        options:[ { text:'11' }, { text:'11.5' }, { text:'12', correct:true }, { text:'13' } ] }
+    };
+    for (let i=1;i<=80;i++) {
+      if (questions[i]) continue;
+      const k = wrong.includes(i) ? 'wrong' : skip.includes(i) ? 'skip' : 'correct';
+      const opts = k==='wrong'
+        ? [ { text:'Option A', chosen:true }, { text:'Option B', correct:true }, { text:'Option C' }, { text:'Option D' } ]
+        : k==='skip'
+        ? [ { text:'Option A' }, { text:'Option B' }, { text:'Option C', correct:true }, { text:'Option D' } ]
+        : [ { text:'Option A', correct:true, chosen:true }, { text:'Option B' }, { text:'Option C' }, { text:'Option D' } ];
+      questions[i] = { type:'Multiple Choice', k, marks:4, negative:'1.00', topic:'General', text:'Question '+i+' text goes here.', options:opts };
+    }
+    return { questions, wrong, skip };
+  }
+  renderVals() {
+    const t = this.state.tab;
+    const on = '#141033', off = '#6B64A8', bOn = '#4B2BE8', bOff = 'transparent';
+    const { questions, wrong, skip } = this.buildAnswerData();
+    const totalQ = 80;
+    const cur = this.state.current;
+    const raw = questions[cur];
+
+    const statusColors = {
+      correct: { bg:'#E4F7EC', fg:'#1F8C50', icon:'✓', label:'Correct' },
+      wrong: { bg:'#FDEAE6', fg:'#C94B33', icon:'✕', label:'Wrong' },
+      skip: { bg:'#EFE9FB', fg:'#6A3FCB', icon:'—', label:'Not Answered' }
+    };
+    const sc = statusColors[raw.k];
+
+    const options = raw.options.map((o, i) => {
+      let rowStyle = 'display:flex;align-items:center;gap:14px;border:1.5px solid #E3E9F2;border-radius:10px;padding:14px 16px';
+      let numStyle = 'width:26px;height:26px;border-radius:999px;background:#0F1B33;color:#FFFFFF;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0';
+      let tag = '', tagStyle = '';
+      if (o.correct) {
+        rowStyle = 'display:flex;align-items:center;gap:14px;border:1.5px solid #2FA96A;background:#EBF9F0;border-radius:10px;padding:14px 16px';
+        numStyle = 'width:26px;height:26px;border-radius:999px;background:#2FA96A;color:#FFFFFF;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0';
+      }
+      if (o.chosen && !o.correct) {
+        rowStyle = 'display:flex;align-items:center;gap:14px;border:1.5px solid #E4573D;background:#FDEDEA;border-radius:10px;padding:14px 16px';
+        numStyle = 'width:26px;height:26px;border-radius:999px;background:#E4573D;color:#FFFFFF;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0';
+      }
+      if (o.chosen && o.correct) { tag = '✓ Your answer · Correct'; tagStyle = 'font-size:12px;font-weight:700;color:#1F8C50;background:#DDF3E4;padding:4px 10px;border-radius:999px;white-space:nowrap'; }
+      else if (o.chosen) { tag = '✕ Your answer · Wrong'; tagStyle = 'font-size:12px;font-weight:700;color:#C94B33;background:#FBE1DC;padding:4px 10px;border-radius:999px;white-space:nowrap'; }
+      else if (o.correct) { tag = '✓ Correct answer'; tagStyle = 'font-size:12px;font-weight:700;color:#1F8C50;background:#DDF3E4;padding:4px 10px;border-radius:999px;white-space:nowrap'; }
+      return { num:i+1, text:o.text, rowStyle, numStyle, tag, tagStyle };
+    });
+
+    const q = {
+      type: raw.type, status: sc.label, marks: raw.marks, negative: raw.negative, text: raw.text,
+      explanation: raw.explanation || '',
+      statusIcon: sc.icon,
+      statusPill: `font-size:12.5px;font-weight:700;padding:4px 12px;border-radius:999px;background:${sc.bg};color:${sc.fg}`,
+      options
+    };
+
+    const qNav = [];
+    for (let i=1;i<=totalQ;i++) {
+      let bg='#2FA96A';
+      if (wrong.includes(i)) bg='#E4573D';
+      else if (skip.includes(i)) bg='#7B4FE0';
+      const active = i===cur;
+      qNav.push({ num:i, onClick: () => this.setState({ current:i }), style:`width:34px;height:34px;border:none;border-radius:999px;background:${bg};color:#FFFFFF;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;cursor:pointer;${active?'box-shadow:0 0 0 3px rgba(10,79,168,0.35)':''}` });
+    }
+
+    return {
+      isScore: t === 'score',
+      isAnalysis: t === 'analysis',
+      isKey: t === 'key',
+      scoreColor: t === 'score' ? on : off,
+      analysisColor: t === 'analysis' ? on : off,
+      keyColor: t === 'key' ? on : off,
+      scoreBorder: t === 'score' ? bOn : bOff,
+      analysisBorder: t === 'analysis' ? bOn : bOff,
+      keyBorder: t === 'key' ? bOn : bOff,
+      qPlate: this.buildQPlate(),
+      ringCards: [
+        { value:18, frac:0.72, color:'#2F8F4E', label:'Correct', sub:'answered right' },
+        { value:5, frac:0.20, color:'#E4573D', label:'Wrong', sub:'answered wrong' },
+        { value:2, frac:0.08, color:'#F4B93E', label:'Skipped', sub:'not attempted' }
+      ],
+      statCards: [
+        { icon:'🏅', bg:'#FFF1DC', label:'Rank', value:'12 / 240', sub:'in this test' },
+        { icon:'🎯', bg:'#DCEBFF', label:'Score', value:'67 / 100', sub:'+72 −5 marks' },
+        { icon:'✅', bg:'#DDF3E4', label:'Accuracy', value:'78.3%', sub:'18 of 23 correct' },
+        { icon:'📈', bg:'#EAE2FB', label:'Percentile', value:'88.5', sub:'top 12%' },
+        { icon:'⏱️', bg:'#DCEBFF', label:'Time Taken', value:'42:15', sub:'of 60:00' },
+        { icon:'📝', bg:'#FBE3D6', label:'Attempted', value:'23 / 25', sub:'2 skipped' }
+      ],
+      compareGroups: [
+        { title:'Score (out of 100)', rows:[
+          { label:'You', value:67, barStyle:'width:67%;height:100%;background:#FF7A38;border-radius:999px' },
+          { label:'Topper', value:92, barStyle:'width:92%;height:100%;background:#2F8F4E;border-radius:999px' },
+          { label:'Average', value:54, barStyle:'width:54%;height:100%;background:#C7CEEB;border-radius:999px' }
+        ]},
+        { title:'Accuracy (%)', rows:[
+          { label:'You', value:'78%', barStyle:'width:78%;height:100%;background:#FF7A38;border-radius:999px' },
+          { label:'Topper', value:'96%', barStyle:'width:96%;height:100%;background:#2F8F4E;border-radius:999px' },
+          { label:'Average', value:'61%', barStyle:'width:61%;height:100%;background:#C7CEEB;border-radius:999px' }
+        ]},
+        { title:'Attempted (of 25)', rows:[
+          { label:'You', value:23, barStyle:'width:92%;height:100%;background:#FF7A38;border-radius:999px' },
+          { label:'Topper', value:25, barStyle:'width:100%;height:100%;background:#2F8F4E;border-radius:999px' },
+          { label:'Average', value:21, barStyle:'width:84%;height:100%;background:#C7CEEB;border-radius:999px' }
+        ]},
+        { title:'Time used (of 60 min)', rows:[
+          { label:'You', value:'42m', barStyle:'width:70%;height:100%;background:#FF7A38;border-radius:999px' },
+          { label:'Topper', value:'38m', barStyle:'width:63%;height:100%;background:#2F8F4E;border-radius:999px' },
+          { label:'Average', value:'47m', barStyle:'width:78%;height:100%;background:#C7CEEB;border-radius:999px' }
+        ]}
+      ],
+      showScore: () => this.setState({ tab: 'score' }),
+      showAnalysis: () => this.setState({ tab: 'analysis' }),
+      showKey: () => this.setState({ tab: 'key' }),
+      current: cur, totalQ, q, qNav,
+      rightCount: totalQ - wrong.length - skip.length, wrongCount: wrong.length, skipCount: skip.length,
+      goPrev: () => this.setState(s => ({ current: Math.max(1, s.current-1) })),
+      goNext: () => this.setState(s => ({ current: Math.min(totalQ, s.current+1) }))
+    };
+  }
+}
+</script>
+</body>
+</html>

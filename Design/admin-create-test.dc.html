@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; }
+  button { font-family:inherit; cursor:pointer; }
+  a { text-decoration:none; }
+  input, select, textarea { font-family:inherit; }
+  input:focus, select:focus, textarea:focus { outline:none; border-color:#024F9D !important; box-shadow:0 0 0 3px rgba(2,79,157,0.10); }
+  ::-webkit-scrollbar { width:9px; height:9px; }
+</style>
+</helmet>
+<div style="display:grid;grid-template-columns:minmax(0,244px) minmax(0,1fr);min-height:100vh;font-family:'DM Sans',system-ui,sans-serif;background:{{ pageBg }};color:{{ text }}">
+
+  <aside style="position:sticky;top:0;height:100vh;overflow:hidden;background:radial-gradient(700px 400px at 20% -10%, #0a5fb8, #024f9d 45%, #01356c)">
+    <div style="position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px, rgba(255,255,255,.10) 1px, transparent 0);background-size:26px 26px;pointer-events:none"></div>
+    <div style="position:absolute;top:-60px;right:-40px;width:200px;height:200px;border-radius:999px;background:radial-gradient(circle,rgba(251,116,62,0.22),transparent 70%);pointer-events:none"></div>
+    <div style="position:relative;z-index:1;height:100%;box-sizing:border-box;padding:20px 14px;display:flex;flex-direction:column;gap:20px;overflow:auto">
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:21px;font-weight:700;letter-spacing:-0.025em;white-space:nowrap;padding:2px 6px"><span style="color:#8FC4F5">Success</span><span style="color:#FF9E6B">Curve</span><sup style="font-size:0.46em;font-weight:600;color:#B7C1D6;margin-left:1px;top:-0.7em">.in</sup></div>
+      <div style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.14);border-radius:12px;padding:9px 11px">
+        <div style="width:34px;height:34px;border-radius:9px;background:#FB743E;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;flex-shrink:0">M</div>
+        <div style="min-width:0"><div style="font-size:13.5px;font-weight:700;color:#FFFFFF;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Manohar K.</div><div style="font-size:11.5px;color:#B7C1D6">Super Admin</div></div>
+      </div>
+      <nav style="display:grid;gap:3px">
+        <sc-for list="{{ nav }}" as="n" hint-placeholder-count="9">
+          <sc-if value="{{ n.isLabel }}"><div style="font-size:10.5px;font-weight:800;letter-spacing:0.11em;text-transform:uppercase;color:#7FA6D6;padding:12px 8px 4px">{{ n.label }}</div></sc-if>
+          <sc-if value="{{ n.isLink }}"><a href="{{ n.href }}" style="{{ n.style }}"><span style="width:20px;text-align:center;flex-shrink:0">{{ n.icon }}</span><span style="flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ n.label }}</span></a></sc-if>
+        </sc-for>
+      </nav>
+    </div>
+  </aside>
+
+  <main style="min-width:0;padding:0 0 56px">
+    <header style="display:flex;align-items:center;gap:14px;padding:16px 32px;background:{{ card }};border-bottom:1px solid {{ border }};position:sticky;top:0;z-index:10;flex-wrap:wrap">
+      <a href="#" style="color:{{ sub }};font-size:20px">←</a>
+      <div style="min-width:0">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:21px;font-weight:700">Create mock test</div>
+        <div style="font-size:13.5px;color:{{ sub }};margin-top:2px">Set up the test, then attach questions from the bank</div>
+      </div>
+      <div style="flex:1"></div>
+      <button type="button" style="border:1px solid {{ border }};background:{{ inputBg }};color:{{ text }};font-size:13.5px;font-weight:700;padding:11px 16px;border-radius:10px;white-space:nowrap">Save draft</button>
+      <button type="button" style="border:none;background:#FB743E;color:#FFFFFF;font-size:13.5px;font-weight:800;padding:11px 18px;border-radius:10px;white-space:nowrap" style-hover="background:#E0672C">Publish test</button>
+    </header>
+
+    <div style="padding:22px 32px 0">
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button type="button" onClick="{{ goDetails }}" style="{{ tabDetails }}"><span style="{{ dotDetails }}">1</span> Test details</button>
+        <div style="align-self:center;color:{{ faint }}">›</div>
+        <button type="button" onClick="{{ goSections }}" style="{{ tabSections }}"><span style="{{ dotSections }}">2</span> Sections</button>
+        <div style="align-self:center;color:{{ faint }}">›</div>
+        <button type="button" onClick="{{ goQuestions }}" style="{{ tabQuestions }}"><span style="{{ dotQuestions }}">3</span> Add questions</button>
+      </div>
+    </div>
+
+    <sc-if value="{{ isDetails }}" hint-placeholder-val="{{ true }}">
+    <section style="padding:20px 32px 0;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:18px;align-items:start">
+      <div style="background:{{ card }};border-radius:18px;border:1px solid {{ border }};padding:26px;min-width:0">
+        <div style="display:grid;gap:18px">
+          <div>
+            <label style="{{ lbl }}">📋 Test title</label>
+            <input type="text" value="Class 10 All-Subject Board Series — Test 6" style="{{ inp }}">
+          </div>
+          <div>
+            <label style="{{ lbl }}">🔗 Test URI (slug)</label>
+            <input type="text" value="class-10-all-subject-board-series-test-6" style="{{ inp }}">
+            <div style="font-size:12px;color:{{ faint }};margin-top:6px">successcurve.in/test/<strong style="color:{{ sub }}">class-10-all-subject-board-series-test-6</strong></div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px">
+            <div><label style="{{ lbl }}">📚 Subject</label><select style="{{ inp }}"><option>Mathematics</option><option>Science</option><option>Social Science</option><option>English</option><option>All subjects</option></select></div>
+            <div><label style="{{ lbl }}">🏫 Class</label><select style="{{ inp }}"><option>Class 10</option><option>Class 9</option><option>Class 11</option><option>Class 12</option><option>CUET UG</option></select></div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px">
+            <div><label style="{{ lbl }}">📝 Instructions</label><select style="{{ inp }}"><option>Standard board pattern</option><option>MCQ negative-marking set</option><option>No negative marking</option></select></div>
+            <div><label style="{{ lbl }}">⏱ Duration (minutes)</label><input type="number" value="180" style="{{ inp }}"></div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px">
+            <div><label style="{{ lbl }}">💳 Is paid</label><select onChange="{{ onPaid }}" style="{{ inp }}"><option value="0">Free</option><option value="1">Paid</option></select></div>
+            <sc-if value="{{ isPaid }}"><div><label style="{{ lbl }}">₹ Cost</label><input type="number" value="99" style="{{ inp }}"></div></sc-if>
+          </div>
+          <sc-if value="{{ isPaid }}">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px">
+            <div><label style="{{ lbl }}">🕒 Validity (months)</label><input type="number" value="12" style="{{ inp }}"></div>
+            <div><label style="{{ lbl }}">📊 Publish result</label><select style="{{ inp }}"><option>Immediately</option><option>Later</option></select></div>
+          </div>
+          </sc-if>
+          <sc-if value="{{ isFree }}">
+          <div><label style="{{ lbl }}">📊 Publish result</label><select style="{{ inp }}"><option>Immediately</option><option>Later</option></select></div>
+          </sc-if>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px">
+            <div><label style="{{ lbl }}">📅 Start date</label><input type="datetime-local" value="2026-09-13T10:00" style="{{ inp }}"></div>
+            <div><label style="{{ lbl }}">🚩 End date</label><input type="datetime-local" value="2026-09-13T22:00" style="{{ inp }}"></div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px">
+            <div><label style="{{ lbl }}">➖ Negative marking</label><select onChange="{{ onNeg }}" style="{{ inp }}"><option value="0">Off</option><option value="1">On</option></select></div>
+            <sc-if value="{{ isNeg }}"><div><label style="{{ lbl }}">Marks deducted per wrong</label><input type="number" step="0.25" value="1" style="{{ inp }}"></div></sc-if>
+          </div>
+          <div><label style="{{ lbl }}">ℹ️ Description</label><textarea rows="4" style="{{ inp }}" placeholder="Rich text — pattern, syllabus covered, marking scheme…">Full board-pattern paper covering the entire Class 10 syllabus. 80 questions, 180 minutes, negative marking applies.</textarea></div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px">
+            <div><label style="{{ lbl }}">🏷 Meta keyword</label><textarea rows="2" style="{{ inp }}" placeholder="class 10 board mock test, maths, science">class 10 board mock test, all subject, cbse</textarea></div>
+            <div><label style="{{ lbl }}">🏷 Meta description</label><textarea rows="2" style="{{ inp }}" placeholder="For SEO snippet">Attempt the Class 10 all-subject board mock test with instant analysis.</textarea></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid;gap:18px;align-content:start">
+        <div style="background:{{ card }};border-radius:18px;border:1px solid {{ border }};padding:20px">
+          <label style="{{ lbl }}">🖼 Thumbnail</label>
+          <div style="border:1.5px dashed {{ border }};border-radius:13px;padding:26px;text-align:center;background:{{ inputBg }};margin-top:4px">
+            <div style="font-size:26px">🖼</div>
+            <div style="font-size:13px;font-weight:700;margin-top:8px">Drop image or click to upload</div>
+            <div style="font-size:12px;color:{{ faint }};margin-top:3px">JPG / PNG · 1200×630 recommended</div>
+          </div>
+        </div>
+        <div style="background:linear-gradient(140deg,#024F9D,#0A5FB8);border-radius:18px;padding:20px;color:#FFFFFF">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700">Next: add sections</div>
+          <p style="font-size:13px;color:#C9DBFF;margin:8px 0 16px;line-height:1.55">Save the test details, then define sections (title, marks, negative marks), then attach questions.</p>
+          <button type="button" onClick="{{ goSections }}" style="width:100%;border:none;background:#FB743E;color:#FFFFFF;font-size:14px;font-weight:800;padding:12px;border-radius:11px" style-hover="background:#E0672C">Save &amp; add sections →</button>
+        </div>
+      </div>
+    </section>
+    </sc-if>
+
+    <sc-if value="{{ isSections }}">
+    <section style="padding:20px 32px 0">
+      <div style="background:{{ card }};border-radius:18px;border:1px solid {{ border }};padding:24px">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+          <div><div style="font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:700">Test Sections</div><div style="font-size:13px;color:{{ sub }};margin-top:3px">Class 10 All-Subject Board Series — Test 6</div></div>
+          <button type="button" onClick="{{ openSectionModal }}" style="border:none;background:#024F9D;color:#FFFFFF;font-size:13.5px;font-weight:800;padding:11px 18px;border-radius:10px;white-space:nowrap" style-hover="background:#013A78">+ Add New</button>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:10px;margin-top:20px;flex-wrap:wrap">
+          <span style="font-size:12.5px;color:{{ sub }};font-weight:600">Show</span>
+          <select style="{{ inp }};margin:0;width:auto;padding:8px 10px"><option>10</option><option>25</option><option>50</option></select>
+          <span style="font-size:12.5px;color:{{ sub }};font-weight:600">entries</span>
+          <div style="flex:1"></div>
+          <input type="text" placeholder="Search…" style="{{ inp }};margin:0;width:auto;padding:8px 12px;max-width:170px">
+        </div>
+
+        <div style="margin-top:12px;border:1px solid {{ border }};border-radius:12px;overflow:hidden">
+          <div style="display:grid;grid-template-columns:60px 1fr 100px 110px 100px;background:{{ inputBg }};border-bottom:1px solid {{ border }};font-size:11px;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;color:{{ sub }}">
+            <div style="padding:11px 14px">#</div><div style="padding:11px 14px">Test Section</div><div style="padding:11px 14px">Marks</div><div style="padding:11px 14px">Neg Marks</div><div style="padding:11px 14px">Action</div>
+          </div>
+          <sc-for list="{{ sections }}" as="s" hint-placeholder-count="3">
+            <div style="{{ s.rowStyle }}">
+              <div style="padding:13px 14px;font-family:'Space Grotesk',sans-serif;font-weight:700;color:{{ sub }};font-size:13px">{{ s.num }}</div>
+              <div style="padding:13px 14px;font-size:14px;font-weight:700;color:#024F9D">{{ s.name }}</div>
+              <div style="padding:13px 14px;font-size:13.5px">{{ s.marks }}</div>
+              <div style="padding:13px 14px;font-size:13.5px">{{ s.neg }}</div>
+              <div style="padding:13px 14px;display:flex;gap:12px"><button type="button" style="border:none;background:transparent;color:#024F9D;font-size:15px">✎</button><button type="button" style="border:none;background:transparent;color:#C0564A;font-size:15px">🗑</button></div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:8px;margin-top:14px;flex-wrap:wrap">
+          <span style="font-size:12.5px;color:{{ sub }};font-weight:600">Showing 1 to {{ sectionCount }} of {{ sectionCount }} entries</span>
+          <div style="flex:1"></div>
+          <button type="button" style="border:1px solid {{ border }};background:{{ inputBg }};color:{{ faint }};font-size:12.5px;font-weight:700;padding:7px 12px;border-radius:8px">Previous</button>
+          <button type="button" style="border:none;background:#024F9D;color:#FFFFFF;font-size:12.5px;font-weight:700;width:30px;height:30px;border-radius:8px">1</button>
+          <button type="button" style="border:1px solid {{ border }};background:{{ inputBg }};color:{{ text }};font-size:12.5px;font-weight:700;padding:7px 12px;border-radius:8px">Next</button>
+        </div>
+      </div>
+
+      <div style="display:flex;justify-content:flex-end;margin-top:18px">
+        <button type="button" onClick="{{ goQuestions }}" style="border:none;background:#FB743E;color:#FFFFFF;font-size:14px;font-weight:800;padding:12px 22px;border-radius:11px" style-hover="background:#E0672C">Continue to add questions →</button>
+      </div>
+    </section>
+
+    <sc-if value="{{ sectionModalOpen }}">
+      <div style="position:fixed;inset:0;background:rgba(15,27,51,0.55);display:flex;align-items:center;justify-content:center;z-index:50;padding:20px">
+        <div style="background:#FFFFFF;border-radius:16px;width:min(440px,100%);padding:0;overflow:hidden;box-shadow:0 30px 60px -20px rgba(0,0,0,0.4)">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:20px 22px;border-bottom:1px solid #EEF1F6">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:700;color:#0F1B33">Add Test Sections</div>
+            <button type="button" onClick="{{ closeSectionModal }}" style="border:none;background:transparent;font-size:20px;color:#5C6A85;cursor:pointer">✕</button>
+          </div>
+          <div style="padding:22px;display:grid;gap:12px">
+            <input type="text" placeholder="Section Name" style="width:100%;box-sizing:border-box;border:1px solid #DCE3EE;background:#F8FAFD;border-radius:11px;padding:13px 15px;font-size:15px;color:#0F1B33">
+            <input type="number" placeholder="Marks" style="width:100%;box-sizing:border-box;border:1px solid #DCE3EE;background:#F8FAFD;border-radius:11px;padding:13px 15px;font-size:15px;color:#0F1B33">
+            <input type="number" placeholder="Negative Marks" style="width:100%;box-sizing:border-box;border:1px solid #DCE3EE;background:#F8FAFD;border-radius:11px;padding:13px 15px;font-size:15px;color:#0F1B33">
+          </div>
+          <div style="padding:0 22px 22px">
+            <button type="button" onClick="{{ closeSectionModal }}" style="width:100%;border:none;background:#024F9D;color:#FFFFFF;font-size:15.5px;font-weight:800;padding:14px;border-radius:11px" style-hover="background:#013A78">Add Section</button>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+    </sc-if>
+
+    <sc-if value="{{ isQuestions }}">
+    <section style="padding:20px 32px 0">
+      <div style="background:linear-gradient(135deg,#0F1B33,#1E2C4A);border-radius:16px;padding:18px 22px;display:flex;gap:20px;align-items:center;flex-wrap:wrap;color:#FFFFFF">
+        <div style="min-width:0;margin-right:auto"><div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Class 10 All-Subject Board Series — Test 6</div><div style="font-size:12.5px;color:#9FB2D4;margin-top:2px">Class 10 · All subjects · 180 min</div></div>
+        <div style="text-align:center"><div style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700">{{ qCount }}</div><div style="font-size:11.5px;color:#9FB2D4">Questions</div></div>
+        <div style="text-align:center"><div style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700">{{ totalMarks }}</div><div style="font-size:11.5px;color:#9FB2D4">Total marks</div></div>
+        <div style="text-align:center"><div style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;color:#FF9E6B">−1</div><div style="font-size:11.5px;color:#9FB2D4">Per wrong</div></div>
+      </div>
+    </section>
+
+    <section style="padding:18px 32px 0;display:grid;gap:18px;align-items:start">
+      <div style="background:{{ card }};border-radius:18px;border:1px solid {{ border }};padding:22px">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700">🗂 Select question from bank</div>
+          <div style="font-size:13px;color:{{ sub }};margin-top:3px">Narrow with filters first — only the matching page loads, not the whole bank</div>
+
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:16px">
+            <div><label style="{{ lbl2 }}">Question Bank</label><select value="{{ fBank }}" onChange="{{ onBank }}" style="{{ inp }};margin:0"><sc-for list="{{ bankOpts }}" as="o" hint-placeholder-count="3"><option value="{{ o }}">{{ o }}</option></sc-for></select></div>
+            <div><label style="{{ lbl2 }}">Sub Bank</label><select value="{{ fSubBank }}" onChange="{{ onSubBank }}" style="{{ inp }};margin:0"><sc-for list="{{ subBankOpts }}" as="o" hint-placeholder-count="3"><option value="{{ o }}">{{ o }}</option></sc-for></select></div>
+            <div><label style="{{ lbl2 }}">Question Topic</label><select value="{{ fTopic }}" onChange="{{ onTopic }}" style="{{ inp }};margin:0"><sc-for list="{{ topicOpts }}" as="o" hint-placeholder-count="3"><option value="{{ o }}">{{ o }}</option></sc-for></select></div>
+            <div><label style="{{ lbl2 }}">Sub Topic</label><select value="{{ fSubTopic }}" onChange="{{ onSubTopic }}" style="{{ inp }};margin:0"><sc-for list="{{ subTopicOpts }}" as="o" hint-placeholder-count="3"><option value="{{ o }}">{{ o }}</option></sc-for></select></div>
+            <div><label style="{{ lbl2 }}">📘 Lesson</label><select style="{{ inp }};margin:0"><sc-for list="{{ lessonOpts }}" as="o" hint-placeholder-count="3"><option value="{{ o }}">{{ o }}</option></sc-for></select></div>
+            <div><label style="{{ lbl2 }}">Question Type</label><select style="{{ inp }};margin:0"><option>Multiple Choice Question</option><option>Multiple Select Question</option><option>Numerical (NAT)</option><option>Paragraph</option></select></div>
+          </div>
+
+          <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap">
+            <button type="button" onClick="{{ doFilter }}" style="border:none;background:#024F9D;color:#FFFFFF;font-size:14px;font-weight:800;padding:11px 22px;border-radius:11px" style-hover="background:#013A78">🔎 Filter questions</button>
+            <button type="button" onClick="{{ clearFilter }}" style="border:1px solid {{ border }};background:{{ inputBg }};color:{{ text }};font-size:14px;font-weight:700;padding:11px 18px;border-radius:11px">Reset</button>
+          </div>
+
+          <sc-if value="{{ notFiltered }}" hint-placeholder-val="{{ true }}">
+            <div style="margin-top:18px;border:1.5px dashed {{ border }};border-radius:13px;padding:28px;text-align:center;background:{{ inputBg }}">
+              <div style="font-size:26px">🗂</div>
+              <div style="font-size:13.5px;font-weight:700;margin-top:8px">Set your filters and hit “Filter questions”</div>
+              <div style="font-size:12.5px;color:{{ faint }};margin-top:3px">Results load one page at a time to keep it fast</div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ filtered }}">
+            <div style="display:flex;align-items:center;gap:10px;margin-top:18px;flex-wrap:wrap">
+              <span style="font-size:12.5px;color:{{ sub }};font-weight:600">Show</span>
+              <select value="{{ showEntries }}" onChange="{{ onShow }}" style="{{ inp }};margin:0;width:auto;padding:8px 10px"><option value="10">10</option><option value="25">25</option><option value="50">50</option></select>
+              <span style="font-size:12.5px;color:{{ sub }};font-weight:600">entries</span>
+              <div style="flex:1"></div>
+              <input type="text" placeholder="Search…" style="{{ inp }};margin:0;width:auto;padding:8px 12px;max-width:170px">
+            </div>
+
+            <div style="margin-top:12px;border:1px solid {{ border }};border-radius:12px;overflow:hidden">
+              <div style="display:grid;grid-template-columns:48px 1fr 96px 74px;gap:0;background:{{ inputBg }};border-bottom:1px solid {{ border }};font-size:11px;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;color:{{ sub }}">
+                <div style="padding:11px 12px">#</div><div style="padding:11px 12px">Questions</div><div style="padding:11px 12px">Type</div><div style="padding:11px 12px">Action</div>
+              </div>
+              <sc-for list="{{ results }}" as="r" hint-placeholder-count="5">
+                <div style="{{ r.rowStyle }}">
+                  <div style="padding:12px;font-family:'Space Grotesk',sans-serif;font-weight:700;color:{{ sub }};font-size:13px">{{ r.id }}</div>
+                  <div style="padding:12px;font-size:13.5px;line-height:1.45;min-width:0">{{ r.text }}</div>
+                  <div style="padding:12px"><span style="{{ r.typeStyle }}">{{ r.type }}</span></div>
+                  <div style="padding:12px"><button type="button" style="border:none;background:#0F9D76;color:#FFFFFF;font-size:12.5px;font-weight:800;padding:7px 13px;border-radius:8px" style-hover="background:#0C8865">Add</button></div>
+                </div>
+              </sc-for>
+            </div>
+
+            <div style="display:flex;align-items:center;gap:8px;margin-top:12px;flex-wrap:wrap">
+              <span style="font-size:12.5px;color:{{ sub }};font-weight:600">{{ entriesInfo }}</span>
+              <div style="flex:1"></div>
+              <button type="button" style="border:1px solid {{ border }};background:{{ inputBg }};color:{{ faint }};font-size:12.5px;font-weight:700;padding:7px 12px;border-radius:8px">‹ Prev</button>
+              <button type="button" style="border:none;background:#024F9D;color:#FFFFFF;font-size:12.5px;font-weight:700;width:30px;height:30px;border-radius:8px">1</button>
+              <button type="button" style="border:1px solid {{ border }};background:{{ inputBg }};color:{{ text }};font-size:12.5px;font-weight:700;width:30px;height:30px;border-radius:8px">2</button>
+              <button type="button" style="border:1px solid {{ border }};background:{{ inputBg }};color:{{ text }};font-size:12.5px;font-weight:700;padding:7px 12px;border-radius:8px">Next ›</button>
+            </div>
+          </sc-if>
+        </div>
+
+        <div style="background:{{ card }};border-radius:18px;border:1px solid {{ border }};padding:22px">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700">Questions in this test</div><span style="font-size:12px;font-weight:800;color:#024F9D;background:{{ inputBg }};padding:4px 10px;border-radius:999px">{{ qCount }} added</span></div>
+          <div style="display:grid;gap:9px;margin-top:14px">
+            <sc-for list="{{ testQuestions }}" as="q" hint-placeholder-count="4">
+              <div style="display:flex;gap:11px;align-items:center;background:{{ inputBg }};border:1px solid {{ border }};border-radius:11px;padding:11px 13px">
+                <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;color:{{ sub }};width:22px;flex-shrink:0">{{ q.num }}</span>
+                <div style="min-width:0;flex:1"><div style="font-size:13.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ q.text }}</div><div style="font-size:11.5px;color:{{ faint }};margin-top:1px">{{ q.meta }}</div></div>
+                <span style="font-size:12px;font-weight:800;color:#0F7A57;flex-shrink:0">+{{ q.marks }}</span>
+                <button type="button" style="border:none;background:transparent;color:#C0564A;font-size:15px;flex-shrink:0" title="Remove">✕</button>
+              </div>
+            </sc-for>
+          </div>
+          <button type="button" style="width:100%;margin-top:14px;border:1px dashed {{ border }};background:transparent;color:{{ sub }};font-size:13px;font-weight:700;padding:11px;border-radius:11px">↕ Reorder questions</button>
+        </div>
+    </section>
+    </sc-if>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:1150}}">
+class Component extends DCLogic {
+  state = { theme:'light', step:'details', paid:false, neg:true, qType:'radio', totalOptions:4,
+    filtered:false, fBank:'Class 12', fSubBank:'Physics', fTopic:'Electric Charges and Fields', fSubTopic:'Electrostatics Old', showEntries:'10',
+    sectionModalOpen:false };
+
+  P() {
+    return { pageBg:'#EEF2F8', text:'#0F1B33', sub:'#5C6A85', faint:'#98A4BD', card:'#FFFFFF', border:'#E3E9F2', track:'#E8EDF6', inputBg:'#F5F8FC' };
+  }
+
+  navItem(icon, label, href, active) {
+    const style = active
+      ? "display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:11px;background:linear-gradient(120deg,#FB743E,#E0672C);color:#FFFFFF;font-size:14px;font-weight:700;box-shadow:0 8px 18px rgba(251,116,62,0.35)"
+      : "display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:11px;color:#C9D6EC;font-size:14px;font-weight:500";
+    return { isLink:true, isLabel:false, icon, label, href, style };
+  }
+
+  renderVals() {
+    const p = this.P();
+    const st = this.state;
+
+    const nav = [
+      { isLabel:true, label:'Overview' },
+      this.navItem('📊','Dashboard','admin-dashboard.dc.html'),
+      { isLabel:true, label:'Catalog' },
+      this.navItem('📚','Courses','#'),
+      this.navItem('📝','Mock tests','#',true),
+      this.navItem('🎯','Test series','#'),
+      { isLabel:true, label:'Question bank' },
+      this.navItem('🗂️','Questions','#'),
+      this.navItem('⚑','Question reports','#')
+    ].map(n => ({ isLabel:!!n.isLabel, isLink:!!n.isLink, label:n.label, icon:n.icon||'', href:n.href||'#', style:n.style||'' }));
+
+    const lbl = `font-size:13px;font-weight:700;color:${p.text};display:block;margin-bottom:7px`;
+    const lbl2 = `font-size:12px;font-weight:700;color:#024F9D;display:block;margin-bottom:6px`;
+    const inp = `width:100%;box-sizing:border-box;border:1px solid #DCE3EE;background:${p.inputBg};border-radius:11px;padding:12px 14px;font-size:14.5px;color:${p.text}`;
+
+    const tabBtn = (active) => active
+      ? 'display:flex;align-items:center;gap:9px;border:1px solid #024F9D;background:#EAF1FB;color:#024F9D;font-size:14px;font-weight:700;padding:11px 18px;border-radius:12px'
+      : `display:flex;align-items:center;gap:9px;border:1px solid ${p.border};background:${p.card};color:${p.sub};font-size:14px;font-weight:700;padding:11px 18px;border-radius:12px`;
+    const dot = (active) => `width:22px;height:22px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#FFFFFF;background:${active?'#024F9D':p.faint}`;
+
+    const type = st.qType;
+    const showOptions = type==='radio' || type==='checkbox' || type==='paragraph';
+    const optionRows = [];
+    if (showOptions) {
+      for (let i=0;i<st.totalOptions;i++) optionRows.push({
+        letter: String.fromCharCode(65+i),
+        ph: 'Option '+(i+1),
+        inputType: type==='checkbox' ? 'checkbox' : 'radio'
+      });
+    }
+
+    const typePill = (t) => `font-size:11px;font-weight:800;padding:3px 8px;border-radius:6px;background:#EAF1FB;color:#024F9D`;
+    const bank = [
+      { id:'#Q-24817', type:'MCQ', topic:'Trigonometry', text:'If sin θ + cos θ = √2, then tan θ + cot θ equals:' },
+      { id:'#Q-24802', type:'NAT', topic:'Statistics', text:'The median of the first ten prime numbers is ______.' },
+      { id:'#Q-24788', type:'MSQ', topic:'Chemical Reactions', text:'Select all reactions that are displacement reactions.' },
+      { id:'#Q-24771', type:'MCQ', topic:'Nationalism in India', text:'The Non-Cooperation Movement was launched in the year:' }
+    ].map(b => ({ ...b, typeStyle: typePill(b.type) }));
+
+    // cascading filter data
+    const subBankByBank = {
+      'Class 12': ['Physics','Chemistry','Mathematics','Biology'],
+      'Class 11': ['Physics','Chemistry','Mathematics','Biology'],
+      'Class 10': ['Science','Mathematics','Social Science','English'],
+      'CUCET': ['UG Science','UG Commerce','UG Arts']
+    };
+    const subTopicByTopic = {
+      'Electric Charges and Fields': ['Electrostatics Old','Coulomb\u2019s Law','Field Lines'],
+      'Current Electricity': ['Ohm\u2019s Law','Circuits','Kirchhoff'],
+      'Trigonometry': ['Heights & Distances','Identities'],
+      'Quadratic Equations': ['Roots','Word Problems']
+    };
+    const bankOpts = Object.keys(subBankByBank);
+    const subBankOpts = subBankByBank[this.state.fBank] || [];
+    const topicOpts = Object.keys(subTopicByTopic);
+    const subTopicOpts = subTopicByTopic[this.state.fTopic] || [];
+    const lessonOpts = ['Select Lesson','EAMCET Med 2003','NCERT Exemplar','Board Pattern 2024'];
+
+    const resultPill = (t) => `font-size:11px;font-weight:800;padding:3px 8px;border-radius:6px;background:#EAF1FB;color:#024F9D;text-transform:lowercase`;
+    const resData = [
+      { id:633, type:'radio', text:'Figure shows the electric field lines around three point charges A, B and C. Which charge has the largest magnitude? [NCERT Exemplar]' },
+      { id:634, type:'radio', text:'A charge q is placed at the centre of a cube of side a. The electric flux through one face is:' },
+      { id:635, type:'nat', text:'Two point charges +4 μC and −4 μC are 6 cm apart. The dipole moment (in ×10⁻⁶ C·m) is ______.' },
+      { id:636, type:'checkbox', text:'Which of the following statements about equipotential surfaces are correct?' },
+      { id:637, type:'radio', text:'The work done in moving a charge along an equipotential surface is:' }
+    ];
+    const n = parseInt(this.state.showEntries, 10) || 10;
+    const results = resData.slice(0, Math.min(n, resData.length)).map((r,i) => ({
+      id:r.id, type:r.type, text:r.text, typeStyle: resultPill(r.type),
+      rowStyle: `display:grid;grid-template-columns:48px 1fr 96px 74px;align-items:center;${i===resData.length-1?'':'border-bottom:1px solid '+p.border}`
+    }));
+
+    const testQuestions = [
+      { num:1, text:'A number when divided by 143 leaves remainder 31…', meta:'MCQ · Real Numbers · Easy', marks:4 },
+      { num:2, text:'The sum of the roots of 2x² − 7x + 3 = 0 is…', meta:'NAT · Quadratic Equations · Medium', marks:4 },
+      { num:3, text:'From the top of a 75 m lighthouse, angles of depression…', meta:'MCQ · Trigonometry · Hard', marks:4 },
+      { num:4, text:'Which of the following are displacement reactions?', meta:'MSQ · Chemical Reactions · Medium', marks:4 }
+    ];
+
+    const sectionsData = [
+      { num:1, name:'Real Numbers & Polynomials', marks:'4.00', neg:'1.00' },
+      { num:2, name:'Trigonometry', marks:'4.00', neg:'1.00' },
+      { num:3, name:'Relation and Function', marks:'4.00', neg:'1.00' }
+    ];
+    const sections = sectionsData.map((s,i,arr) => ({
+      ...s,
+      rowStyle: `display:grid;grid-template-columns:60px 1fr 100px 110px 100px;align-items:center;${i===arr.length-1?'':'border-bottom:1px solid '+p.border}`
+    }));
+
+    return {
+      pageBg:p.pageBg, text:p.text, sub:p.sub, faint:p.faint, card:p.card, border:p.border, track:p.track, inputBg:p.inputBg,
+      nav, lbl, lbl2, inp,
+      isDetails: st.step==='details', isSections: st.step==='sections', isQuestions: st.step==='questions',
+      goDetails: () => this.setState({ step:'details' }),
+      goSections: () => this.setState({ step:'sections' }),
+      goQuestions: () => this.setState({ step:'questions' }),
+      tabDetails: tabBtn(st.step==='details'), tabSections: tabBtn(st.step==='sections'), tabQuestions: tabBtn(st.step==='questions'),
+      dotDetails: dot(st.step==='details'), dotSections: dot(st.step==='sections'), dotQuestions: dot(st.step==='questions'),
+      isPaid: st.paid, isFree: !st.paid,
+      onPaid: (e) => this.setState({ paid: e.target.value==='1' }),
+      isNeg: st.neg,
+      onNeg: (e) => this.setState({ neg: e.target.value==='1' }),
+      onType: (e) => this.setState({ qType: e.target.value }),
+      showOptions, showNat: type==='nat', showParagraph: type==='paragraph',
+      totalOptions: st.totalOptions, optionRows,
+      multiHint: type==='checkbox' ? 'es' : '',
+      incOpt: () => this.setState(s => ({ totalOptions: Math.min(6, s.totalOptions+1) })),
+      decOpt: () => this.setState(s => ({ totalOptions: Math.max(2, s.totalOptions-1) })),
+      qCount: testQuestions.length, totalMarks: testQuestions.length*4,
+      bank, testQuestions,
+      bankOpts, subBankOpts, topicOpts, subTopicOpts, lessonOpts,
+      fBank: this.state.fBank, fSubBank: this.state.fSubBank, fTopic: this.state.fTopic, fSubTopic: this.state.fSubTopic,
+      showEntries: this.state.showEntries,
+      filtered: this.state.filtered, notFiltered: !this.state.filtered,
+      results,
+      entriesInfo: 'Showing 1 to '+results.length+' of 128 questions',
+      onBank: (e) => this.setState({ fBank:e.target.value, fSubBank:(subBankByBank[e.target.value]||[''])[0] }),
+      onSubBank: (e) => this.setState({ fSubBank:e.target.value }),
+      onTopic: (e) => this.setState({ fTopic:e.target.value, fSubTopic:(subTopicByTopic[e.target.value]||[''])[0] }),
+      onSubTopic: (e) => this.setState({ fSubTopic:e.target.value }),
+      onShow: (e) => this.setState({ showEntries:e.target.value }),
+      doFilter: () => this.setState({ filtered:true }),
+      clearFilter: () => this.setState({ filtered:false }),
+      sections, sectionCount: sections.length,
+      sectionModalOpen: st.sectionModalOpen,
+      openSectionModal: () => this.setState({ sectionModalOpen:true }),
+      closeSectionModal: () => this.setState({ sectionModalOpen:false })
+    };
+  }
+}
+</script>
+</body>
+</html>

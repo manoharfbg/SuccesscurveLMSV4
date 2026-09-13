@@ -32,6 +32,7 @@ use App\Paragraph;
 use App\Purchasecourse;
 use App\Purchasetest;
 use App\Purchasetestseries;
+use App\BlogPost;
 
 use Carbon\Carbon;
 
@@ -66,55 +67,39 @@ class SucessController extends Controller
             ->take(10)
             ->get();
 
-        return view('home',['products'=>$data, 'classes'=>$classe, 'courses'=>$course, 'sliders'=>$slider, 'tests'=>$test, 'series'=>$testSeries]);
+        $blogs = BlogPost::where('status', 1)->orderBy('publishedAt', 'desc')->take(6)->get();
+
+        $stats = [
+            'courses' => Course::where('courseStatus', 'Published')->count(),
+            'tests' => Test::count(),
+            'students' => User::where('type', 'user')->count(),
+            'subjects' => Subject::count()
+        ];
+
+        return view('home',[
+            'products'=>$data, 
+            'classes'=>$classe, 
+            'courses'=>$course, 
+            'sliders'=>$slider, 
+            'tests'=>$test, 
+            'series'=>$testSeries,
+            'blogs'=>$blogs,
+            'stats'=>$stats
+        ]);
     }
-    function stuDashboard(){
-        $course=[];
-        $test=[];
-        if(Session::get('userClass') != 0){
-            $course = Course::join('subjects', 'courses.courseSubject', '=', 'subjects.subjectId')
-                ->join('classes', 'courses.courseClass', '=', 'classes.classId')
-                ->join('users', 'courses.courseInstructor1', '=', 'users.id')
-                ->select('courses.*', 'subjects.subjectName as subjectName', 'classes.className as className', 'users.name as name', 'users.image as instructorImage')
-                ->where('courseStatus', 'Published')
-                ->where('courseClass', Session::get('userClass'))
-                ->orderBy('courseId', 'desc')
-                ->take(6)
-                ->get();
+    function stuDashboard(Request $request){
+        $apiController = new \App\Http\Controllers\Api\StudentDashboardController();
+        $response = $apiController->getDashboardData($request);
+        $dashboardData = $response->getData(true);
+        $d = $dashboardData['data'] ?? [];
 
-            $test = Test::join('subjects', 'tests.tSubject', '=', 'subjects.subjectId')
-                ->join('classes', 'tests.tClass', '=', 'classes.classId')
-                ->join('users', 'tests.created_by', '=', 'users.id')
-                ->select('tests.*', 'subjects.subjectName as subjectName', 'classes.className as className', 'users.name as name', 'users.image as instructorImage')
-                ->where('tClass', Session::get('userClass'))
-                ->orderBy('tId', 'desc')
-                ->take(6)
-                ->get();
-        }elseif(Session::get('userClass') == 0){
-            $course = Course::join('subjects', 'courses.courseSubject', '=', 'subjects.subjectId')
-                ->join('classes', 'courses.courseClass', '=', 'classes.classId')
-                ->join('users', 'courses.courseInstructor1', '=', 'users.id')
-                ->select('courses.*', 'subjects.subjectName as subjectName', 'classes.className as className', 'users.name as name', 'users.image as instructorImage')
-                ->where('courseStatus', 'Published')
-                ->orderBy('courseId', 'desc')
-                ->take(6)
-                ->get();
-
-            $test = Test::join('subjects', 'tests.tSubject', '=', 'subjects.subjectId')
-                ->join('classes', 'tests.tClass', '=', 'classes.classId')
-                ->join('users', 'tests.created_by', '=', 'users.id')
-                ->select('tests.*', 'subjects.subjectName as subjectName', 'classes.className as className', 'users.name as name', 'users.image as instructorImage')
-                ->orderBy('tId', 'desc')
-                ->take(6)
-                ->get();
-        }
-
-        $courses = Course::where('courseStatus','Published')->count();
-        $tests = Test::count();
-        $tenrolls = Testenroll::where('userId', Session::get('userId'))->count();
-        $cenrolls = Courseenroll::where('userId', Session::get('userId'))->count();
-        return view('Student/studentDashboard',['courses'=>$course, 'tests'=>$test, 'tsts'=>$tests, 'cs'=>$courses, 'cse'=>$cenrolls, 'tsen'=>$tenrolls]);
-
+        return view('Student/studentDashboard', [
+            'd' => $d,
+            'student' => $d['student'] ?? [],
+            'today' => $d['today'] ?? [],
+            'performance' => $d['performance'] ?? [],
+            'ahead' => $d['ahead'] ?? []
+        ]);
     }
     function mytests(){
         $tids = Testenroll::select('testId')->where('userId', Session::get('userId'))->get();
@@ -642,8 +627,24 @@ class SucessController extends Controller
         $user = User::where("email",$req->input('email'))->first();
 
         if(!empty($user)){
-             if(Crypt::decrypt($user->password)==$req->input('password')){
+            $passwordMatched = false;
+            try {
+                if (Crypt::decrypt($user->password) == $req->input('password')) {
+                    $passwordMatched = true;
+                }
+            } catch (\Exception $e) {
+                // Key mismatch or hashed password
+                if (\Illuminate\Support\Facades\Hash::check($req->input('password'), $user->password)) {
+                    $passwordMatched = true;
+                } elseif ($user->password === $req->input('password')) {
+                    $passwordMatched = true;
+                    // Auto upgrade plain password to Crypt
+                    $user->password = Crypt::encrypt($req->input('password'));
+                    $user->save();
+                }
+            }
 
+            if($passwordMatched){
             $type = $user->type;
             if($type == 'admin'){
                 $req->session()->put('auserId',$user->id);

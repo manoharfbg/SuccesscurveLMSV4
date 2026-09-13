@@ -173,8 +173,14 @@ class ResultController extends Controller
             'time'=> Carbon::now(),
             'resultUrl'=>'https://www.successcurve.in/result/testReport/'.$resultId,
         ];
-        Mail::to(Session::get('userEmail'))->send(new ExamResultMail($data));
-        return 'success';
+        try {
+            if (Session::has('userEmail') && !empty(Session::get('userEmail'))) {
+                Mail::to(Session::get('userEmail'))->send(new ExamResultMail($data));
+            }
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::error('ExamResultMail error: ' . $e->getMessage());
+        }
+        return response()->json(['status' => 'success', 'resultId' => $resultId]);
     }
 
     public function testReport($id){
@@ -241,7 +247,8 @@ class ResultController extends Controller
         ->avg('time_taken');
         $avg['attempts'] = Result::where('examId', $testId)
         ->avg('attempts');
-        $avg['accuracy'] = ($avg['right'] / ($avg['right'] + $avg['wrong'])) * 100;
+        $totalAvgAnswers = ($avg['right'] ?? 0) + ($avg['wrong'] ?? 0);
+        $avg['accuracy'] = $totalAvgAnswers > 0 ? (($avg['right'] / $totalAvgAnswers) * 100) : 0;
 
         //  Section Ananlysis
         $anas=[];
@@ -256,7 +263,7 @@ class ResultController extends Controller
                 ->where('resultId', $id)
                 ->first();
 
-            if($ra->total_marks!=0){
+            if(!empty($ra) && $ra->total_marks!=0){
                 $mkper = number_format((float)(($ra->your_marks*100)/$ra->total_marks), 2, '.', '');
             }
             else{

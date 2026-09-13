@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; }
+  a { text-decoration:none; }
+  button { font-family:inherit; cursor:pointer; }
+  ::-webkit-scrollbar { width:9px; height:9px; }
+</style>
+</helmet>
+<div style="display:grid;grid-template-columns:minmax(0,244px) minmax(0,1fr);min-height:100vh;font-family:'DM Sans',system-ui,sans-serif;transition:background 200ms ease;background:{{ pageBg }};color:{{ text }}">
+
+  <aside style="position:sticky;top:0;height:100vh;overflow:hidden;background:radial-gradient(700px 400px at 20% -10%, #0a5fb8, #024f9d 45%, #01356c)">
+    <div style="position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px, rgba(255,255,255,.10) 1px, transparent 0);background-size:26px 26px;pointer-events:none"></div>
+    <div style="position:absolute;top:-60px;right:-40px;width:200px;height:200px;border-radius:999px;background:radial-gradient(circle,rgba(251,116,62,0.22),transparent 70%);pointer-events:none"></div>
+    <div style="position:relative;z-index:1;height:100%;box-sizing:border-box;padding:20px 16px;display:flex;flex-direction:column;gap:24px;overflow:auto">
+    <div style="font-family:'Space Grotesk',sans-serif;font-size:21px;font-weight:700;letter-spacing:-0.025em;white-space:nowrap;padding:2px 4px"><span style="color:#4FA3F0">Success</span><span style="color:#FB743E">Curve</span><sup style="font-size:0.46em;font-weight:600;color:#8A97B1;margin-left:1px;top:-0.7em">.in</sup></div>
+    <nav style="display:grid;gap:3px">
+      <a href="#" style="display:flex;align-items:center;gap:11px;padding:11px 13px;border-radius:11px;background:linear-gradient(120deg,#FB743E,#E0672C);color:#FFFFFF;font-size:14.5px;font-weight:700;box-shadow:0 8px 18px rgba(251,116,62,0.35)">📊 Dashboard</a>
+      <a href="#" style="display:flex;align-items:center;gap:11px;padding:11px 13px;border-radius:10px;color:{{ sideMuted }};font-size:14.5px;font-weight:500" style-hover="background:rgba(255,255,255,0.06);color:#FFFFFF">📚 My learning</a>
+      <a href="mock-test-catalog.dc.html" style="display:flex;align-items:center;gap:11px;padding:11px 13px;border-radius:10px;color:{{ sideMuted }};font-size:14.5px;font-weight:500" style-hover="background:rgba(255,255,255,0.06);color:#FFFFFF">📝 Mock tests</a>
+      <a href="#" style="display:flex;align-items:center;gap:11px;padding:11px 13px;border-radius:10px;color:{{ sideMuted }};font-size:14.5px;font-weight:500" style-hover="background:rgba(255,255,255,0.06);color:#FFFFFF">🎯 Test series</a>
+      <a href="#" style="display:flex;align-items:center;gap:11px;padding:11px 13px;border-radius:10px;color:{{ sideMuted }};font-size:14.5px;font-weight:500" style-hover="background:rgba(255,255,255,0.06);color:#FFFFFF">💬 My doubts <span style="margin-left:auto;background:#FB743E;color:#FFFFFF;font-size:11.5px;font-weight:800;padding:2px 7px;border-radius:999px">2</span></a>
+      <a href="#" style="display:flex;align-items:center;gap:11px;padding:11px 13px;border-radius:10px;color:{{ sideMuted }};font-size:14.5px;font-weight:500" style-hover="background:rgba(255,255,255,0.06);color:#FFFFFF">🏆 Leaderboard</a>
+      <a href="#" style="display:flex;align-items:center;gap:11px;padding:11px 13px;border-radius:10px;color:{{ sideMuted }};font-size:14.5px;font-weight:500" style-hover="background:rgba(255,255,255,0.06);color:#FFFFFF">💳 Payments</a>
+      <a href="#" style="display:flex;align-items:center;gap:11px;padding:11px 13px;border-radius:10px;color:{{ sideMuted }};font-size:14.5px;font-weight:500" style-hover="background:rgba(255,255,255,0.06);color:#FFFFFF">⚙️ Profile</a>
+    </nav>
+    <div style="margin-top:auto;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.14);border-radius:14px;padding:16px">
+      <div style="font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#FFC9A8">🎯 Target</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700;color:#FFFFFF;margin-top:6px">Class 10 Boards</div>
+      <div style="font-size:13px;color:#B7C1D6;margin-top:3px">14 Feb 2027 · 155 days</div>
+    </div>
+    </div>
+  </aside>
+
+  <main style="min-width:0;padding:0 0 56px">
+    <header style="display:flex;align-items:center;gap:16px;padding:16px 32px;background:{{ card }};border-bottom:1px solid {{ border }};position:sticky;top:0;z-index:10;flex-wrap:wrap">
+      <div style="min-width:0">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700">👋 Welcome back, Ananya</div>
+        <div style="font-size:13.5px;color:{{ sub }};margin-top:2px">Class 10 · Science stream · 4 subjects active</div>
+      </div>
+      <div style="flex:1"></div>
+      <input type="text" placeholder="Search lectures, tests, topics" style="border:1px solid {{ border }};background:{{ inputBg }};border-radius:10px;padding:10px 14px;font-family:inherit;font-size:14px;flex:1;min-width:0;max-width:240px;outline:none;color:{{ text }}">
+      <button type="button" onClick="{{ toggleTheme }}" style="display:flex;align-items:center;gap:7px;border:1px solid {{ border }};background:{{ inputBg }};color:{{ text }};font-size:13.5px;font-weight:700;padding:10px 14px;border-radius:10px">{{ themeIcon }} {{ themeLabel }}</button>
+      <div style="width:40px;height:40px;border-radius:999px;background:#024F9D;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700">A</div>
+    </header>
+
+    <div style="padding:26px 32px 0;display:flex;align-items:baseline;gap:12px"><h2 style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:{{ sub }};margin:0">Today</h2><div style="flex:1;height:1px;background:{{ border }}"></div></div>
+
+    <section style="padding:18px 32px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px">
+      <div style="background:linear-gradient(140deg,#024F9D,#0A5FB8);border-radius:20px;padding:24px;color:#FFFFFF;display:flex;flex-direction:column;justify-content:space-between;min-height:196px">
+        <div>
+          <div style="font-size:12.5px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:#BCD4F2">Pick up where you stopped</div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;line-height:1.2;margin-top:10px">Trigonometry — Heights &amp; Distances</div>
+          <div style="font-size:14px;color:#D7E6FB;margin-top:6px">Class 10 Mathematics · Lecture 24 of 42 · 8 min left</div>
+        </div>
+        <div style="margin-top:20px">
+          <div style="height:7px;background:rgba(255,255,255,0.22);border-radius:999px;overflow:hidden"><div style="width:57%;height:100%;background:#FB743E"></div></div>
+          <div style="display:flex;align-items:center;gap:12px;margin-top:16px;flex-wrap:wrap">
+            <a href="lecture-player.dc.html" style="background:#FB743E;color:#FFFFFF;font-size:14.5px;font-weight:800;padding:12px 22px;border-radius:11px;text-decoration:none" style-hover="background:#E0672C">▶ Resume lecture</a>
+            <a href="exam-engine.dc.html" style="border:1px solid rgba(255,255,255,0.4);color:#FFFFFF;font-size:14.5px;font-weight:600;padding:12px 20px;border-radius:11px;text-decoration:none" style-hover="background:rgba(255,255,255,0.14)">📝 Take chapter test</a>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:{{ card }};border-radius:20px;padding:22px;border:1px solid {{ border }};min-height:196px;display:flex;flex-direction:column;justify-content:space-between">
+        <div style="display:flex;justify-content:space-between;align-items:start">
+          <div><div style="font-size:12.5px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:{{ sub }}">Streak</div><div style="font-family:'Space Grotesk',sans-serif;font-size:42px;font-weight:700;line-height:1;margin-top:8px">14 <span style="font-size:17px;color:{{ sub }}">days</span></div></div>
+          <div style="background:{{ greenSoft }};color:#0F7A57;font-size:12px;font-weight:800;padding:5px 10px;border-radius:999px">Best: 21</div>
+        </div>
+        <div>
+          <div style="display:flex;gap:6px;margin-top:16px">
+            <sc-for list="{{ streakDays }}" as="d" hint-placeholder-count="7"><div style="{{ d.style }}">{{ d.label }}</div></sc-for>
+          </div>
+          <div style="font-size:13px;color:{{ sub }};margin-top:10px">Study 20 minutes today to keep it alive.</div>
+        </div>
+      </div>
+
+      <div style="background:{{ card }};border-radius:20px;padding:22px;border:1px solid {{ border }};min-height:196px;display:flex;gap:18px;align-items:center;flex-wrap:wrap">
+        <div style="position:relative;width:clamp(96px,30%,112px);aspect-ratio:1;flex-shrink:0;border-radius:999px;background:conic-gradient(#024F9D 0turn 0.75turn,{{ track }} 0.75turn 1turn)">
+          <div style="position:absolute;inset:16px;border-radius:999px;background:{{ card }};display:flex;flex-direction:column;align-items:center;justify-content:center"><div style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;line-height:1">75%</div><div style="font-size:10.5px;color:{{ sub }}">of goal</div></div>
+        </div>
+        <div style="min-width:0;flex:1">
+          <div style="font-size:12.5px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:{{ sub }}">Today's goal</div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;margin-top:8px">45 / 60 min</div>
+          <div style="font-size:13px;color:{{ sub }};margin-top:6px;line-height:1.5">2 lectures watched<br>18 questions attempted</div>
+        </div>
+      </div>
+
+      <div style="background:{{ card }};border-radius:20px;padding:22px;border:1px solid {{ border }};min-height:196px;display:grid;grid-template-rows:1fr 1fr;gap:12px">
+        <div style="display:flex;align-items:center;gap:14px">
+          <div style="width:46px;height:46px;border-radius:12px;background:{{ orangeSoft }};color:#E0672C;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">🏅</div>
+          <div><div style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;line-height:1">142</div><div style="font-size:12.5px;color:{{ sub }};font-weight:600">class rank · of 2,140</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;border-top:1px solid {{ border }};padding-top:12px">
+          <div style="width:46px;height:46px;border-radius:12px;background:{{ blueSoft }};color:#024F9D;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">📈</div>
+          <div><div style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;line-height:1">86.4</div><div style="font-size:12.5px;color:{{ sub }};font-weight:600">percentile · ↑ 4.2</div></div>
+        </div>
+      </div>
+    </section>
+
+    <div style="padding:34px 32px 0;display:flex;align-items:baseline;gap:12px"><h2 style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:{{ sub }};margin:0">Focus now</h2><div style="flex:1;height:1px;background:{{ border }}"></div></div>
+
+    <section style="padding:18px 32px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px">
+      <div style="background:{{ card }};border-radius:20px;padding:22px;border:1px solid {{ border }}">
+        <div style="font-size:12.5px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:{{ sub }}">Board readiness</div>
+        <div style="display:flex;align-items:baseline;gap:10px;margin-top:10px"><div style="font-family:'Space Grotesk',sans-serif;font-size:46px;font-weight:700;line-height:1">68</div><div style="font-size:15px;font-weight:600;color:{{ sub }}">/ 100</div><div style="margin-left:auto;background:{{ greenSoft }};color:#0F7A57;font-size:12px;font-weight:800;padding:5px 10px;border-radius:999px">+6 this month</div></div>
+        <div style="height:10px;background:{{ track }};border-radius:999px;overflow:hidden;margin-top:14px"><div style="width:68%;height:100%;background:linear-gradient(90deg,#024F9D,#0A5FB8)"></div></div>
+        <div style="display:flex;justify-content:space-between;font-size:12px;color:{{ faint }};margin-top:7px;font-weight:600"><span>Needs work</span><span>On track</span><span>Exam ready</span></div>
+        <div style="font-size:13.5px;color:{{ sub }};margin-top:14px;line-height:1.55">Based on accuracy, syllabus covered and your last five mock tests.</div>
+      </div>
+
+      <div style="background:{{ card }};border-radius:20px;padding:22px;border:1px solid {{ border }};grid-column:span 2;min-width:0">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap"><div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700">Fix these first</div><a href="#" style="font-size:13.5px;font-weight:700;color:#024F9D">All weak topics →</a></div>
+        <div style="display:grid;gap:10px;margin-top:16px">
+          <sc-for list="{{ weakTopics }}" as="w" hint-placeholder-count="3">
+            <div style="{{ w.rowStyle }}">
+              <div style="min-width:0;flex:1"><div style="font-size:14.5px;font-weight:700">{{ w.title }}</div><div style="font-size:12.5px;margin-top:3px;color:{{ w.metaColor }}">{{ w.meta }}</div></div>
+              <a href="#" style="background:{{ text }};color:{{ card }};font-size:13px;font-weight:700;padding:9px 15px;border-radius:9px;flex-shrink:0;text-decoration:none">Revise</a>
+              <a href="#" style="background:{{ card }};border:1px solid {{ border }};color:{{ text }};font-size:13px;font-weight:700;padding:9px 15px;border-radius:9px;flex-shrink:0;text-decoration:none">10 Q</a>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <div style="padding:34px 32px 0;display:flex;align-items:baseline;gap:12px"><h2 style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:{{ sub }};margin:0">Performance</h2><div style="flex:1;height:1px;background:{{ border }}"></div></div>
+
+    <section style="padding:18px 32px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:18px">
+      <div style="background:{{ card }};border-radius:20px;padding:22px;border:1px solid {{ border }}">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700">Performance over time</div>
+        <div style="font-size:13px;color:{{ sub }};margin-top:4px">Your score across the last 8 mock tests.</div>
+        <svg viewBox="0 0 460 250" style="width:100%;height:auto;margin-top:14px;overflow:visible">
+          <line x1="44" y1="30" x2="452" y2="30" stroke="{{ track }}"></line>
+          <line x1="44" y1="58" x2="452" y2="58" stroke="{{ track }}"></line>
+          <line x1="44" y1="86" x2="452" y2="86" stroke="{{ track }}"></line>
+          <line x1="44" y1="114" x2="452" y2="114" stroke="{{ track }}"></line>
+          <line x1="44" y1="142" x2="452" y2="142" stroke="{{ track }}"></line>
+          <line x1="44" y1="170" x2="452" y2="170" stroke="{{ border }}"></line>
+          <text x="38" y="34" text-anchor="end" font-family="DM Sans, sans-serif" font-size="11" fill="{{ faint }}">100</text>
+          <text x="38" y="62" text-anchor="end" font-family="DM Sans, sans-serif" font-size="11" fill="{{ faint }}">90</text>
+          <text x="38" y="90" text-anchor="end" font-family="DM Sans, sans-serif" font-size="11" fill="{{ faint }}">80</text>
+          <text x="38" y="118" text-anchor="end" font-family="DM Sans, sans-serif" font-size="11" fill="{{ faint }}">70</text>
+          <text x="38" y="146" text-anchor="end" font-family="DM Sans, sans-serif" font-size="11" fill="{{ faint }}">60</text>
+          <text x="38" y="174" text-anchor="end" font-family="DM Sans, sans-serif" font-size="11" fill="{{ faint }}">50</text>
+          <path d="M60,147.6 L112,125.2 L164,133.6 L216,102.8 L268,86 L320,74.8 L372,63.6 L424,46.8 L424,170 L60,170 Z" fill="rgba(251,116,62,0.13)"></path>
+          <polyline points="60,164.4 112,156 164,150.4 216,142 268,133.6 320,122.4 372,108.4 424,91.6" fill="none" stroke="#B7C1D6" stroke-width="2.5" stroke-dasharray="6 5" stroke-linecap="round"></polyline>
+          <polyline points="60,147.6 112,125.2 164,133.6 216,102.8 268,86 320,74.8 372,63.6 424,46.8" fill="none" stroke="#FB743E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></polyline>
+          <g fill="{{ card }}" stroke="#FB743E" stroke-width="2.5"><circle cx="60" cy="147.6" r="4"></circle><circle cx="112" cy="125.2" r="4"></circle><circle cx="164" cy="133.6" r="4"></circle><circle cx="216" cy="102.8" r="4"></circle><circle cx="268" cy="86" r="4"></circle><circle cx="320" cy="74.8" r="4"></circle><circle cx="372" cy="63.6" r="4"></circle></g>
+          <g transform="translate(424,46.8)"><rect x="-24" y="-34" width="48" height="24" rx="7" fill="#0F1B33"></rect><text x="0" y="-17" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="700" fill="#FFFFFF">94%</text><circle cx="0" cy="0" r="6" fill="#FB743E" stroke="{{ card }}" stroke-width="2.5"></circle></g>
+          <g font-family="DM Sans, sans-serif" font-size="12" font-weight="600" fill="{{ sub }}" text-anchor="middle"><text x="60" y="192">T1</text><text x="112" y="192">T2</text><text x="164" y="192">T3</text><text x="216" y="192">T4</text><text x="268" y="192">T5</text><text x="320" y="192">T6</text><text x="372" y="192">T7</text><text x="424" y="192">T8</text></g>
+        </svg>
+        <div style="display:flex;gap:18px;font-size:12.5px;color:{{ sub }};font-weight:600"><span><span style="display:inline-block;width:11px;height:3px;border-radius:2px;background:#FB743E;vertical-align:middle;margin-right:6px"></span>Your score</span><span><span style="display:inline-block;width:11px;height:3px;border-radius:2px;background:#B7C1D6;vertical-align:middle;margin-right:6px"></span>Class avg</span></div>
+      </div>
+
+      <div style="background:{{ card }};border-radius:20px;padding:22px;border:1px solid {{ border }}">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700">Answer accuracy</div>
+        <div style="font-size:13px;color:{{ sub }};margin-top:4px">Across all attempts.</div>
+        <div style="display:flex;align-items:center;gap:22px;margin-top:16px;flex-wrap:wrap">
+          <div style="position:relative;width:130px;height:130px;flex-shrink:0;border-radius:999px;background:conic-gradient(#0F9D76 0turn 0.74turn,#E5484D 0.74turn 0.92turn,{{ track }} 0.92turn 1turn)">
+            <div style="position:absolute;inset:20px;background:{{ card }};border-radius:999px;display:flex;flex-direction:column;align-items:center;justify-content:center"><div style="font-family:'Space Grotesk',sans-serif;font-size:25px;font-weight:700;line-height:1">74%</div><div style="font-size:11px;color:{{ sub }}">correct</div></div>
+          </div>
+          <div style="display:grid;gap:11px;min-width:110px">
+            <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600"><span style="width:12px;height:12px;border-radius:4px;background:#0F9D76"></span>Correct<span style="margin-left:auto;font-family:'Space Grotesk',sans-serif;font-weight:700">1,184</span></div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600"><span style="width:12px;height:12px;border-radius:4px;background:#E5484D"></span>Wrong<span style="margin-left:auto;font-family:'Space Grotesk',sans-serif;font-weight:700">288</span></div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600"><span style="width:12px;height:12px;border-radius:4px;background:{{ track }}"></span>Skipped<span style="margin-left:auto;font-family:'Space Grotesk',sans-serif;font-weight:700">128</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:{{ card }};border-radius:20px;padding:22px;border:1px solid {{ border }}">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700">Subject strengths</div>
+        <div style="font-size:13px;color:{{ sub }};margin-top:4px">Accuracy and average time per question.</div>
+        <div style="display:grid;gap:14px;margin-top:18px">
+          <sc-for list="{{ subjects }}" as="s" hint-placeholder-count="4">
+            <div><div style="display:flex;justify-content:space-between;font-size:13.5px;font-weight:600;margin-bottom:6px"><span>{{ s.name }}</span><span style="color:{{ sub }}">{{ s.stat }}</span></div><div style="height:12px;background:{{ track }};border-radius:999px;overflow:hidden"><div style="{{ s.barStyle }}"></div></div></div>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="background:{{ card }};border-radius:20px;padding:22px;border:1px solid {{ border }}">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700">Where your marks go</div>
+        <div style="font-size:13px;color:{{ sub }};margin-top:4px">Correct, wrong and skipped, last five tests.</div>
+        <div style="display:grid;gap:12px;margin-top:18px">
+          <sc-for list="{{ marks }}" as="m" hint-placeholder-count="5">
+            <div style="display:flex;align-items:center;gap:12px"><div style="font-size:12.5px;font-weight:700;width:26px;color:{{ sub }}">{{ m.label }}</div><div style="flex:1;height:22px;border-radius:6px;overflow:hidden;display:flex"><div style="width:{{ m.c }}%;background:#0F9D76"></div><div style="width:{{ m.w }}%;background:#E5484D"></div><div style="{{ m.skipStyle }}"></div></div></div>
+          </sc-for>
+        </div>
+        <div style="display:flex;gap:16px;font-size:12.5px;color:{{ sub }};font-weight:600;margin-top:16px"><span><span style="display:inline-block;width:10px;height:10px;border-radius:3px;background:#0F9D76;vertical-align:middle;margin-right:6px"></span>Correct</span><span><span style="display:inline-block;width:10px;height:10px;border-radius:3px;background:#E5484D;vertical-align:middle;margin-right:6px"></span>Wrong</span><span><span style="display:inline-block;width:10px;height:10px;border-radius:3px;background:{{ track }};vertical-align:middle;margin-right:6px"></span>Skipped</span></div>
+      </div>
+
+      <div style="background:{{ card }};border-radius:20px;padding:22px;border:1px solid {{ border }}">
+        <div style="display:flex;justify-content:space-between;align-items:start;gap:12px"><div><div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700">Rank &amp; percentile</div><div style="font-size:13px;color:{{ sub }};margin-top:4px">All-Subject Board Series</div></div><div style="text-align:right"><div style="font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;line-height:1">86.4</div><div style="font-size:12px;color:{{ sub }};font-weight:600">percentile now</div></div></div>
+        <svg viewBox="0 0 460 210" style="width:100%;height:auto;margin-top:14px;overflow:visible">
+          <line x1="46" y1="30" x2="452" y2="30" stroke="{{ track }}"></line>
+          <line x1="46" y1="60" x2="452" y2="60" stroke="{{ track }}"></line>
+          <line x1="46" y1="90" x2="452" y2="90" stroke="{{ track }}"></line>
+          <line x1="46" y1="120" x2="452" y2="120" stroke="{{ track }}"></line>
+          <line x1="46" y1="150" x2="452" y2="150" stroke="{{ border }}"></line>
+          <text x="40" y="34" text-anchor="end" font-family="DM Sans, sans-serif" font-size="11" fill="{{ faint }}">95</text>
+          <text x="40" y="64" text-anchor="end" font-family="DM Sans, sans-serif" font-size="11" fill="{{ faint }}">90</text>
+          <text x="40" y="94" text-anchor="end" font-family="DM Sans, sans-serif" font-size="11" fill="{{ faint }}">85</text>
+          <text x="40" y="124" text-anchor="end" font-family="DM Sans, sans-serif" font-size="11" fill="{{ faint }}">80</text>
+          <text x="40" y="154" text-anchor="end" font-family="DM Sans, sans-serif" font-size="11" fill="{{ faint }}">75</text>
+          <path d="M80,132 L170,117 L260,106.8 L350,93 L440,81.6 L440,150 L80,150 Z" fill="rgba(2,79,157,0.10)"></path>
+          <polyline points="80,144 170,141 260,138 350,135.6 440,133.2" fill="none" stroke="#B7C1D6" stroke-width="2.5" stroke-dasharray="6 5" stroke-linecap="round"></polyline>
+          <polyline points="80,132 170,117 260,106.8 350,93 440,81.6" fill="none" stroke="#024F9D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></polyline>
+          <g fill="{{ card }}" stroke="#024F9D" stroke-width="2.5"><circle cx="80" cy="132" r="4"></circle><circle cx="170" cy="117" r="4"></circle><circle cx="260" cy="106.8" r="4"></circle><circle cx="350" cy="93" r="4"></circle></g>
+          <g transform="translate(440,81.6)"><rect x="-26" y="-34" width="52" height="24" rx="7" fill="#0F1B33"></rect><text x="0" y="-17" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="12.5" font-weight="700" fill="#FFFFFF">86.4</text><circle cx="0" cy="0" r="6" fill="#FB743E" stroke="{{ card }}" stroke-width="2.5"></circle></g>
+          <g font-family="DM Sans, sans-serif" font-size="12" font-weight="600" fill="{{ sub }}" text-anchor="middle"><text x="80" y="172">T1</text><text x="170" y="172">T2</text><text x="260" y="172">T3</text><text x="350" y="172">T4</text><text x="440" y="172">T5</text></g>
+        </svg>
+        <div style="display:flex;gap:18px;font-size:12.5px;color:{{ sub }};font-weight:600"><span><span style="display:inline-block;width:11px;height:3px;background:#024F9D;vertical-align:middle;margin-right:6px"></span>You</span><span><span style="display:inline-block;width:11px;height:3px;background:#B7C1D6;vertical-align:middle;margin-right:6px"></span>Class avg</span></div>
+      </div>
+
+      <div style="background:{{ card }};border-radius:20px;padding:22px;border:1px solid {{ border }}">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700">You, the topper, the class</div>
+        <div style="font-size:13px;color:{{ sub }};margin-top:4px">Accuracy by subject, same axis.</div>
+        <svg viewBox="0 0 320 250" style="width:100%;height:auto;margin-top:6px">
+          <polygon points="160,35 268,97 268,190 160,222 52,190 52,97" fill="none" stroke="{{ track }}" stroke-width="1.5"></polygon>
+          <polygon points="160,78 232,119 232,161 160,182 88,161 88,119" fill="none" stroke="{{ track }}" stroke-width="1.5"></polygon>
+          <polygon points="160,52 252,104 245,175 160,200 76,168 74,108" fill="rgba(251,116,62,0.22)" stroke="#FB743E" stroke-width="2"></polygon>
+          <polygon points="160,62 236,112 228,168 160,192 92,160 94,114" fill="rgba(2,79,157,0.20)" stroke="#024F9D" stroke-width="2.5"></polygon>
+          <text x="160" y="26" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11.5" fill="{{ sub }}">Maths</text>
+          <text x="286" y="94" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11.5" fill="{{ sub }}">Phy</text>
+          <text x="286" y="198" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11.5" fill="{{ sub }}">Chem</text>
+          <text x="160" y="240" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11.5" fill="{{ sub }}">Bio</text>
+          <text x="34" y="198" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11.5" fill="{{ sub }}">SST</text>
+          <text x="34" y="94" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11.5" fill="{{ sub }}">Eng</text>
+        </svg>
+        <div style="display:flex;gap:16px;font-size:12.5px;color:{{ sub }};font-weight:600"><span><span style="display:inline-block;width:10px;height:10px;border-radius:3px;background:#024F9D;vertical-align:middle;margin-right:6px"></span>You</span><span><span style="display:inline-block;width:10px;height:10px;border-radius:3px;background:#FB743E;vertical-align:middle;margin-right:6px"></span>Topper</span></div>
+      </div>
+    </section>
+
+    <section style="padding:18px 32px 0">
+      <div style="background:{{ card }};border-radius:20px;padding:22px;border:1px solid {{ border }}">
+        <div style="display:flex;justify-content:space-between;align-items:end;gap:12px;flex-wrap:wrap">
+          <div><div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700">Study activity</div><div style="font-size:13px;color:{{ sub }};margin-top:4px">Last 12 weeks. Darker means more minutes.</div></div>
+          <div style="display:flex;align-items:center;gap:7px;font-size:12px;color:{{ sub }};font-weight:600">Less<span style="width:13px;height:13px;border-radius:3px;background:{{ track }}"></span><span style="width:13px;height:13px;border-radius:3px;background:#9EC2EC"></span><span style="width:13px;height:13px;border-radius:3px;background:#3B82C4"></span><span style="width:13px;height:13px;border-radius:3px;background:#024F9D"></span><span style="width:13px;height:13px;border-radius:3px;background:#02305F"></span>More</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:6px;margin-top:18px">
+          <sc-for list="{{ heatCols }}" as="col" hint-placeholder-count="12">
+            <div style="display:grid;gap:6px"><sc-for list="{{ col.cells }}" as="cell" hint-placeholder-count="7"><div style="{{ cell }}"></div></sc-for></div>
+          </sc-for>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:6px;margin-top:8px;font-size:11.5px;font-weight:700;color:{{ faint }}">
+          <div style="grid-column:1 / span 4">Jul</div>
+          <div style="grid-column:5 / span 4">Aug</div>
+          <div style="grid-column:9 / span 4">Sep</div>
+        </div>
+      </div>
+    </section>
+
+    <div style="padding:34px 32px 0;display:flex;align-items:baseline;gap:12px"><h2 style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:{{ sub }};margin:0">Keep going</h2><div style="flex:1;height:1px;background:{{ border }}"></div></div>
+
+    <section style="padding:18px 32px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px">
+      <div style="background:{{ card }};border-radius:20px;padding:22px;border:1px solid {{ border }}">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px"><div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700">Continue learning</div><a href="#" style="font-size:13.5px;font-weight:700;color:#024F9D">My courses →</a></div>
+        <div style="display:grid;gap:12px;margin-top:16px">
+          <sc-for list="{{ courses }}" as="c" hint-placeholder-count="3">
+            <a href="lecture-player.dc.html" style="{{ c.rowStyle }}"><div style="{{ c.iconStyle }}">{{ c.tag }}</div><div style="min-width:0;flex:1"><div style="font-size:14.5px;font-weight:700">{{ c.title }}</div><div style="height:6px;background:{{ track }};border-radius:999px;margin-top:8px;overflow:hidden"><div style="{{ c.barStyle }}"></div></div><div style="font-size:12px;color:{{ sub }};margin-top:5px;font-weight:600">{{ c.meta }}</div></div></a>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="background:{{ card }};border-radius:20px;padding:22px;border:1px solid {{ border }}">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700">Recent activity</div>
+        <div style="display:grid;margin-top:14px">
+          <sc-for list="{{ activity }}" as="a" hint-placeholder-count="4">
+            <div style="{{ a.rowStyle }}"><div style="{{ a.iconStyle }}">{{ a.icon }}</div><div style="min-width:0;flex:1"><div style="font-size:14px;font-weight:600">{{ a.title }}</div><div style="font-size:12px;color:{{ faint }};margin-top:2px">{{ a.time }}</div></div></div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <div style="padding:34px 32px 0;display:flex;align-items:baseline;gap:12px"><h2 style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:{{ sub }};margin:0">What's ahead</h2><div style="flex:1;height:1px;background:{{ border }}"></div></div>
+
+    <section style="padding:18px 32px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px">
+      <div style="background:{{ card }};border-radius:20px;padding:22px;border:1px solid {{ border }};grid-column:span 2;min-width:0">
+        <div style="display:flex;justify-content:space-between;align-items:end;gap:12px;flex-wrap:wrap"><div><div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700">Your Class 10 Maths path</div><div style="font-size:13px;color:{{ sub }};margin-top:4px">9 of 15 chapters cleared</div></div><a href="#" style="font-size:13.5px;font-weight:700;color:#024F9D">Full path →</a></div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:18px">
+          <sc-for list="{{ path }}" as="ch" hint-placeholder-count="9"><div style="{{ ch.style }}">{{ ch.label }}</div></sc-for>
+        </div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;margin-top:22px">Recommended next, for students like you</div>
+        <div style="display:grid;gap:10px;margin-top:12px">
+          <sc-for list="{{ recommended }}" as="r" hint-placeholder-count="3">
+            <a href="#" style="{{ r.rowStyle }}"><div style="{{ r.iconStyle }}">{{ r.tag }}</div><div style="min-width:0;flex:1"><div style="font-size:14.5px;font-weight:700">{{ r.title }}</div><div style="font-size:12.5px;color:{{ sub }};margin-top:2px">{{ r.meta }}</div></div><div style="{{ r.priceStyle }}">{{ r.price }}</div></a>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="display:grid;gap:18px;align-content:start">
+        <div style="background:{{ card }};border-radius:20px;padding:22px;border:1px solid {{ border }}">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700">Coming up</div>
+          <div style="display:grid;gap:10px;margin-top:16px">
+            <sc-for list="{{ upcoming }}" as="u" hint-placeholder-count="3">
+              <div style="{{ u.rowStyle }}"><div style="{{ u.dayStyle }}">{{ u.days }}<br><span style="font-size:10.5px">days</span></div><div style="min-width:0;flex:1"><div style="font-size:14px;font-weight:700">{{ u.title }}</div><div style="font-size:12.5px;color:{{ sub }};margin-top:2px">{{ u.meta }}</div></div><a href="exam-engine.dc.html" style="font-size:12px;font-weight:800;color:#024F9D;text-decoration:none;flex-shrink:0">Start</a></div>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="background:{{ card }};border-radius:20px;padding:22px;border:1px solid {{ border }}">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px"><div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700">Badges</div><a href="#" style="font-size:13.5px;font-weight:700;color:#024F9D">All →</a></div>
+          <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap">
+            <div style="width:58px;height:58px;border-radius:14px;background:#FB743E;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:800;color:#FFFFFF;text-align:center;line-height:1.15">14<br>day</div>
+            <div style="width:58px;height:58px;border-radius:14px;background:#024F9D;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:11.5px;font-weight:800;color:#FFFFFF;text-align:center;line-height:1.15">Topic<br>fixer</div>
+            <div style="width:58px;height:58px;border-radius:14px;background:#0F9D76;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:11.5px;font-weight:800;color:#FFFFFF;text-align:center;line-height:1.15">5 tests<br>done</div>
+            <div style="width:58px;height:58px;border-radius:14px;background:{{ track }};border:1.5px dashed {{ faint }};display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:800;color:{{ faint }};text-align:center;line-height:1.15">80%<br>acc.</div>
+          </div>
+          <div style="font-size:13px;color:{{ sub }};margin-top:14px;line-height:1.5">Next badge: reach 80% accuracy in Mathematics. You are at 72%.</div>
+        </div>
+
+        <div style="background:{{ card }};border-radius:20px;padding:22px;border:1px solid {{ border }}">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px"><div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700">Class leaderboard</div><div style="font-size:11.5px;font-weight:700;color:{{ sub }};background:{{ track }};padding:4px 9px;border-radius:999px">Opt-in</div></div>
+          <div style="display:grid;gap:2px;margin-top:14px">
+            <sc-for list="{{ leaderboard }}" as="l" hint-placeholder-count="4">
+              <div style="{{ l.rowStyle }}"><div style="font-family:'Space Grotesk',sans-serif;font-size:13.5px;font-weight:800;width:22px;color:{{ l.rankColor }}">{{ l.rank }}</div><div style="font-size:14px;font-weight:{{ l.weight }};flex:1;color:{{ l.nameColor }}">{{ l.name }}</div><div style="font-size:13px;font-weight:700;color:{{ l.scoreColor }}">{{ l.score }}</div></div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:1400}}">
+class Component extends DCLogic {
+  state = { theme: 'light' };
+
+  P() {
+    if (this.state.theme === 'dark') {
+      return {
+        pageBg:'#0B1220', side:'#070C18', sideMuted:'#9AA6BF',
+        text:'#EAF0FA', sub:'#9AA6BF', faint:'#6B7A99',
+        card:'#141C2E', border:'#263049', track:'#26304A', inputBg:'#0F1626',
+        blueSoft:'#16233F', orangeSoft:'#2A1B12', greenSoft:'#0F2A22'
+      };
+    }
+    return {
+      pageBg:'#EEF2F8', side:'#0F1B33', sideMuted:'#B7C1D6',
+      text:'#0F1B33', sub:'#5C6A85', faint:'#98A4BD',
+      card:'#FFFFFF', border:'#E3E9F2', track:'#E8EDF6', inputBg:'#F5F8FC',
+      blueSoft:'#EAF1FB', orangeSoft:'#FFF2EA', greenSoft:'#E8F7EE'
+    };
+  }
+
+  renderVals() {
+    const p = this.P();
+    const dk = this.state.theme === 'dark';
+
+    const streakDays = [
+      { label:'M', on:true }, { label:'T', on:true }, { label:'W', on:true },
+      { label:'T', on:true }, { label:'F', on:true }, { label:'S', today:true }, { label:'S', off:true }
+    ].map(d => ({
+      label: d.label,
+      style: `flex:1;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:800;` +
+        (d.today ? 'background:#024F9D;color:#FFFFFF' : d.off ? `background:${p.track};color:${p.faint}` : 'background:#FB743E;color:#FFFFFF')
+    }));
+
+    const weakTopics = [
+      { title:'Quadratic Equations — word problems', meta:'Accuracy 38% · 6 wrong of 10 · Mathematics', tint: dk?'#2A1512':'#FDECEC', metaColor:'#C0564A' },
+      { title:'Chemical Reactions — balancing', meta:'Accuracy 52% · slow 1m 48s per Q · Science', tint: dk?'#2A2212':'#FEF6EC', metaColor:'#B0863F' },
+      { title:'Nationalism in India — timeline dates', meta:'Accuracy 61% · 4 skipped · Social Science', tint: dk?'#16233F':'#EEF3FB', metaColor:p.sub }
+    ].map(w => ({
+      title:w.title, meta:w.meta, metaColor:w.metaColor,
+      rowStyle:`display:flex;gap:14px;align-items:center;flex-wrap:wrap;background:${w.tint};border-radius:13px;padding:13px 15px`
+    }));
+
+    const subjColors = ['#024F9D','#0A5FB8','#FB743E','#0F9D76'];
+    const subjects = [
+      { name:'Mathematics', stat:'72% · 1m 12s', pct:72 },
+      { name:'Science', stat:'64% · 1m 31s', pct:64 },
+      { name:'Social Science', stat:'58% · 0m 54s', pct:58 },
+      { name:'English', stat:'81% · 0m 48s', pct:81 }
+    ].map((s,i) => ({ name:s.name, stat:s.stat, barStyle:`width:${s.pct}%;height:100%;background:${subjColors[i]}` }));
+
+    const marks = [
+      { label:'T1', c:52, w:30 }, { label:'T2', c:58, w:27 }, { label:'T3', c:63, w:24 },
+      { label:'T4', c:69, w:21 }, { label:'T5', c:74, w:18 }
+    ].map(m => ({ label:m.label, c:m.c, w:m.w, skipStyle:`width:${100-m.c-m.w}%;background:${p.track}` }));
+
+    const heatShades = [p.track, '#9EC2EC', '#3B82C4', '#024F9D', '#02305F'];
+    const seed = [2,0,3,4,1,0,3,3,4,2,0,3,1,3,4,4,1,3,0,4,3,3,1,2,0,3,4,2,1,3,2,4,1,2,3,0,1,3,4,2,3,0,3,4,2,0,3,1,4,2,3,1,3,2,4,0,3,4,1,3,2,3,4,2,3,1,4,2,3,0,2,4,3,4,2,4,3,1,3,4,2,4,3,2];
+    const heatCols = [];
+    for (let c=0;c<12;c++){ const cells=[]; for(let r=0;r<7;r++){ const v=seed[(c*7+r)%seed.length]; cells.push(`height:20px;border-radius:4px;background:${heatShades[v]}`);} heatCols.push({cells}); }
+
+    const courses = [
+      { tag:'M', color:'#024F9D', title:'Class 10 Mathematics — Board Prep', pct:57, meta:'Lecture 24 of 42 · 57%' },
+      { tag:'Sc', color:'#0F9D76', title:'Class 10 Science — Full Course', pct:34, meta:'Lecture 12 of 36 · 34%' },
+      { tag:'SS', color:'#FB743E', title:'Class 10 Social Science', pct:71, meta:'Lecture 20 of 28 · 71%' }
+    ].map(c => ({
+      tag:c.tag, title:c.title, meta:c.meta,
+      rowStyle:`display:flex;gap:13px;align-items:center;background:${dk?'#0F1626':'#F5F8FC'};border-radius:13px;padding:13px;color:${p.text};text-decoration:none`,
+      iconStyle:`width:46px;height:46px;border-radius:11px;background:${c.color};color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;flex-shrink:0`,
+      barStyle:`width:${c.pct}%;height:100%;background:${c.color}`
+    }));
+
+    const activity = [
+      { icon:'✓', ic:'#0F9D76', bg:p.greenSoft, title:'Scored 74% on Board Series — Test 5', time:'2 hours ago' },
+      { icon:'▶', ic:'#024F9D', bg:p.blueSoft, title:'Watched Trigonometry — Heights & Distances', time:'Yesterday · 38 min' },
+      { icon:'★', ic:'#E0672C', bg:p.orangeSoft, title:'Earned the “Topic fixer” badge', time:'Yesterday' },
+      { icon:'?', ic:'#C0564A', bg: dk?'#2A1512':'#FDECEC', title:'Asked a doubt on Quadratic Equations', time:'2 days ago · answered', last:true }
+    ].map(a => ({
+      icon:a.icon, title:a.title, time:a.time,
+      rowStyle:`display:flex;gap:13px;padding:11px 0;${a.last?'':'border-bottom:1px solid '+p.border}`,
+      iconStyle:`width:34px;height:34px;border-radius:10px;background:${a.bg};color:${a.ic};display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0`
+    }));
+
+    const path = [
+      { label:'✓ Real Numbers', st:'done' }, { label:'✓ Polynomials', st:'done' }, { label:'✓ Linear Equations', st:'done' },
+      { label:'! Quadratic Equations', st:'weak' }, { label:'● Trigonometry — now', st:'now' },
+      { label:'Circles', st:'lock' }, { label:'Areas & Volumes', st:'lock' }, { label:'Statistics', st:'lock' }, { label:'Probability', st:'lock' }
+    ].map(c => {
+      let bg,col;
+      if(c.st==='done'){bg=p.greenSoft;col='#0F7A57';}
+      else if(c.st==='weak'){bg=dk?'#2A1512':'#FDECEC';col='#C0564A';}
+      else if(c.st==='now'){bg='#024F9D';col='#FFFFFF';}
+      else {bg=p.track;col=p.faint;}
+      return { label:c.label, style:`font-size:13px;font-weight:${c.st==='lock'?600:700};padding:10px 14px;border-radius:10px;background:${bg};color:${col}` };
+    });
+
+    const recommended = [
+      { tag:'10', color:'#024F9D', title:'Quadratic Equations — word problems drill', meta:'20 questions · your accuracy here is 38%', price:'FREE', free:true },
+      { tag:'Sc', color:'#0F9D76', title:'Chemical Reactions — balancing practice', meta:'15 questions · 82% of classmates took this', price:'₹99', free:false },
+      { tag:'15', color:'#FB743E', title:'Class 10 All-Subject Board Series', meta:'15 tests · the next series after yours', price:'₹799', free:false }
+    ].map(r => ({
+      tag:r.tag, title:r.title, meta:r.meta, price:r.price,
+      rowStyle:`display:flex;gap:13px;align-items:center;background:${dk?'#0F1626':'#F5F8FC'};border-radius:13px;padding:13px;color:${p.text};text-decoration:none`,
+      iconStyle:`width:46px;height:46px;border-radius:11px;background:${r.color};color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;flex-shrink:0`,
+      priceStyle:`margin-left:auto;font-size:12.5px;font-weight:800;flex-shrink:0;color:${r.free?'#0F7A57':p.text}`
+    }));
+
+    const upcoming = [
+      { days:'2', title:'Board Series — Test 6', meta:'Sat, 13 Sep · 10:00 am · 80 Q', soon:true },
+      { days:'6', title:'Trigonometry chapter test', meta:'Due Wed, 17 Sep · 25 Q' },
+      { days:'11', title:'Science — Light & Reflection quiz', meta:'Due Mon, 22 Sep · 20 Q' }
+    ].map(u => ({
+      days:u.days, title:u.title, meta:u.meta,
+      rowStyle:`display:flex;gap:12px;align-items:center;background:${u.soon?p.orangeSoft:(dk?'#0F1626':'#F5F8FC')};border-radius:12px;padding:12px`,
+      dayStyle:`font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:800;color:${u.soon?'#E0672C':'#024F9D'};flex-shrink:0;text-align:center;line-height:1.1`
+    }));
+
+    const leaderboard = [
+      { rank:'1', name:'Rahul M.', score:'94.2' }, { rank:'2', name:'Sneha K.', score:'91.8' },
+      { rank:'3', name:'Imran S.', score:'89.5' }, { rank:'7', name:'You', score:'86.4', me:true }
+    ].map(l => ({
+      rank:l.rank, name:l.name, score:l.score,
+      weight: l.me?800:600,
+      rankColor: l.me?'#FFFFFF':p.sub,
+      nameColor: l.me?'#FFFFFF':p.text,
+      scoreColor: l.me?'#FFFFFF':p.sub,
+      rowStyle: l.me
+        ? 'display:flex;gap:12px;align-items:center;padding:11px 12px;background:#FB743E;border-radius:10px;margin-top:6px'
+        : `display:flex;gap:12px;align-items:center;padding:9px 0;border-bottom:1px solid ${p.border}`
+    }));
+
+    return {
+      pageBg:p.pageBg, side:p.side, sideMuted:p.sideMuted, text:p.text, sub:p.sub, faint:p.faint,
+      card:p.card, border:p.border, track:p.track, inputBg:p.inputBg,
+      blueSoft:p.blueSoft, orangeSoft:p.orangeSoft, greenSoft:p.greenSoft,
+      streakDays, weakTopics, subjects, marks, heatCols, courses, activity, path, recommended, upcoming, leaderboard,
+      themeIcon: dk ? '☀️' : '🌙',
+      themeLabel: dk ? 'Light' : 'Dark',
+      toggleTheme: () => this.setState(s => ({ theme: s.theme === 'dark' ? 'light' : 'dark' }))
+    };
+  }
+}
+</script>
+</body>
+</html>

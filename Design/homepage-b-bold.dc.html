@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  body { margin:0; background:#0B0A1F; }
+  a { color:#4B2BE8; text-decoration:none; }
+  a:hover { color:#FF5B45; }
+  summary::-webkit-details-marker { display:none; }
+  @keyframes slideL { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+  @keyframes pulseRing { 0%,100% { transform:scale(1); opacity:.5; } 50% { transform:scale(1.12); opacity:.9; } }
+  @keyframes popIn { from { transform:scale(0); } to { transform:scale(1); } }
+
+</style>
+</helmet>
+<div style="background:#FFFFFF;color:#141033;font-family:'DM Sans',system-ui,sans-serif">
+
+  <header style="display:flex;align-items:center;gap:30px;padding:16px 36px;background:#0B0A1F;position:sticky;top:0;z-index:30">
+    <div style="font-family:'Space Grotesk',sans-serif;font-size:23px;font-weight:700;letter-spacing:-0.025em;white-space:nowrap"><span style="color:#5AA9FF">Success</span><span style="color:#FF9A3D">Curve</span><sup style="font-size:0.46em;font-weight:600;color:#9E97D9;margin-left:1px;top:-0.7em">.in</sup></div>
+    <nav style="display:flex;gap:24px;align-items:center;font-size:15px;font-weight:500;flex-wrap:wrap;white-space:nowrap">
+      <a href="#" style="color:#EDEBFF">About Us</a>
+      <a href="mock-test-catalog.dc.html" style="color:#EDEBFF">MockTest</a>
+      <a href="#" style="color:#EDEBFF">Courses</a>
+      <a href="#" style="color:#EDEBFF">Test Series</a>
+      <a href="#" style="color:#EDEBFF">Contact Us</a>
+    </nav>
+    <div style="flex:1"></div>
+    <a href="#" style="color:#EDEBFF;font-size:15px;font-weight:600;white-space:nowrap">Log in</a>
+    <a href="#" style="background:#D6FB5A;color:#141033;font-size:15px;font-weight:700;padding:11px 22px;border-radius:10px;white-space:nowrap" style-hover="background:#FF5B45;color:#FFFFFF">Start free →</a>
+  </header>
+
+  <section style="background:linear-gradient(140deg,#1A1150 0%,#3A1B8C 45%,#6B2BD9 100%);padding:76px 36px 88px;position:relative;overflow:hidden">
+    <div style="position:absolute;width:520px;height:520px;border-radius:999px;background:radial-gradient(circle,rgba(214,251,90,0.22),rgba(214,251,90,0));top:-160px;right:-80px;animation:pulseRing 9s ease-in-out infinite"></div>
+    <div style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,0.9fr);gap:52px;align-items:center;position:relative">
+      <div style="min-width:0">
+        <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(15px,1.7vw,20px);letter-spacing:0.02em;text-transform:uppercase;color:#8E86D9">Learn <span style="color:#D6FB5A">Anytime</span>, <span style="color:#FF9A7A">Anywhere</span></div>
+        <div style="display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,0.14);border:1px solid rgba(255,255,255,0.28);color:#FFFFFF;font-size:13px;font-weight:700;padding:7px 15px;border-radius:999px;margin-top:14px">12 years · 40+ teachers · 18,000 students</div>
+        <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(42px,5.4vw,76px);line-height:1.03;letter-spacing:-0.03em;color:#FFFFFF;margin:20px 0 0">Learn online with<br>India's <span style="color:#D6FB5A">best teachers.</span></h1>
+        <p style="font-size:18px;line-height:1.55;color:#D9D4FF;max-width:50ch;margin:20px 0 0;text-wrap:pretty">Class 5 to 12, UG and PG. Real lectures, real mock tests, and analysis that tells you exactly which chapter to open next.</p>
+
+        <form style="display:flex;gap:8px;margin:34px 0 0;background:#FFFFFF;border-radius:16px;padding:8px;max-width:640px;box-shadow:0 18px 40px rgba(11,10,31,0.35)">
+          <input type="text" placeholder="Search courses, tests, subjects" style="flex:1;min-width:0;border:none;outline:none;font-family:inherit;font-size:16px;padding:13px 14px;color:#141033;background:transparent">
+          <select style="border:none;outline:none;font-family:inherit;font-size:15px;font-weight:600;padding:0 10px;color:#5B54A6;background:transparent"><option>All classes</option><option>Class 5</option><option>Class 6</option><option>Class 7</option><option>Class 8</option><option>Class 9</option><option>Class 10</option><option>Class 11</option><option>Class 12</option><option>UG</option><option>PG</option></select>
+          <button type="button" style="border:none;background:linear-gradient(120deg,#4B2BE8,#7A3BF0);color:#FFFFFF;font-family:inherit;font-size:15px;font-weight:700;padding:14px 26px;border-radius:11px;cursor:pointer" style-hover="background:#FF5B45">Search</button>
+        </form>
+        <div style="display:flex;gap:10px;margin:16px 0 0;flex-wrap:wrap;font-size:13px;color:#CFC9FF;font-weight:500">
+          <span style="background:rgba(255,255,255,0.12);padding:6px 12px;border-radius:999px">Class 10 Maths</span>
+          <span style="background:rgba(255,255,255,0.12);padding:6px 12px;border-radius:999px">NEET Biology</span>
+          <span style="background:rgba(255,255,255,0.12);padding:6px 12px;border-radius:999px">Class 12 Physics</span>
+          <span style="background:rgba(255,255,255,0.12);padding:6px 12px;border-radius:999px">Free tests</span>
+        </div>
+      </div>
+
+      <div style="min-width:0;display:grid;gap:14px">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+          <div style="background:#D6FB5A;border-radius:20px;padding:22px;display:flex;flex-direction:column;justify-content:space-between;min-height:152px">
+            <div style="font-size:12.5px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;color:#3F4E0C">Streaks today</div>
+            <div><div style="font-family:'Space Grotesk',sans-serif;font-size:44px;font-weight:700;line-height:1;color:#242E06">12,480</div><div style="font-size:13.5px;font-weight:700;margin-top:7px;color:#3F4E0C;line-height:1.4">students studying on a 7+ day streak</div></div>
+          </div>
+          <div style="background:linear-gradient(150deg,#C2410C,#9A3412);border-radius:20px;padding:22px;display:flex;flex-direction:column;justify-content:space-between;min-height:152px;color:#FFFFFF">
+            <div style="font-size:12.5px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;color:#FFFFFF">Score change</div>
+            <div><div style="font-family:'Space Grotesk',sans-serif;font-size:44px;font-weight:700;line-height:1">94%</div><div style="font-size:13.5px;font-weight:700;margin-top:7px;line-height:1.4">improved their score after five tests</div></div>
+          </div>
+        </div>
+        <div style="background:#FFFFFF;border-radius:20px;padding:20px;box-shadow:0 20px 44px rgba(11,10,31,0.3)">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700">Live now</div><div style="font-size:12px;font-weight:700;color:#C03A24;background:#FFEFEC;padding:5px 10px;border-radius:999px;white-space:nowrap;flex-shrink:0">2,410 attempting</div></div>
+          <div style="display:grid;gap:10px;margin-top:14px">
+            <div style="display:flex;gap:12px;align-items:center;background:#F6F4FF;border-radius:13px;padding:12px"><div style="width:46px;height:46px;border-radius:12px;background:linear-gradient(140deg,#4B2BE8,#7A3BF0);color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;flex-shrink:0">10</div><div style="min-width:0"><div style="font-size:14px;font-weight:700">Class 10 Maths — Full Syllabus Mock</div><div style="font-size:12px;color:#6B64A8;margin-top:2px">40 Q · 60 min</div></div><div style="margin-left:auto;font-size:12px;font-weight:800;color:#1F6B3B">FREE</div></div>
+            <div style="display:flex;gap:12px;align-items:center;background:#F6F4FF;border-radius:13px;padding:12px"><div style="width:46px;height:46px;border-radius:12px;background:linear-gradient(140deg,#C2410C,#9A3412);color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;flex-shrink:0">Bio</div><div style="min-width:0"><div style="font-size:14px;font-weight:700">NEET Biology — Chapter Test 4</div><div style="font-size:12px;color:#6B64A8;margin-top:2px">45 Q · 45 min</div></div><div style="margin-left:auto;font-size:12px;font-weight:800">₹199</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#141033;padding:18px 0;overflow:hidden">
+    <div style="display:flex;gap:24px;width:max-content;animation:slideL 32s linear infinite;font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:#8E86D9;white-space:nowrap;align-items:center">
+      <span style="color:#FFFFFF">Prepare for</span><span style="color:#D6FB5A">·</span><span>Bihar Board</span><span style="color:#D6FB5A">·</span><span>CBSE</span><span style="color:#D6FB5A">·</span><span>ICSE</span><span style="color:#D6FB5A">·</span><span>CUET UG</span><span style="color:#D6FB5A">·</span><span>JEE Mains</span><span style="color:#D6FB5A">·</span><span>NEET</span><span style="color:#D6FB5A">·</span><span>CUET PG</span><span style="color:#D6FB5A">·</span><span>GATE</span><span style="color:#D6FB5A">·</span><span>CSIR NET</span><span style="color:#D6FB5A">·</span><span>UGC NET</span><span style="color:#D6FB5A">·</span><span>PhD Entrance</span><span style="color:#D6FB5A">·</span><span>IIT JAM</span><span style="color:#D6FB5A">·</span>
+      <span style="color:#FFFFFF">Prepare for</span><span style="color:#D6FB5A">·</span><span>Bihar Board</span><span style="color:#D6FB5A">·</span><span>CBSE</span><span style="color:#D6FB5A">·</span><span>ICSE</span><span style="color:#D6FB5A">·</span><span>CUET UG</span><span style="color:#D6FB5A">·</span><span>JEE Mains</span><span style="color:#D6FB5A">·</span><span>NEET</span><span style="color:#D6FB5A">·</span><span>CUET PG</span><span style="color:#D6FB5A">·</span><span>GATE</span><span style="color:#D6FB5A">·</span><span>CSIR NET</span><span style="color:#D6FB5A">·</span><span>UGC NET</span><span style="color:#D6FB5A">·</span><span>PhD Entrance</span><span style="color:#D6FB5A">·</span><span>IIT JAM</span><span style="color:#D6FB5A">·</span>
+    </div>
+  </section>
+
+  <section style="padding:72px 36px 16px;max-width:1400px;margin:0 auto;text-align:center">
+    <div style="display:inline-flex;align-items:center;gap:8px;background:#FDF0EC;color:#C2410C;font-size:12.5px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;padding:8px 16px;border-radius:999px">📚 Pick your level</div>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(30px,3.6vw,42px);font-weight:700;letter-spacing:-0.02em;margin:18px 0 0">Explore content by class</h2>
+    <p style="font-size:16.5px;color:#6B64A8;max-width:52ch;margin:12px auto 0;line-height:1.55;text-wrap:pretty">Handpicked subjects and expert-crafted tests for every class from 5th to Post Graduate.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(94px,1fr));gap:14px;margin-top:34px">
+      <sc-for list="{{ classes }}" as="c" hint-placeholder-count="10">
+        <button type="button" onClick="{{ c.select }}" onMouseEnter="{{ c.hoverIn }}" onMouseLeave="{{ c.hoverOut }}" style="{{ c.cardStyle }}">
+          <div style="{{ c.iconWrapStyle }}">{{ c.icon }}</div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:700;margin-top:10px;color:{{ c.textColor }}">{{ c.label }}</div>
+          <div style="font-size:10.5px;font-weight:800;letter-spacing:0.07em;text-transform:uppercase;margin-top:2px;color:{{ c.tagColor }}">{{ c.tag }}</div>
+          <sc-if value="{{ c.isSelected }}"><div style="{{ c.checkStyle }}">✓</div></sc-if>
+        </button>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="padding:72px 36px;max-width:1400px;margin:0 auto;text-align:center">
+    <div style="display:inline-flex;align-items:center;gap:8px;background:#F1EEFF;color:#4B2BE8;font-size:12.5px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;padding:8px 16px;border-radius:999px">🧭 Browse by subject</div>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(30px,3.6vw,42px);font-weight:700;letter-spacing:-0.02em;margin:18px 0 0">Learn any subject, your way</h2>
+    <p style="font-size:16.5px;color:#6B64A8;max-width:52ch;margin:12px auto 0;line-height:1.55;text-wrap:pretty">Structured chapters, expert lectures and tests for every subject from Class 5 to Post Graduate.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:34px;text-align:left">
+      <a href="#" style="border-radius:16px;padding:22px;background:#FFFFFF;border:1px solid #EDE9FB;display:block;color:#141033;transition:transform 240ms cubic-bezier(.34,1.56,.64,1),box-shadow 240ms ease,border-color 240ms ease;box-shadow:0 1px 2px rgba(20,16,51,0.04)" style-hover="transform:translateY(-6px);box-shadow:0 18px 34px rgba(75,43,232,0.14);border-color:#DAD3FA">
+        <div style="width:44px;height:44px;border-radius:12px;background:#EEF2FF;color:#2451C4;display:flex;align-items:center;justify-content:center;font-size:20px;transition:transform 240ms cubic-bezier(.34,1.56,.64,1)" style-hover="transform:scale(1.12) rotate(-6deg)">±✕</div>
+        <div style="font-size:17px;font-weight:700;margin-top:16px">Mathematics</div>
+        <div style="font-size:13px;color:#6B64A8;margin-top:5px">Class 5–12 · 420 chapters</div>
+      </a>
+      <a href="#" style="border-radius:16px;padding:22px;background:#FFFFFF;border:1px solid #EDE9FB;display:block;color:#141033;transition:transform 240ms cubic-bezier(.34,1.56,.64,1),box-shadow 240ms ease,border-color 240ms ease;box-shadow:0 1px 2px rgba(20,16,51,0.04)" style-hover="transform:translateY(-6px);box-shadow:0 18px 34px rgba(200,90,30,0.14);border-color:#F6D9C4">
+        <div style="width:44px;height:44px;border-radius:12px;background:#FEF1E6;color:#C2410C;display:flex;align-items:center;justify-content:center;font-size:20px;transition:transform 240ms cubic-bezier(.34,1.56,.64,1)" style-hover="transform:scale(1.12) rotate(-6deg)">⚛️</div>
+        <div style="font-size:17px;font-weight:700;margin-top:16px">Physics</div>
+        <div style="font-size:13px;color:#6B64A8;margin-top:5px">Class 9–12 · 180 chapters</div>
+      </a>
+      <a href="#" style="border-radius:16px;padding:22px;background:#FFFFFF;border:1px solid #EDE9FB;display:block;color:#141033;transition:transform 240ms cubic-bezier(.34,1.56,.64,1),box-shadow 240ms ease,border-color 240ms ease;box-shadow:0 1px 2px rgba(20,16,51,0.04)" style-hover="transform:translateY(-6px);box-shadow:0 18px 34px rgba(14,124,107,0.14);border-color:#C7E9E1">
+        <div style="width:44px;height:44px;border-radius:12px;background:#E9F7F3;color:#0E7C6B;display:flex;align-items:center;justify-content:center;font-size:20px;transition:transform 240ms cubic-bezier(.34,1.56,.64,1)" style-hover="transform:scale(1.12) rotate(-6deg)">🧪</div>
+        <div style="font-size:17px;font-weight:700;margin-top:16px">Chemistry</div>
+        <div style="font-size:13px;color:#6B64A8;margin-top:5px">Class 9–12 · 165 chapters</div>
+      </a>
+      <a href="#" style="border-radius:16px;padding:22px;background:#FFFFFF;border:1px solid #EDE9FB;display:block;color:#141033;transition:transform 240ms cubic-bezier(.34,1.56,.64,1),box-shadow 240ms ease,border-color 240ms ease;box-shadow:0 1px 2px rgba(20,16,51,0.04)" style-hover="transform:translateY(-6px);box-shadow:0 18px 34px rgba(31,107,59,0.14);border-color:#CFEFD9">
+        <div style="width:44px;height:44px;border-radius:12px;background:#EAF7EE;color:#1F6B3B;display:flex;align-items:center;justify-content:center;font-size:20px;transition:transform 240ms cubic-bezier(.34,1.56,.64,1)" style-hover="transform:scale(1.12) rotate(-6deg)">🍃</div>
+        <div style="font-size:17px;font-weight:700;margin-top:16px">Biology</div>
+        <div style="font-size:13px;color:#6B64A8;margin-top:5px">Class 9–12 · 140 chapters</div>
+      </a>
+      <a href="#" style="border-radius:16px;padding:22px;background:#FFFFFF;border:1px solid #EDE9FB;display:block;color:#141033;transition:transform 240ms cubic-bezier(.34,1.56,.64,1),box-shadow 240ms ease,border-color 240ms ease;box-shadow:0 1px 2px rgba(20,16,51,0.04)" style-hover="transform:translateY(-6px);box-shadow:0 18px 34px rgba(37,81,196,0.14);border-color:#CBDBF8">
+        <div style="width:44px;height:44px;border-radius:12px;background:#EAF1FE;color:#2451C4;display:flex;align-items:center;justify-content:center;font-size:20px;transition:transform 240ms cubic-bezier(.34,1.56,.64,1)" style-hover="transform:scale(1.12) rotate(-6deg)">🌐</div>
+        <div style="font-size:17px;font-weight:700;margin-top:16px">Social Science</div>
+        <div style="font-size:13px;color:#6B64A8;margin-top:5px">Class 5–12 · 210 chapters</div>
+      </a>
+      <a href="#" style="border-radius:16px;padding:22px;background:#FFFFFF;border:1px solid #EDE9FB;display:block;color:#141033;transition:transform 240ms cubic-bezier(.34,1.56,.64,1),box-shadow 240ms ease,border-color 240ms ease;box-shadow:0 1px 2px rgba(20,16,51,0.04)" style-hover="transform:translateY(-6px);box-shadow:0 18px 34px rgba(75,43,232,0.14);border-color:#DAD3FA">
+        <div style="width:44px;height:44px;border-radius:12px;background:#F1EEFF;color:#4B2BE8;display:flex;align-items:center;justify-content:center;font-size:20px;transition:transform 240ms cubic-bezier(.34,1.56,.64,1)" style-hover="transform:scale(1.12) rotate(-6deg)">📖</div>
+        <div style="font-size:17px;font-weight:700;margin-top:16px">English</div>
+        <div style="font-size:13px;color:#6B64A8;margin-top:5px">Class 5–12 · grammar + literature</div>
+      </a>
+      <a href="#" style="border-radius:16px;padding:22px;background:#FFFFFF;border:1px solid #EDE9FB;display:block;color:#141033;transition:transform 240ms cubic-bezier(.34,1.56,.64,1),box-shadow 240ms ease,border-color 240ms ease;box-shadow:0 1px 2px rgba(20,16,51,0.04)" style-hover="transform:translateY(-6px);box-shadow:0 18px 34px rgba(184,131,10,0.14);border-color:#F3E2B8">
+        <div style="width:44px;height:44px;border-radius:12px;background:#FDF6E4;color:#946B0A;display:flex;align-items:center;justify-content:center;font-size:20px;transition:transform 240ms cubic-bezier(.34,1.56,.64,1)" style-hover="transform:scale(1.12) rotate(-6deg)">ॐ</div>
+        <div style="font-size:17px;font-weight:700;margin-top:16px">Hindi</div>
+        <div style="font-size:13px;color:#6B64A8;margin-top:5px">Class 5–12 · व्याकरण + गद्य</div>
+      </a>
+      <a href="#" style="border-radius:16px;padding:22px;background:#FFFFFF;border:1px solid #EDE9FB;display:block;color:#141033;transition:transform 240ms cubic-bezier(.34,1.56,.64,1),box-shadow 240ms ease,border-color 240ms ease;box-shadow:0 1px 2px rgba(20,16,51,0.04)" style-hover="transform:translateY(-6px);box-shadow:0 18px 34px rgba(194,65,12,0.14);border-color:#F6D9C4">
+        <div style="width:44px;height:44px;border-radius:12px;background:#FEF1E6;color:#C2410C;display:flex;align-items:center;justify-content:center;font-size:20px;transition:transform 240ms cubic-bezier(.34,1.56,.64,1)" style-hover="transform:scale(1.12) rotate(-6deg)">🏆</div>
+        <div style="font-size:17px;font-weight:700;margin-top:16px">Competitive Exam</div>
+        <div style="font-size:13px;color:#6B64A8;margin-top:5px">CUET · JEE · NET · GATE</div>
+      </a>
+      <a href="#" style="border-radius:16px;padding:22px;background:#FFFFFF;border:1px solid #EDE9FB;display:block;color:#141033;transition:transform 240ms cubic-bezier(.34,1.56,.64,1),box-shadow 240ms ease,border-color 240ms ease;box-shadow:0 1px 2px rgba(20,16,51,0.04)" style-hover="transform:translateY(-6px);box-shadow:0 18px 34px rgba(14,124,107,0.14);border-color:#C7E9E1">
+        <div style="width:44px;height:44px;border-radius:12px;background:#E9F7F3;color:#0E7C6B;display:flex;align-items:center;justify-content:center;font-size:20px;transition:transform 240ms cubic-bezier(.34,1.56,.64,1)" style-hover="transform:scale(1.12) rotate(-6deg)">🧮</div>
+        <div style="font-size:17px;font-weight:700;margin-top:16px">Commerce</div>
+        <div style="font-size:13px;color:#6B64A8;margin-top:5px">Class 11–12 · 5 subjects</div>
+      </a>
+      <a href="#" style="border-radius:16px;padding:22px;background:#FFFFFF;border:1px solid #EDE9FB;display:block;color:#141033;transition:transform 240ms cubic-bezier(.34,1.56,.64,1),box-shadow 240ms ease,border-color 240ms ease;box-shadow:0 1px 2px rgba(20,16,51,0.04)" style-hover="transform:translateY(-6px);box-shadow:0 18px 34px rgba(220,38,38,0.14);border-color:#F7CFCF">
+        <div style="width:44px;height:44px;border-radius:12px;background:#FDECEC;color:#B03A26;display:flex;align-items:center;justify-content:center;font-size:20px;transition:transform 240ms cubic-bezier(.34,1.56,.64,1)" style-hover="transform:scale(1.12) rotate(-6deg)">📄</div>
+        <div style="font-size:17px;font-weight:700;margin-top:16px">Humanities</div>
+        <div style="font-size:13px;color:#6B64A8;margin-top:5px">Class 11–12 · 6 subjects</div>
+      </a>
+    </div>
+  </section>
+
+  <section style="padding:56px 36px;max-width:1400px;margin:0 auto">
+    <div style="display:inline-flex;align-items:center;gap:7px;color:#C2410C;font-size:12.5px;font-weight:800;letter-spacing:0.07em;text-transform:uppercase">⭐ Featured courses</div>
+    <div style="display:flex;align-items:end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:8px">
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(26px,3.2vw,34px);font-weight:700;letter-spacing:-0.02em;margin:0">Start with what students pick most</h2>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button type="button" onClick="{{ scrollPrev }}" style="width:38px;height:38px;border-radius:9px;border:1px solid #E0DAF7;background:#FFFFFF;color:#4B2BE8;font-size:15px;cursor:pointer" style-hover="border-color:#4B2BE8">←</button>
+        <button type="button" onClick="{{ scrollNext }}" style="width:38px;height:38px;border-radius:9px;border:1px solid #E0DAF7;background:#FFFFFF;color:#4B2BE8;font-size:15px;cursor:pointer" style-hover="border-color:#4B2BE8">→</button>
+        <a href="#" style="background:#141033;color:#FFFFFF;font-size:14px;font-weight:700;padding:11px 18px;border-radius:10px;margin-left:6px;white-space:nowrap" style-hover="background:#4B2BE8">See all courses →</a>
+      </div>
+    </div>
+
+    <div style="overflow:hidden;margin-top:24px">
+      <div style="display:flex;gap:18px;transition:transform 700ms cubic-bezier(.65,0,.35,1);transform:{{ courseTransform }}">
+        <sc-for list="{{ courses }}" as="course" hint-placeholder-count="10">
+          <a href="#" style="flex:0 0 calc(25% - 13.5px);min-width:230px;border-radius:18px;background:#FFFFFF;border:1px solid #EAE6FF;overflow:hidden;color:#141033;display:block;box-shadow:0 6px 20px rgba(75,43,232,0.07);transition:box-shadow 220ms ease" style-hover="box-shadow:0 16px 36px rgba(75,43,232,0.16)">
+            <div style="position:relative;height:140px"><image-slot id="{{ course.thumbId }}" shape="rect" placeholder="{{ course.thumbPlaceholder }}"></image-slot><span style="{{ course.badgeStyle }}">{{ course.badge }}</span></div>
+            <div style="padding:16px">
+              <div style="display:flex;flex-wrap:wrap;gap:6px"><span style="{{ course.subjectTagStyle }}">{{ course.subject }}</span><span style="font-size:11.5px;font-weight:700;color:#946B0A;background:#FDF6E4;padding:4px 9px;border-radius:6px">{{ course.classLabel }}</span></div>
+              <div style="font-size:15.5px;font-weight:700;line-height:1.35;margin-top:11px">{{ course.title }}</div>
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:12px;padding-top:12px;border-top:1px solid #F1EEFF"><span style="font-size:12.5px;color:#6B64A8;font-weight:600">{{ course.meta }}</span><span style="font-size:13px;font-weight:700;color:#C2410C">Enroll →</span></div>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+
+  <section style="background:#F7F5FF;padding:60px 36px">
+    <div style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:44px">
+      <div>
+        <div style="display:flex;align-items:end;justify-content:space-between;gap:16px"><h2 style="font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;margin:0">Mock tests</h2><a href="#" style="font-size:15px;font-weight:700">All tests →</a></div>
+        <div style="display:grid;gap:12px;margin-top:20px">
+          <a href="#" style="display:flex;gap:13px;align-items:center;background:#FFFFFF;border-radius:15px;padding:14px;color:#141033" style-hover="background:#EEEAFF"><div style="width:52px;height:52px;border-radius:13px;background:linear-gradient(140deg,#4B2BE8,#7A3BF0);color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;flex-shrink:0">10</div><div style="min-width:0"><div style="font-size:15px;font-weight:700">Class 10 Maths — Full Syllabus Mock</div><div style="font-size:12px;color:#6B64A8;margin-top:3px">40 Q · 60 min · 8,420 attempts</div></div><div style="margin-left:auto;font-size:12px;font-weight:800;color:#1F6B3B">FREE</div></a>
+          <a href="#" style="display:flex;gap:13px;align-items:center;background:#FFFFFF;border-radius:15px;padding:14px;color:#141033" style-hover="background:#EEEAFF"><div style="width:52px;height:52px;border-radius:13px;background:linear-gradient(140deg,#C2410C,#9A3412);color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;flex-shrink:0">Bio</div><div style="min-width:0"><div style="font-size:15px;font-weight:700">NEET Biology — Chapterwise Test 4</div><div style="font-size:12px;color:#6B64A8;margin-top:3px">45 Q · 45 min · 3,180 attempts</div></div><div style="margin-left:auto;font-size:12px;font-weight:800">₹199</div></a>
+          <a href="#" style="display:flex;gap:13px;align-items:center;background:#FFFFFF;border-radius:15px;padding:14px;color:#141033" style-hover="background:#EEEAFF"><div style="width:52px;height:52px;border-radius:13px;background:#141033;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;flex-shrink:0">12</div><div style="min-width:0"><div style="font-size:15px;font-weight:700">Class 12 Physics — Optics Sectional</div><div style="font-size:12px;color:#6B64A8;margin-top:3px">30 Q · 40 min · 2,090 attempts</div></div><div style="margin-left:auto;font-size:12px;font-weight:800">₹149</div></a>
+        </div>
+      </div>
+      <div>
+        <div style="display:flex;align-items:end;justify-content:space-between;gap:16px"><h2 style="font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;margin:0">Test series</h2><a href="#" style="font-size:15px;font-weight:700">All series →</a></div>
+        <div style="display:grid;gap:12px;margin-top:20px">
+          <a href="#" style="display:flex;gap:13px;align-items:center;background:#FFFFFF;border-radius:15px;padding:14px;color:#141033" style-hover="background:#EEEAFF"><div style="width:52px;height:52px;border-radius:13px;background:#D6FB5A;color:#242E06;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;flex-shrink:0">20</div><div style="min-width:0"><div style="font-size:15px;font-weight:700">Class 12 Physics Board Series</div><div style="font-size:12px;color:#6B64A8;margin-top:3px">20 tests · rank &amp; percentile</div></div><div style="margin-left:auto;font-size:12px;font-weight:800">₹999</div></a>
+          <a href="#" style="display:flex;gap:13px;align-items:center;background:#FFFFFF;border-radius:15px;padding:14px;color:#141033" style-hover="background:#EEEAFF"><div style="width:52px;height:52px;border-radius:13px;background:linear-gradient(140deg,#0E7C6B,#0A6055);color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;flex-shrink:0">15</div><div style="min-width:0"><div style="font-size:15px;font-weight:700">Class 10 All-Subject Board Series</div><div style="font-size:12px;color:#6B64A8;margin-top:3px">15 tests · full answer keys</div></div><div style="margin-left:auto;font-size:12px;font-weight:800">₹799</div></a>
+          <a href="#" style="display:flex;gap:13px;align-items:center;background:#FFFFFF;border-radius:15px;padding:14px;color:#141033" style-hover="background:#EEEAFF"><div style="width:52px;height:52px;border-radius:13px;background:linear-gradient(140deg,#9333EA,#C026D3);color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;flex-shrink:0">10</div><div style="min-width:0"><div style="font-size:15px;font-weight:700">UG Entrance Foundation Series</div><div style="font-size:12px;color:#6B64A8;margin-top:3px">10 tests · sectional timing</div></div><div style="margin-left:auto;font-size:12px;font-weight:800;color:#1F6B3B">FREE</div></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:56px 36px;max-width:1400px;margin:0 auto">
+    <div style="display:inline-flex;align-items:center;gap:7px;color:#C2410C;font-size:12.5px;font-weight:800;letter-spacing:0.07em;text-transform:uppercase">📰 From the blog</div>
+    <div style="display:flex;align-items:end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:8px">
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(26px,3.2vw,34px);font-weight:700;letter-spacing:-0.02em;margin:0">Exam updates, strategy and study plans</h2>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button type="button" onClick="{{ blogPrev }}" style="width:38px;height:38px;border-radius:9px;border:1px solid #E0DAF7;background:#FFFFFF;color:#4B2BE8;font-size:15px;cursor:pointer" style-hover="border-color:#4B2BE8">←</button>
+        <button type="button" onClick="{{ blogNext }}" style="width:38px;height:38px;border-radius:9px;border:1px solid #E0DAF7;background:#FFFFFF;color:#4B2BE8;font-size:15px;cursor:pointer" style-hover="border-color:#4B2BE8">→</button>
+        <a href="#" style="background:#141033;color:#FFFFFF;font-size:14px;font-weight:700;padding:11px 18px;border-radius:10px;margin-left:6px;white-space:nowrap" style-hover="background:#4B2BE8">See all posts →</a>
+      </div>
+    </div>
+
+    <div style="overflow:hidden;margin-top:24px">
+      <div style="display:flex;gap:18px;transition:transform 500ms cubic-bezier(.65,0,.35,1);transform:{{ blogTransform }}">
+        <sc-for list="{{ blogs }}" as="post" hint-placeholder-count="3">
+          <a href="#" style="flex:0 0 calc(33.333% - 12px);min-width:260px;border-radius:18px;background:#FFFFFF;border:1px solid #EAE6FF;overflow:hidden;color:#141033;display:block;box-shadow:0 6px 20px rgba(75,43,232,0.07);transition:box-shadow 220ms ease" style-hover="box-shadow:0 16px 36px rgba(75,43,232,0.16)">
+            <image-slot id="{{ post.thumbId }}" shape="rect" style="width:100%;height:140px;display:block" placeholder="{{ post.thumbPlaceholder }}"></image-slot>
+            <div style="padding:18px">
+              <div style="font-size:12.5px;font-weight:700;color:#C2410C">{{ post.tag }} · {{ post.date }} · {{ post.readTime }}</div>
+              <div style="font-size:17px;font-weight:700;line-height:1.35;margin-top:10px">{{ post.title }}</div>
+              <p style="font-size:13.5px;color:#6B64A8;line-height:1.55;margin:9px 0 0">{{ post.excerpt }}</p>
+              <div style="font-size:13.5px;font-weight:700;color:#4B2BE8;margin-top:13px">Read article →</div>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <sc-if value="{{ showHow }}" hint-placeholder-val="{{ true }}">
+  <section style="padding:64px 36px;max-width:1400px;margin:0 auto">
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:34px;font-weight:700;letter-spacing:-0.02em;margin:0 0 30px">How it works</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px">
+      <div style="background:linear-gradient(150deg,#4B2BE8,#7A3BF0);border-radius:20px;padding:26px;color:#FFFFFF"><div style="font-family:'Space Grotesk',sans-serif;font-size:44px;font-weight:700;line-height:1;color:#D6FB5A">01</div><div style="font-size:21px;font-weight:700;margin-top:12px">Pick class &amp; subject</div><p style="font-size:15px;line-height:1.6;color:#FFFFFF;margin:10px 0 0">Content is filed by class first, so you only see the syllabus you are studying.</p></div>
+      <div style="background:#141033;border-radius:20px;padding:26px;color:#FFFFFF"><div style="font-family:'Space Grotesk',sans-serif;font-size:44px;font-weight:700;line-height:1;color:#FF5B45">02</div><div style="font-size:21px;font-weight:700;margin-top:12px">Learn, then attempt</div><p style="font-size:15px;line-height:1.6;color:#C9C4FF;margin:10px 0 0">Watch the lecture, then take its chapter test — timed like the real paper.</p></div>
+      <div style="background:#D6FB5A;border-radius:20px;padding:26px;color:#242E06"><div style="font-family:'Space Grotesk',sans-serif;font-size:44px;font-weight:700;line-height:1;color:#4B2BE8">03</div><div style="font-size:21px;font-weight:700;margin-top:12px">See what to fix</div><p style="font-size:15px;line-height:1.6;color:#3F4E0C;margin:10px 0 0">Accuracy per topic, time per question, and the two chapters to revise next.</p></div>
+    </div>
+  </section>
+  </sc-if>
+
+  <sc-if value="{{ showFaq }}" hint-placeholder-val="{{ true }}">
+  <section style="padding:0 36px 64px;max-width:1400px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:48px">
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-size:34px;font-weight:700;letter-spacing:-0.02em;margin:0;line-height:1.1">Questions students ask</h2>
+      <div style="display:grid;gap:10px">
+        <details style="background:#F7F5FF;border-radius:14px;padding:18px 20px"><summary style="list-style:none;cursor:pointer;font-size:17px;font-weight:700;display:flex;justify-content:space-between;gap:16px">Are the mock tests same pattern as the board exam?<span style="color:#4B2BE8">+</span></summary><p style="font-size:15px;line-height:1.6;color:#5B54A6;margin:12px 0 0;max-width:70ch">Yes. Each test follows the current paper pattern for that class, including section-wise marks and negative marking where it applies.</p></details>
+        <details style="background:#F7F5FF;border-radius:14px;padding:18px 20px"><summary style="list-style:none;cursor:pointer;font-size:17px;font-weight:700;display:flex;justify-content:space-between;gap:16px">Can I try before paying?<span style="color:#4B2BE8">+</span></summary><p style="font-size:15px;line-height:1.6;color:#5B54A6;margin:12px 0 0;max-width:70ch">Every subject has free lectures and at least one free full-length test, with the same answer key and analysis as the paid ones.</p></details>
+        <details style="background:#F7F5FF;border-radius:14px;padding:18px 20px"><summary style="list-style:none;cursor:pointer;font-size:17px;font-weight:700;display:flex;justify-content:space-between;gap:16px">How do I get a doubt answered?<span style="color:#4B2BE8">+</span></summary><p style="font-size:15px;line-height:1.6;color:#5B54A6;margin:12px 0 0;max-width:70ch">Post it from the lecture or from a question in your answer key. A subject teacher replies, and the thread stays in your account.</p></details>
+        <details style="background:#F7F5FF;border-radius:14px;padding:18px 20px"><summary style="list-style:none;cursor:pointer;font-size:17px;font-weight:700;display:flex;justify-content:space-between;gap:16px">Does a course expire?<span style="color:#4B2BE8">+</span></summary><p style="font-size:15px;line-height:1.6;color:#5B54A6;margin:12px 0 0;max-width:70ch">Access runs to the end of the academic session you bought it for, including tests added during that session.</p></details>
+        <details style="background:#F7F5FF;border-radius:14px;padding:18px 20px"><summary style="list-style:none;cursor:pointer;font-size:17px;font-weight:700;display:flex;justify-content:space-between;gap:16px">Who writes the questions?<span style="color:#4B2BE8">+</span></summary><p style="font-size:15px;line-height:1.6;color:#5B54A6;margin:12px 0 0;max-width:70ch">Subject teachers write them and a separate review team checks accuracy, difficulty tagging and duplicates before they go live.</p></details>
+      </div>
+    </div>
+  </section>
+  </sc-if>
+
+  <section style="background:linear-gradient(160deg,#0B2E7A,#1447B8);padding:64px 36px">
+    <div style="max-width:1400px;margin:0 auto;text-align:center">
+      <div style="display:inline-flex;align-items:center;gap:8px;color:#FFD65A;font-size:12.5px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase">☀️ Trusted by students across India</div>
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,3.4vw,38px);font-weight:700;color:#FFFFFF;margin:14px 0 0">Growing every single day</h2>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-top:38px">
+        <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:18px;padding:26px 18px">
+          <div style="width:52px;height:52px;border-radius:14px;background:rgba(255,255,255,0.14);display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto">📚</div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:36px;font-weight:700;color:#FFFFFF;margin-top:14px">10+</div>
+          <div style="font-size:14px;color:#C9DBFF;font-weight:600;margin-top:2px">Courses</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:18px;padding:26px 18px">
+          <div style="width:52px;height:52px;border-radius:14px;background:rgba(255,255,255,0.14);display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto">📝</div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:36px;font-weight:700;color:#FFFFFF;margin-top:14px">100+</div>
+          <div style="font-size:14px;color:#C9DBFF;font-weight:600;margin-top:2px">Mock Tests</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:18px;padding:26px 18px">
+          <div style="width:52px;height:52px;border-radius:14px;background:rgba(255,255,255,0.14);display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto">🎓</div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:36px;font-weight:700;color:#FFFFFF;margin-top:14px">1000+</div>
+          <div style="font-size:14px;color:#C9DBFF;font-weight:600;margin-top:2px">Happy Learners</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:18px;padding:26px 18px">
+          <div style="width:52px;height:52px;border-radius:14px;background:rgba(255,255,255,0.14);display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto">🧭</div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:36px;font-weight:700;color:#FFFFFF;margin-top:14px">7+</div>
+          <div style="font-size:14px;color:#C9DBFF;font-weight:600;margin-top:2px">Subjects</div>
+        </div>
+      </div>
+
+      <div style="font-size:15px;font-weight:700;color:#FFFFFF;margin-top:38px">📣 Join our community — follow us for free tests, updates &amp; study tips</div>
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px">
+        <a href="#" style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.22);color:#FFFFFF;font-size:13.5px;font-weight:700;padding:11px 18px;border-radius:999px" style-hover="background:rgba(255,255,255,0.2)">▶️ Subscribe</a>
+        <a href="#" style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.22);color:#FFFFFF;font-size:13.5px;font-weight:700;padding:11px 18px;border-radius:999px" style-hover="background:rgba(255,255,255,0.2)">📷 Follow</a>
+        <a href="#" style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.22);color:#FFFFFF;font-size:13.5px;font-weight:700;padding:11px 18px;border-radius:999px" style-hover="background:rgba(255,255,255,0.2)">👍 Like</a>
+        <a href="#" style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.22);color:#FFFFFF;font-size:13.5px;font-weight:700;padding:11px 18px;border-radius:999px" style-hover="background:rgba(255,255,255,0.2)">💬 Join Channel</a>
+        <a href="#" style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.22);color:#FFFFFF;font-size:13.5px;font-weight:700;padding:11px 18px;border-radius:999px" style-hover="background:rgba(255,255,255,0.2)">✈️ Join Channel</a>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.16);border-radius:20px;padding:34px;margin-top:38px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:26px;align-items:center;text-align:left">
+        <div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;line-height:1.2;color:#FFFFFF">One email a week.<br><span style="color:#D6FB5A">The tests worth taking.</span></div>
+          <p style="font-size:14.5px;color:#C9DBFF;margin:10px 0 0;max-width:44ch">New mock tests, revision notes and exam-date reminders for your class.</p>
+        </div>
+        <form style="display:flex;gap:10px;flex-wrap:wrap">
+          <input type="email" placeholder="you@email.com" style="flex:1;min-width:180px;border:none;background:#FFFFFF;color:#141033;font-family:inherit;font-size:15px;padding:14px 16px;border-radius:12px;outline:none">
+          <select style="border:none;background:#FFFFFF;color:#141033;font-family:inherit;font-size:14px;font-weight:600;padding:14px 12px;border-radius:12px;outline:none"><option>Class 10</option><option>Class 5</option><option>Class 6</option><option>Class 7</option><option>Class 8</option><option>Class 9</option><option>Class 11</option><option>Class 12</option><option>UG</option><option>PG</option></select>
+          <button type="button" style="border:none;background:#D6FB5A;color:#242E06;font-family:inherit;font-size:14.5px;font-weight:800;padding:14px 24px;border-radius:12px;cursor:pointer;white-space:nowrap" style-hover="background:#FFFFFF">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background:#0B0A1F;padding:48px 36px;color:#FFFFFF">
+    <div style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:32px">
+      <div><div style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;letter-spacing:-0.025em;white-space:nowrap"><span style="color:#5AA9FF">Success</span><span style="color:#FF9A3D">Curve</span><sup style="font-size:0.46em;font-weight:600;color:#9E97D9;margin-left:1px;top:-0.7em">.in</sup></div><p style="font-size:14px;color:#9E97D9;margin:14px 0 0;line-height:1.6">Courses and mock tests for Class 5 to 12, UG and PG.</p></div>
+      <div><div style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#D6FB5A">Learn</div><div style="display:grid;gap:9px;margin-top:14px;font-size:14px"><a href="#" style="color:#C9C4FF">Courses</a><a href="#" style="color:#C9C4FF">MockTest</a><a href="#" style="color:#C9C4FF">Test Series</a><a href="#" style="color:#C9C4FF">Free resources</a></div></div>
+      <div><div style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#D6FB5A">Company</div><div style="display:grid;gap:9px;margin-top:14px;font-size:14px"><a href="#" style="color:#C9C4FF">About Us</a><a href="#" style="color:#C9C4FF">Our teachers</a><a href="#" style="color:#C9C4FF">Contact Us</a><a href="#" style="color:#C9C4FF">Sitemap</a></div></div>
+      <div><div style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#D6FB5A">Support</div><div style="display:grid;gap:9px;margin-top:14px;font-size:14px"><a href="#" style="color:#C9C4FF">Help centre</a><a href="#" style="color:#C9C4FF">Refund policy</a><a href="#" style="color:#C9C4FF">Privacy</a><a href="#" style="color:#C9C4FF">Terms</a></div></div>
+    </div>
+    <div style="max-width:1400px;margin:36px auto 0;padding-top:20px;border-top:1px solid #241E52;font-size:13px;color:#7A72B8">© 2026 Successcurve. Figures shown are placeholders pending your real data.</div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showHowItWorks&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showFaq&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showNewsletter&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;}}">
+class Component extends DCLogic {
+  state = { selectedClass: null };
+
+  CLASS_DATA = [
+    { label: '5th', icon: '✏️', tag: 'Basics' },
+    { label: '6th', icon: '📗', tag: 'Basics' },
+    { label: '7th', icon: '📘', tag: 'Basics' },
+    { label: '8th', icon: '📕', tag: 'Basics' },
+    { label: '9th', icon: '📐', tag: 'Board' },
+    { label: '10th', icon: '🎯', tag: 'Board' },
+    { label: '11th', icon: '🔬', tag: 'Senior' },
+    { label: '12th', icon: '🎓', tag: 'Senior' },
+    { label: 'UG', icon: '🏛️', tag: 'Degree' },
+    { label: 'PG', icon: '📜', tag: 'Master' }
+  ];
+
+  state = { selectedClass: null, courseIdx: 0, blogIdx: 0 };
+
+  COURSES = [
+    { title:'Bihar Board Class 10 Mathematics — Full Course', subject:'Mathematics', classLabel:'Class 10', meta:'42 lessons · Hindi', badge:'FREE', free:true, thumb:'Class 10 Maths course thumbnail' },
+    { title:'CUET UG Legal Studies — Complete Online Course', subject:'Competitive Exam', classLabel:'Class 12', meta:'36 lessons · English', badge:'FREE', free:true, thumb:'CUET UG Legal Studies thumbnail' },
+    { title:'CUET General Test (Section III) Online Course', subject:'Competitive Exam', classLabel:'Class 12', meta:'28 lessons · Bilingual', badge:'FREE', free:true, thumb:'CUET General Test thumbnail' },
+    { title:'CUCET Saver Course — Stream UG Entrance', subject:'Competitive Exam', classLabel:'UG', meta:'31 lessons · Hindi', badge:'₹799', free:false, thumb:'CUCET Saver Course thumbnail' },
+    { title:'Class 12 Physics — Board + JEE Foundation', subject:'Physics', classLabel:'Class 12', meta:'56 lessons · English', badge:'₹1,899', free:false, thumb:'Class 12 Physics course thumbnail' },
+    { title:'Class 11 Chemistry — Concepts & Numericals', subject:'Chemistry', classLabel:'Class 11', meta:'38 lessons · English', badge:'₹1,299', free:false, thumb:'Class 11 Chemistry course thumbnail' },
+    { title:'Class 11 Biology — Cell & Genetics Basics', subject:'Biology', classLabel:'Class 11', meta:'28 lessons · English', badge:'FREE', free:true, thumb:'Class 11 Biology course thumbnail' },
+    { title:'Class 9 Social Science — Full Syllabus', subject:'Social Science', classLabel:'Class 9', meta:'34 lessons · Hindi', badge:'₹999', free:false, thumb:'Class 9 Social Science thumbnail' },
+    { title:'NEET Biology — Complete Chapterwise Course', subject:'Biology', classLabel:'Competitive', meta:'62 lessons · English', badge:'₹2,199', free:false, thumb:'NEET Biology course thumbnail' },
+    { title:'Class 8 English — Grammar & Writing Skills', subject:'English', classLabel:'Class 8', meta:'22 lessons · English', badge:'FREE', free:true, thumb:'Class 8 English course thumbnail' }
+  ];
+
+  BLOGS = [
+    { tag:'Exam Update', date:'8 Sep 2026', readTime:'4 min read', title:'CUET UG 2026: what changed in the paper pattern', excerpt:'Section-wise question counts, the new time limit and how to adjust your revision plan.', thumb:'Blog cover — CUET 2026 pattern' },
+    { tag:'Strategy', date:'2 Sep 2026', readTime:'6 min read', title:'A 90-day Class 10 board plan that actually fits school hours', excerpt:'Subject rotation, revision windows and the mock test cadence to keep through December.', thumb:'Blog cover — Class 10 study plan' },
+    { tag:'Career Guidance', date:'27 Aug 2026', readTime:'5 min read', title:'Science, Commerce or Arts: choosing after Class 10', excerpt:'What each stream opens up, which entrance exams follow, and the questions to ask yourself first.', thumb:'Blog cover — stream selection' }
+  ];
+
+  componentDidMount() {
+    this._courseTimer = setInterval(() => {
+      this.setState(s => ({ courseIdx: (s.courseIdx + 1) % this.COURSES.length }));
+    }, 3000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this._courseTimer);
+  }
+
+  renderVals() {
+    const n = this.COURSES.length;
+    const idx = this.state.courseIdx;
+    const cardW = 25; // % width of 4-visible track, matches flex-basis calc(25% - gap)
+    const courses = [];
+    for (let i = 0; i < n; i++) {
+      const c = this.COURSES[i];
+      courses.push({
+        thumbId: 'course-thumb-' + i,
+        thumbPlaceholder: c.thumb,
+        subject: c.subject,
+        classLabel: c.classLabel,
+        title: c.title,
+        meta: c.meta,
+        badge: c.badge,
+        badgeStyle: `position:absolute;top:12px;right:12px;background:${c.free ? '#1F6B3B' : '#4B2BE8'};color:#FFFFFF;font-size:11.5px;font-weight:800;padding:5px 11px;border-radius:999px;z-index:2`,
+        subjectTagStyle: `font-size:11.5px;font-weight:700;color:${c.subject === 'Competitive Exam' ? '#C2410C' : '#2451C4'};background:${c.subject === 'Competitive Exam' ? '#FEF1E6' : '#EEF2FF'};padding:4px 9px;border-radius:6px`
+      });
+    }
+    const courseTransform = `translateX(calc(-${idx} * (25% + 4.5px)))`;
+
+    const bIdx = this.state.blogIdx;
+    const blogs = this.BLOGS.map((p, i) => ({
+      thumbId: 'blog-thumb-' + i,
+      thumbPlaceholder: p.thumb,
+      tag: p.tag, date: p.date, readTime: p.readTime, title: p.title, excerpt: p.excerpt
+    }));
+    const blogTransform = `translateX(calc(-${bIdx} * (33.333% + 6px)))`;
+    const blogMax = this.BLOGS.length - 3;
+
+    const sel = this.state.selectedClass;
+    const hovered = this.state.hoveredClass;
+    const classes = this.CLASS_DATA.map(c => {
+      const isSelected = c.label === sel;
+      const isHovered = c.label === hovered;
+      return {
+        label: c.label,
+        icon: c.icon,
+        tag: c.tag,
+        isSelected,
+        select: () => this.setState({ selectedClass: c.label }),
+        hoverIn: () => this.setState({ hoveredClass: c.label }),
+        hoverOut: () => this.setState({ hoveredClass: null }),
+        textColor: isSelected ? '#FFFFFF' : '#141033',
+        tagColor: isSelected ? '#D6D1F5' : '#8079B8',
+        cardStyle: `position:relative;border:none;cursor:pointer;font-family:inherit;padding:20px 10px 16px;border-radius:16px;display:flex;flex-direction:column;align-items:center;transition:transform 220ms cubic-bezier(.34,1.56,.64,1),box-shadow 220ms ease,background 220ms ease;` +
+          (isSelected
+            ? 'background:linear-gradient(150deg,#4B2BE8,#7A3BF0);box-shadow:0 14px 30px rgba(75,43,232,0.35);transform:translateY(-4px) scale(1.04);'
+            : `background:#F9F8FF;box-shadow:${isHovered ? '0 10px 22px rgba(75,43,232,0.16)' : '0 1px 2px rgba(20,16,51,0.04)'};transform:${isHovered ? 'translateY(-4px) scale(1.03)' : 'translateY(0) scale(1)'};`),
+        iconWrapStyle: `font-size:26px;line-height:1;transition:transform 220ms cubic-bezier(.34,1.56,.64,1);transform:${(isSelected || isHovered) ? 'scale(1.18) rotate(-4deg)' : 'scale(1)'}`,
+        checkStyle: 'position:absolute;top:8px;right:8px;width:18px;height:18px;border-radius:999px;background:#D6FB5A;color:#242E06;font-size:11px;font-weight:900;display:flex;align-items:center;justify-content:center;animation:popIn 260ms cubic-bezier(.34,1.56,.64,1)'
+      };
+    });
+    return {
+      classes,
+      courses,
+      courseTransform,
+      blogs,
+      blogTransform,
+      scrollPrev: () => this.setState(s => ({ courseIdx: (s.courseIdx - 1 + n) % n })),
+      scrollNext: () => this.setState(s => ({ courseIdx: (s.courseIdx + 1) % n })),
+      blogPrev: () => this.setState(s => ({ blogIdx: Math.max(0, s.blogIdx - 1) })),
+      blogNext: () => this.setState(s => ({ blogIdx: Math.min(blogMax, s.blogIdx + 1) })),
+      showHow: this.props.showHowItWorks ?? true,
+      showFaq: this.props.showFaq ?? true,
+      showNewsletter: this.props.showNewsletter ?? true
+    };
+  }
+}
+</script>
+</body>
+</html>

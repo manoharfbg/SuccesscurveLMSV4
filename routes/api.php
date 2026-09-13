@@ -14,6 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix('v1')->group(function () {
+    // Public Discovery
+    Route::get('/home', [App\Http\Controllers\Api\HomeController::class, 'getHomeData']);
+
+    // Student Dashboard
+    Route::get('/student/dashboard', [App\Http\Controllers\Api\StudentDashboardController::class, 'getDashboardData']);
+
+    // Admin Dashboard
+    Route::get('/admin/dashboard', [App\Http\Controllers\Api\AdminDashboardController::class, 'getDashboardData']);
 });
+

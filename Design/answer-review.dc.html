@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#EEF1F6; }
+  a { text-decoration:none; }
+  button { font-family:inherit; cursor:pointer; }
+</style>
+</helmet>
+<div style="font-family:'DM Sans',system-ui,sans-serif;color:#0F1B33;min-height:100vh;padding-bottom:76px">
+
+  <header style="background:#0A4FA8;padding:16px 26px;display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+    <div style="min-width:0">
+      <div style="font-size:16px;font-weight:700;color:#FFFFFF">{{ testTitle }}</div>
+      <div style="font-size:12.5px;color:#BFD6F5;margin-top:3px">Answer Review · Q{{ current }} of {{ totalQ }}</div>
+    </div>
+    <div style="flex:1"></div>
+    <a href="#" style="background:#E4573D;color:#FFFFFF;font-size:13.5px;font-weight:700;padding:9px 18px;border-radius:8px" style-hover="background:#C94B33">Go Back</a>
+  </header>
+
+  <div style="max-width:1180px;margin:0 auto;padding:22px 20px 0;display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:20px;align-items:start">
+
+    <div style="background:#FFFFFF;border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(15,27,51,0.08)">
+      <div style="background:#0A3D82;padding:14px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+        <span style="font-size:14.5px;font-weight:700;color:#FFFFFF">Q{{ current }} · {{ q.type }}</span>
+        <span style="{{ q.statusPill }}">{{ q.statusIcon }} {{ q.status }}</span>
+        <div style="flex:1"></div>
+        <span style="font-size:13.5px;color:#BFD6F5">Marks: <strong style="color:#6FE0A8">+{{ q.marks }}</strong></span>
+        <span style="font-size:13.5px;color:#BFD6F5">Negative: <strong style="color:#FF9E8A">{{ q.negative }}</strong></span>
+      </div>
+
+      <div style="padding:26px 24px">
+        <p style="font-size:16.5px;line-height:1.6;margin:0 0 22px;color:#0F1B33">{{ q.text }}</p>
+
+        <div style="display:grid;gap:14px">
+          <sc-for list="{{ q.options }}" as="o" hint-placeholder-count="4">
+            <div style="{{ o.rowStyle }}">
+              <span style="{{ o.numStyle }}">{{ o.num }}</span>
+              <span style="flex:1;font-size:15.5px;color:#0F1B33">{{ o.text }}</span>
+              <sc-if value="{{ o.tag }}"><span style="{{ o.tagStyle }}">{{ o.tag }}</span></sc-if>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid;gap:16px">
+      <div style="background:#FFFFFF;border-radius:12px;padding:18px;box-shadow:0 1px 3px rgba(15,27,51,0.08)">
+        <div style="font-size:14.5px;font-weight:700;color:#0A4FA8;margin-bottom:14px">{{ testTitle2 }}</div>
+        <div style="display:flex;flex-wrap:wrap;gap:10px">
+          <sc-for list="{{ qNav }}" as="n" hint-placeholder-count="12">
+            <a href="#" style="{{ n.style }}">{{ n.num }}</a>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="background:#FFFFFF;border-radius:12px;padding:18px;box-shadow:0 1px 3px rgba(15,27,51,0.08)">
+        <div style="font-size:14.5px;font-weight:700;color:#0F1B33;margin-bottom:12px">Result Overview</div>
+        <div style="display:grid;gap:10px">
+          <div style="display:flex;align-items:center;gap:9px;font-size:14px"><span style="width:11px;height:11px;border-radius:999px;background:#2FA96A"></span><span style="flex:1;color:#0F1B33;font-weight:500">Right</span><span style="font-weight:700">{{ rightCount }}</span></div>
+          <div style="display:flex;align-items:center;gap:9px;font-size:14px"><span style="width:11px;height:11px;border-radius:999px;background:#E4573D"></span><span style="flex:1;color:#0F1B33;font-weight:500">Wrong</span><span style="font-weight:700">{{ wrongCount }}</span></div>
+          <div style="display:flex;align-items:center;gap:9px;font-size:14px"><span style="width:11px;height:11px;border-radius:999px;background:#7B4FE0"></span><span style="flex:1;color:#0F1B33;font-weight:500">Not Answered</span><span style="font-weight:700">{{ skipCount }}</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="position:fixed;left:0;right:0;bottom:0;background:#FFFFFF;border-top:1px solid #E3E9F2;padding:12px 26px;display:flex;align-items:center;gap:14px">
+    <button type="button" onClick="{{ goPrev }}" style="border:none;background:#0A4FA8;color:#FFFFFF;font-size:14px;font-weight:700;padding:11px 20px;border-radius:9px">← Prev</button>
+    <div style="flex:1;text-align:center;font-size:13.5px;font-weight:600;color:#5C6A85">Q{{ current }} / {{ totalQ }}</div>
+    <button type="button" onClick="{{ goNext }}" style="border:none;background:#E4573D;color:#FFFFFF;font-size:14px;font-weight:700;padding:11px 20px;border-radius:9px">Next →</button>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1180,&quot;height&quot;:620}}">
+class Component extends DCLogic {
+  state = { current: 1 };
+
+  data() {
+    const wrong = [2,4,8,11];
+    const skip = [6,9];
+    const questions = {
+      1: { type:'Multiple Choice', status:'Correct', k:'correct', marks:4, negative:'1.00',
+        text:'The slope of the line $3x - 4y + 5 = 0$ is:',
+        options:[
+          { text:'$\\dfrac{3}{4}$', correct:true, chosen:true },
+          { text:'$-\\dfrac{3}{4}$' },
+          { text:'$\\dfrac{4}{3}$' },
+          { text:'$-\\dfrac{4}{3}$' }
+        ] }
+    };
+    for (let i=2;i<=12;i++){
+      if (skip.includes(i)) { questions[i] = { type:'Multiple Choice', status:'Not Answered', k:'skip', marks:4, negative:'1.00', text:'Question '+i+' text goes here.', options:[{text:'Option A'},{text:'Option B'},{text:'Option C'},{text:'Option D'}] }; }
+      else if (wrong.includes(i)) { questions[i] = { type:'Multiple Choice', status:'Wrong', k:'wrong', marks:4, negative:'1.00', text:'Question '+i+' text goes here.', options:[{text:'Option A',chosen:true},{text:'Option B',correct:true},{text:'Option C'},{text:'Option D'}] }; }
+      else { questions[i] = { type:'Multiple Choice', status:'Correct', k:'correct', marks:4, negative:'1.00', text:'Question '+i+' text goes here.', options:[{text:'Option A',correct:true,chosen:true},{text:'Option B'},{text:'Option C'},{text:'Option D'}] }; }
+    }
+    return { questions, wrong, skip };
+  }
+
+  renderVals() {
+    const { questions, wrong, skip } = this.data();
+    const totalQ = 12;
+    const cur = this.state.current;
+    const raw = questions[cur];
+
+    const statusColors = {
+      correct: { bg:'#E4F7EC', fg:'#1F8C50', icon:'✓' },
+      wrong: { bg:'#FDEAE6', fg:'#C94B33', icon:'✕' },
+      skip: { bg:'#EFE9FB', fg:'#6A3FCB', icon:'—' }
+    };
+    const sc = statusColors[raw.k];
+
+    const options = raw.options.map((o, i) => {
+      let rowStyle = 'display:flex;align-items:center;gap:14px;border:1.5px solid #E3E9F2;border-radius:10px;padding:14px 16px';
+      let numStyle = 'width:26px;height:26px;border-radius:999px;background:#0F1B33;color:#FFFFFF;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0';
+      let tag = '', tagStyle = '';
+      if (o.correct) {
+        rowStyle = 'display:flex;align-items:center;gap:14px;border:1.5px solid #2FA96A;background:#EBF9F0;border-radius:10px;padding:14px 16px';
+        numStyle = 'width:26px;height:26px;border-radius:999px;background:#2FA96A;color:#FFFFFF;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0';
+      }
+      if (o.chosen && !o.correct) {
+        rowStyle = 'display:flex;align-items:center;gap:14px;border:1.5px solid #E4573D;background:#FDEDEA;border-radius:10px;padding:14px 16px';
+        numStyle = 'width:26px;height:26px;border-radius:999px;background:#E4573D;color:#FFFFFF;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0';
+      }
+      if (o.chosen && o.correct) { tag = '✓ Your answer · Correct'; tagStyle = 'font-size:12px;font-weight:700;color:#1F8C50;background:#DDF3E4;padding:4px 10px;border-radius:999px;white-space:nowrap'; }
+      else if (o.chosen) { tag = '✕ Your answer · Wrong'; tagStyle = 'font-size:12px;font-weight:700;color:#C94B33;background:#FBE1DC;padding:4px 10px;border-radius:999px;white-space:nowrap'; }
+      else if (o.correct) { tag = '✓ Correct answer'; tagStyle = 'font-size:12px;font-weight:700;color:#1F8C50;background:#DDF3E4;padding:4px 10px;border-radius:999px;white-space:nowrap'; }
+      return { num:i+1, text:o.text, rowStyle, numStyle, tag, tagStyle };
+    });
+
+    const q = {
+      type: raw.type, status: raw.status, marks: raw.marks, negative: raw.negative, text: raw.text,
+      statusIcon: sc.icon,
+      statusPill: `font-size:12.5px;font-weight:700;padding:4px 12px;border-radius:999px;background:${sc.bg};color:${sc.fg}`,
+      options
+    };
+
+    const qNav = [];
+    for (let i=1;i<=totalQ;i++) {
+      let bg='#2FA96A';
+      if (wrong.includes(i)) bg='#E4573D';
+      else if (skip.includes(i)) bg='#7B4FE0';
+      const active = i===cur;
+      qNav.push({ num:i, style:`width:38px;height:38px;border-radius:999px;background:${bg};color:#FFFFFF;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;${active?'box-shadow:0 0 0 3px rgba(10,79,168,0.35)':''}` });
+    }
+
+    return {
+      testTitle:'Test: Straight Line — Mock Test 04', testTitle2:'Straight Line',
+      current:cur, totalQ, q, qNav,
+      rightCount: totalQ - wrong.length - skip.length, wrongCount: wrong.length, skipCount: skip.length,
+      goPrev: () => this.setState(s => ({ current: Math.max(1, s.current-1) })),
+      goNext: () => this.setState(s => ({ current: Math.min(totalQ, s.current+1) }))
+    };
+  }
+}
+</script>
+</body>
+</html>

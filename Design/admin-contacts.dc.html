@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; }
+  button { font-family:inherit; cursor:pointer; }
+  a { text-decoration:none; }
+  ::-webkit-scrollbar { width:9px; height:9px; }
+</style>
+</helmet>
+<div style="display:grid;grid-template-columns:minmax(0,244px) minmax(0,1fr);min-height:100vh;font-family:'DM Sans',system-ui,sans-serif;background:{{ pageBg }};color:{{ text }}">
+
+  <aside style="position:sticky;top:0;height:100vh;overflow:hidden;background:radial-gradient(700px 400px at 20% -10%, #0a5fb8, #024f9d 45%, #01356c)">
+    <div style="position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px, rgba(255,255,255,.10) 1px, transparent 0);background-size:26px 26px;pointer-events:none"></div>
+    <div style="position:absolute;top:-60px;right:-40px;width:200px;height:200px;border-radius:999px;background:radial-gradient(circle,rgba(251,116,62,0.22),transparent 70%);pointer-events:none"></div>
+    <div style="position:relative;z-index:1;height:100%;box-sizing:border-box;padding:20px 14px;display:flex;flex-direction:column;gap:20px;overflow:auto">
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:21px;font-weight:700;letter-spacing:-0.025em;white-space:nowrap;padding:2px 6px"><span style="color:#8FC4F5">Success</span><span style="color:#FF9E6B">Curve</span><sup style="font-size:0.46em;font-weight:600;color:#B7C1D6;margin-left:1px;top:-0.7em">.in</sup></div>
+      <div style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.14);border-radius:12px;padding:9px 11px">
+        <div style="width:34px;height:34px;border-radius:9px;background:#FB743E;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;flex-shrink:0">M</div>
+        <div style="min-width:0"><div style="font-size:13.5px;font-weight:700;color:#FFFFFF;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Manohar K.</div><div style="font-size:11.5px;color:#B7C1D6">Super Admin</div></div>
+      </div>
+      <nav style="display:grid;gap:3px">
+        <sc-for list="{{ nav }}" as="n" hint-placeholder-count="8">
+          <sc-if value="{{ n.isLabel }}"><div style="font-size:10.5px;font-weight:800;letter-spacing:0.11em;text-transform:uppercase;color:#7FA6D6;padding:12px 8px 4px">{{ n.label }}</div></sc-if>
+          <sc-if value="{{ n.isLink }}"><a href="{{ n.href }}" style="{{ n.style }}"><span style="width:20px;text-align:center;flex-shrink:0">{{ n.icon }}</span><span style="flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ n.label }}</span><sc-if value="{{ n.badge }}"><span style="background:#FB743E;color:#FFFFFF;font-size:11px;font-weight:800;padding:2px 7px;border-radius:999px">{{ n.badge }}</span></sc-if></a></sc-if>
+        </sc-for>
+      </nav>
+    </div>
+  </aside>
+
+  <main style="min-width:0;padding:0 0 40px">
+    <header style="display:flex;align-items:center;gap:14px;padding:16px 28px;background:{{ card }};border-bottom:1px solid {{ border }};position:sticky;top:0;z-index:10;flex-wrap:wrap">
+      <div style="min-width:0">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:21px;font-weight:700">Contact form inbox</div>
+        <div style="font-size:13.5px;color:{{ sub }};margin-top:2px">Messages submitted from the public Contact page · admin-only</div>
+      </div>
+      <div style="flex:1"></div>
+      <div style="display:flex;align-items:center;gap:7px;background:{{ inputBg }};border:1px solid {{ border }};border-radius:10px;padding:9px 13px;font-size:13px;font-weight:700;color:{{ sub }}">🔒 Private to admins</div>
+    </header>
+
+    <section style="padding:22px 28px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px">
+      <div style="background:{{ card }};border:1px solid {{ border }};border-radius:16px;padding:18px"><div style="font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700">128</div><div style="font-size:13px;color:{{ sub }};font-weight:600;margin-top:3px">Total messages</div></div>
+      <div style="background:{{ card }};border:1px solid {{ border }};border-radius:16px;padding:18px;border-top:3px solid #FB743E"><div style="font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;color:#E0672C">5</div><div style="font-size:13px;color:{{ sub }};font-weight:600;margin-top:3px">Unread</div></div>
+      <div style="background:{{ card }};border:1px solid {{ border }};border-radius:16px;padding:18px"><div style="font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700">12</div><div style="font-size:13px;color:{{ sub }};font-weight:600;margin-top:3px">This week</div></div>
+      <div style="background:{{ card }};border:1px solid {{ border }};border-radius:16px;padding:18px"><div style="font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700">2</div><div style="font-size:13px;color:{{ sub }};font-weight:600;margin-top:3px">Enrollment enquiries</div></div>
+    </section>
+
+    <section style="padding:20px 28px 0;display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:18px;align-items:start">
+      <div style="background:{{ card }};border:1px solid {{ border }};border-radius:18px;overflow:hidden">
+        <div style="padding:15px 16px;border-bottom:1px solid {{ border }};display:grid;gap:8px">
+          <input type="text" placeholder="Search name, email, message…" style="width:100%;box-sizing:border-box;border:1px solid {{ border }};background:{{ inputBg }};border-radius:9px;padding:9px 12px;font-family:inherit;font-size:13.5px;color:{{ text }};outline:none">
+          <div style="display:flex;gap:8px;align-items:center">
+            <span style="font-size:12px;font-weight:700;color:{{ sub }}">Sort</span>
+            <sc-for list="{{ sorts }}" as="s" hint-placeholder-count="3"><button type="button" onClick="{{ s.onClick }}" style="{{ s.style }}">{{ s.label }}</button></sc-for>
+          </div>
+        </div>
+        <div style="max-height:560px;overflow:auto">
+          <sc-for list="{{ messages }}" as="m" hint-placeholder-count="6">
+            <div onClick="{{ m.onClick }}" style="{{ m.rowStyle }}">
+              <div style="width:40px;height:40px;border-radius:11px;background:{{ m.avBg }};color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;flex-shrink:0">{{ m.initial }}</div>
+              <div style="min-width:0;flex:1">
+                <div style="display:flex;align-items:center;gap:8px"><span style="font-family:'Space Grotesk',sans-serif;font-size:11.5px;font-weight:700;color:{{ faint }}">{{ m.id }}</span><span style="font-size:14px;font-weight:{{ m.weight }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ m.name }}</span><sc-if value="{{ m.unread }}"><span style="width:8px;height:8px;border-radius:999px;background:#FB743E;flex-shrink:0"></span></sc-if><span style="margin-left:auto;font-size:11.5px;color:{{ faint }};flex-shrink:0">{{ m.time }}</span></div>
+                <div style="font-size:12.5px;color:{{ sub }};margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ m.preview }}</div>
+                <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap"><sc-if value="{{ m.labelText }}"><span style="{{ m.labelStyle }}">{{ m.labelText }}</span></sc-if><sc-if value="{{ m.tag }}"><span style="{{ m.tagStyle }}">{{ m.tag }}</span></sc-if></div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="padding:13px 16px;border-top:1px solid {{ border }};display:flex;align-items:center;gap:8px">
+          <span style="font-size:12.5px;color:{{ sub }};font-weight:600">{{ pageInfo }}</span>
+          <div style="flex:1"></div>
+          <button type="button" onClick="{{ prevPage }}" style="{{ prevStyle }}">‹ Prev</button>
+          <sc-for list="{{ pages }}" as="pg" hint-placeholder-count="2"><button type="button" onClick="{{ pg.onClick }}" style="{{ pg.style }}">{{ pg.label }}</button></sc-for>
+          <button type="button" onClick="{{ nextPage }}" style="{{ nextStyle }}">Next ›</button>
+        </div>
+      </div>
+
+      <div style="background:{{ card }};border:1px solid {{ border }};border-radius:18px;padding:26px;min-width:0">
+        <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap">
+          <div style="width:52px;height:52px;border-radius:14px;background:{{ sel.avBg }};color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;flex-shrink:0">{{ sel.initial }}</div>
+          <div style="min-width:0">
+            <div style="display:flex;align-items:center;gap:9px"><span style="font-family:'Space Grotesk',sans-serif;font-size:12.5px;font-weight:700;color:{{ sub }};background:{{ inputBg }};border:1px solid {{ border }};padding:3px 9px;border-radius:7px">{{ sel.id }}</span><div style="font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:700">{{ sel.name }}</div></div>
+            <div style="font-size:13px;color:{{ sub }};margin-top:3px">Received {{ sel.full }}</div>
+          </div>
+          <div style="flex:1"></div>
+          <sc-if value="{{ sel.labelText }}"><span style="{{ sel.labelStyle }}">{{ sel.labelText }}</span></sc-if>
+          <sc-if value="{{ sel.tag }}"><span style="{{ sel.tagStyle }}">{{ sel.tag }}</span></sc-if>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:20px">
+          <div style="background:{{ inputBg }};border:1px solid {{ border }};border-radius:12px;padding:14px"><div style="font-size:11.5px;font-weight:800;letter-spacing:0.05em;text-transform:uppercase;color:{{ faint }}">Email</div><a href="mailto:{{ sel.email }}" style="font-size:14.5px;font-weight:600;color:#024F9D;margin-top:4px;display:block;word-break:break-all">{{ sel.email }}</a></div>
+          <div style="background:{{ inputBg }};border:1px solid {{ border }};border-radius:12px;padding:14px"><div style="font-size:11.5px;font-weight:800;letter-spacing:0.05em;text-transform:uppercase;color:{{ faint }}">Contact no.</div><a href="tel:{{ sel.phone }}" style="font-size:14.5px;font-weight:600;color:#024F9D;margin-top:4px;display:block">{{ sel.phone }}</a></div>
+        </div>
+
+        <div style="margin-top:20px">
+          <div style="font-size:11.5px;font-weight:800;letter-spacing:0.05em;text-transform:uppercase;color:{{ faint }}">Message</div>
+          <p style="font-size:15.5px;line-height:1.7;margin:10px 0 0;color:{{ text }};white-space:pre-line">{{ sel.message }}</p>
+        </div>
+
+        <div style="display:flex;gap:10px;margin-top:24px;padding-top:20px;border-top:1px solid {{ border }};flex-wrap:wrap;align-items:center">
+          <a href="mailto:{{ sel.email }}" style="background:#024F9D;color:#FFFFFF;font-size:14px;font-weight:700;padding:11px 18px;border-radius:11px" style-hover="background:#013A78">✉️ Reply by email</a>
+          <a href="tel:{{ sel.phone }}" style="background:{{ inputBg }};border:1px solid {{ border }};color:{{ text }};font-size:14px;font-weight:700;padding:11px 18px;border-radius:11px" style-hover="border-color:#024F9D">📞 Call</a>
+          <div style="width:1px;height:26px;background:{{ border }};margin:0 2px"></div>
+          <span style="font-size:12px;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;color:{{ faint }}">Label</span>
+          <button type="button" onClick="{{ sel.markLead }}" style="{{ sel.leadBtn }}">⭐ New lead</button>
+          <button type="button" onClick="{{ sel.markSpam }}" style="{{ sel.spamBtn }}">🚫 Spam</button>
+          <sc-if value="{{ sel.labelText }}"><button type="button" onClick="{{ sel.clearLabel }}" style="background:transparent;border:none;color:{{ sub }};font-size:12.5px;font-weight:700;text-decoration:underline;cursor:pointer">Clear</button></sc-if>
+          <div style="flex:1"></div>
+          <button type="button" style="background:{{ inputBg }};border:1px solid {{ border }};color:#C0564A;font-size:14px;font-weight:700;padding:11px 18px;border-radius:11px" style-hover="border-color:#E5484D">🗑 Delete</button>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  state = { theme: 'light', selected: 0, sort: 'newest', page: 0, labels: {} };
+
+  P() {
+    return { pageBg:'#EEF2F8', text:'#0F1B33', sub:'#5C6A85', faint:'#98A4BD', card:'#FFFFFF', border:'#E3E9F2', track:'#E8EDF6', inputBg:'#F5F8FC' };
+  }
+
+  navItem(icon, label, href, active, badge) {
+    const style = active
+      ? "display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:11px;background:linear-gradient(120deg,#FB743E,#E0672C);color:#FFFFFF;font-size:14px;font-weight:700;box-shadow:0 8px 18px rgba(251,116,62,0.35)"
+      : "display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:11px;color:#C9D6EC;font-size:14px;font-weight:500";
+    return { isLink:true, isLabel:false, icon, label, href, badge, style };
+  }
+
+  renderVals() {
+    const p = this.P();
+
+    const nav = [
+      { isLabel:true, label:'Overview' },
+      this.navItem('📊','Dashboard','admin-dashboard.dc.html'),
+      { isLabel:true, label:'System' },
+      this.navItem('💬','Doubts','#',false,'2'),
+      this.navItem('✉️','Contacts','#',true,'5'),
+      this.navItem('🖼️','Sliders','#'),
+      this.navItem('⚙️','Settings','#'),
+      this.navItem('↩️','Logout','#')
+    ].map(n => ({ isLabel:!!n.isLabel, isLink:!!n.isLink, label:n.label, icon:n.icon||'', href:n.href||'#', badge:n.badge||'', style:n.style||'' }));
+
+    const tagStyle = (kind, small) => {
+      const fs = small ? '10.5px' : '12px';
+      const pad = small ? '2px 8px' : '5px 11px';
+      if(kind==='Enrollment') return `display:inline-block;margin-top:${small?'6px':'0'};font-size:${fs};font-weight:800;padding:${pad};border-radius:7px;background:#E8F7EE;color:#0F7A57`;
+      if(kind==='Support') return `display:inline-block;margin-top:${small?'6px':'0'};font-size:${fs};font-weight:800;padding:${pad};border-radius:7px;background:#EAF1FB;color:#024F9D`;
+      return `display:inline-block;margin-top:${small?'6px':'0'};font-size:${fs};font-weight:800;padding:${pad};border-radius:7px;background:#FEF6EC;color:#B0863F`;
+    };
+
+    const data = [
+      { id:128, initial:'A', avBg:'#024F9D', name:'Ananya Sharma', email:'ananya.s@email.com', phone:'+91 98765 43210', time:'2h', ts:128, full:'12 Sep 2026, 10:42 am', unread:true, tag:'Enrollment', message:'Hi team,\nI want to join the Class 10 Mathematics Board course but I am not able to complete the payment — the page keeps loading. Can you help me enroll? My target is the Feb 2027 boards.\n\nThanks!' },
+      { id:127, initial:'R', avBg:'#FB743E', name:'Rahul Mehta', email:'rahul.mehta@email.com', phone:'+91 99887 76655', time:'5h', ts:127, full:'12 Sep 2026, 7:15 am', unread:true, tag:'Support', message:'My mock test result is not showing after submission. Attempt was the All-Subject Board Series Test 6. Please check my account.' },
+      { id:126, initial:'I', avBg:'#0F9D76', name:'Imran Khan', email:'imran.k@email.com', phone:'+91 90123 45678', time:'1d', ts:126, full:'11 Sep 2026, 4:30 pm', unread:true, tag:'Enrollment', message:'Is the CUET UG full test series available for immediate access after purchase? And do you offer any student discount coupons?' },
+      { id:125, initial:'S', avBg:'#024F9D', name:'Sneha Patil', email:'sneha.p@email.com', phone:'+91 91234 56789', time:'2d', ts:125, full:'10 Sep 2026, 11:02 am', unread:false, tag:'General', message:'Loved the Trigonometry lectures! Just wanted to say thank you. When will Class 12 Applied Maths be released?' },
+      { id:124, initial:'V', avBg:'#FB743E', name:'Vikas Rao', email:'vikas.rao@email.com', phone:'+91 93456 78901', time:'3d', ts:124, full:'9 Sep 2026, 6:20 pm', unread:false, tag:'Support', message:'I forgot the email linked to my account. I paid via UPI last month. Can you help me recover it? Registered phone is this number.' },
+      { id:123, initial:'P', avBg:'#0F9D76', name:'Priya Nair', email:'priya.nair@email.com', phone:'+91 94567 89012', time:'4d', ts:123, full:'8 Sep 2026, 9:45 am', unread:false, tag:'General', message:'Do you have a mobile app? Studying mostly on my phone and the site works well but an app would be great.' },
+      { id:122, initial:'K', avBg:'#024F9D', name:'Kavya Reddy', email:'kavya.r@email.com', phone:'+91 95678 90123', time:'5d', ts:122, full:'7 Sep 2026, 3:10 pm', unread:false, tag:'Enrollment', message:'Please share the fee structure for the Class 9 Foundation series and whether EMI is available.' },
+      { id:121, initial:'A', avBg:'#FB743E', name:'Arjun Das', email:'arjun.das@email.com', phone:'+91 96789 01234', time:'6d', ts:121, full:'6 Sep 2026, 1:25 pm', unread:false, tag:'Support', message:'Video buffers a lot on the Science course. Is there a lower-quality option for slow networks?' },
+      { id:120, initial:'M', avBg:'#0F9D76', name:'Meera Iyer', email:'meera.iyer@email.com', phone:'+91 97890 12345', time:'6d', ts:120, full:'6 Sep 2026, 9:05 am', unread:false, tag:'General', message:'Do you provide printed notes along with the online course? Would love a hard copy for revision.' },
+      { id:119, initial:'T', avBg:'#024F9D', name:'Tarun Gupta', email:'tarun.g@email.com', phone:'+91 98901 23456', time:'7d', ts:119, full:'5 Sep 2026, 5:40 pm', unread:false, tag:'Support', message:'Coupon code BOARD25 is not applying at checkout. Is it still valid?' },
+      { id:118, initial:'N', avBg:'#FB743E', name:'Nisha Verma', email:'nisha.v@email.com', phone:'+91 99012 34567', time:'8d', ts:118, full:'4 Sep 2026, 2:15 pm', unread:false, tag:'Enrollment', message:'Can two siblings share one account, or do we need separate logins for each student?' },
+      { id:117, initial:'D', avBg:'#0F9D76', name:'Dev Malhotra', email:'dev.m@email.com', phone:'+91 90987 65432', time:'9d', ts:117, full:'3 Sep 2026, 10:30 am', unread:false, tag:'General', message:'Requesting a demo lecture for the CUET course before I purchase. Thank you.' },
+      { id:116, initial:'R', avBg:'#024F9D', name:'Riya Joshi', email:'riya.j@email.com', phone:'+91 91098 76543', time:'10d', ts:116, full:'2 Sep 2026, 4:50 pm', unread:false, tag:'Support', message:'My test series access expired earlier than a year. Please check the validity on my account.' },
+      { id:115, initial:'S', avBg:'#FB743E', name:'Sahil Khanna', email:'sahil.k@email.com', phone:'+91 92109 87654', time:'11d', ts:115, full:'1 Sep 2026, 8:20 am', unread:false, tag:'General', message:'Great platform! Any plans to add Class 11 subjects this year?' }
+    ];
+
+    let sorted = [...data];
+    if (this.state.sort === 'oldest') sorted.sort((a,b) => a.ts - b.ts);
+    else if (this.state.sort === 'unread') sorted.sort((a,b) => (b.unread?1:0) - (a.unread?1:0) || b.ts - a.ts);
+    else sorted.sort((a,b) => b.ts - a.ts);
+
+    const perPage = 10;
+    const totalPages = Math.ceil(sorted.length / perPage);
+    const page = Math.min(this.state.page, totalPages - 1);
+    const pageItems = sorted.slice(page * perPage, page * perPage + perPage);
+
+    const sorts = [
+      { key:'newest', label:'Newest' },
+      { key:'oldest', label:'Oldest' },
+      { key:'unread', label:'Unread first' }
+    ].map(s => ({
+      label:s.label,
+      onClick: () => this.setState({ sort:s.key, page:0 }),
+      style: this.state.sort===s.key
+        ? 'border:none;background:#024F9D;color:#FFFFFF;font-size:12px;font-weight:700;padding:6px 11px;border-radius:8px'
+        : `border:1px solid ${p.border};background:${p.inputBg};color:${p.text};font-size:12px;font-weight:700;padding:6px 11px;border-radius:8px`
+    }));
+
+    const labelStyle = (kind, small) => {
+      const fs = small ? '10.5px' : '12px';
+      const pad = small ? '2px 8px' : '5px 11px';
+      const c = kind==='New lead' ? ['#E8F7EE','#0F7A57'] : ['#FDECEC','#C0564A'];
+      return `display:inline-flex;align-items:center;gap:4px;font-size:${fs};font-weight:800;padding:${pad};border-radius:7px;background:${c[0]};color:${c[1]}`;
+    };
+    const getLabel = (id) => this.state.labels[id] || '';
+    const setLabel = (id, val) => this.setState(st => ({ labels: { ...st.labels, [id]: st.labels[id]===val ? '' : val } }));
+
+    const messages = pageItems.map((m) => {
+      const idx = data.indexOf(m);
+      const lbl = getLabel(m.id);
+      return {
+        id:'#C-'+m.id, initial:m.initial, avBg:m.avBg, name:m.name, time:m.time, preview:m.message.split('\n')[0],
+        unread:m.unread, weight: m.unread ? 800 : 600,
+        tag:m.tag, tagStyle:tagStyle(m.tag, true),
+        labelText: lbl, labelStyle: labelStyle(lbl, true),
+        onClick: () => this.setState({ selected:idx }),
+        rowStyle: `display:flex;gap:12px;padding:14px 16px;cursor:pointer;border-bottom:1px solid ${p.border};${idx===this.state.selected ? 'background:'+p.inputBg+';border-left:3px solid #024F9D' : 'border-left:3px solid transparent'}`
+      };
+    });
+
+    const pages = Array.from({length: totalPages}, (_,i) => ({
+      label: String(i+1),
+      onClick: () => this.setState({ page:i }),
+      style: i===page
+        ? 'border:none;background:#024F9D;color:#FFFFFF;font-size:12.5px;font-weight:700;width:30px;height:30px;border-radius:8px'
+        : `border:1px solid ${p.border};background:${p.inputBg};color:${p.text};font-size:12.5px;font-weight:700;width:30px;height:30px;border-radius:8px`
+    }));
+    const navBtn = (disabled) => `border:1px solid ${p.border};background:${p.inputBg};color:${disabled?p.faint:p.text};font-size:12.5px;font-weight:700;padding:7px 11px;border-radius:8px;${disabled?'cursor:default':''}`;
+    const from = page*perPage + 1;
+    const to = Math.min((page+1)*perPage, sorted.length);
+
+    const s = data[this.state.selected];
+    const selLabel = getLabel(s.id);
+    const labelBtn = (active, activeBg) => active
+      ? `border:none;background:${activeBg};color:#FFFFFF;font-size:13px;font-weight:700;padding:9px 14px;border-radius:9px;cursor:pointer`
+      : `border:1px solid ${p.border};background:${p.inputBg};color:${p.text};font-size:13px;font-weight:700;padding:9px 14px;border-radius:9px;cursor:pointer`;
+    const sel = {
+      ...s, id:'#C-'+s.id, tagStyle: tagStyle(s.tag, false),
+      labelText: selLabel, labelStyle: labelStyle(selLabel, false),
+      leadBtn: labelBtn(selLabel==='New lead', '#0F9D76'),
+      spamBtn: labelBtn(selLabel==='Spam', '#C0564A'),
+      markLead: () => setLabel(s.id, 'New lead'),
+      markSpam: () => setLabel(s.id, 'Spam'),
+      clearLabel: () => setLabel(s.id, selLabel)
+    };
+
+    return {
+      pageBg:p.pageBg, text:p.text, sub:p.sub, faint:p.faint, card:p.card, border:p.border, track:p.track, inputBg:p.inputBg,
+      nav, messages, sel, sorts, pages,
+      pageInfo: from+'–'+to+' of '+sorted.length,
+      prevStyle: navBtn(page===0), nextStyle: navBtn(page>=totalPages-1),
+      prevPage: () => this.setState(st => ({ page: Math.max(0, st.page-1) })),
+      nextPage: () => this.setState(st => ({ page: Math.min(totalPages-1, st.page+1) }))
+    };
+  }
+}
+</script>
+</body>
+</html>
